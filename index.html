@@ -2,489 +2,304 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Media Pembelajaran Matematika: Teorema Pythagoras - Kelas 8 SMP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pythagoras Club · Media Pembelajaran Matematika Kelas 8</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap">
 <style>
-:root {
-  --primary: #4b2fb8;
-  --primary-light: #7a4dff;
-  --secondary: #12a6c9;
-  --accent-yellow: #ffd34d;
-  --accent-orange: #ff8a1f;
-  --accent-green: #3ecf6e;
-  --accent-red: #ff5470;
-  --bg-gradient: linear-gradient(135deg, #eef2ff, #e0f2fe);
-  --ink: #1d2340;
-  --panel-bg: rgba(255, 255, 255, 0.95);
+:root{
+  --bg:#f4f1ff;--ink:#1d2340;--card:#fff;--line:rgba(29,35,64,.14);
+  --c1:#7a4dff;--c2:#12a6c9;--c3:#ff8a1f;--c4:#ff5470;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0a2e;--ink:#f1eeff;--card:#1a1445;--line:rgba(255,255,255,.18)}}
+:root[data-theme="dark"]{--bg:#0f0a2e;--ink:#f1eeff;--card:#1a1445;--line:rgba(255,255,255,.18)}
+:root[data-pal="jeruk"]{--c1:#ff8a1f;--c2:#ffd34d;--c3:#ff5470;--c4:#7a4dff}
+:root[data-pal="hijau"]{--c1:#3ecf6e;--c2:#12a6c9;--c3:#ffd34d;--c4:#4b2fb8}
+:root[data-pal="permen"]{--c1:#ff5470;--c2:#ff8ad8;--c3:#7a4dff;--c4:#12a6c9}
+html{scroll-padding-top:5rem;scroll-behavior:smooth}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Fredoka','Segoe UI',system-ui,sans-serif;overflow-x:hidden;transition:background .3s;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer;color:inherit}
+section{padding:4rem 1.2rem;max-width:72rem;margin:auto}
+h2.sec{font-size:clamp(1.8rem,5vw,3rem);line-height:1.05;margin-bottom:.4rem}
+.kick{font-weight:700;letter-spacing:.18em;font-size:.8rem;color:var(--c2);text-transform:uppercase}
+.lead{opacity:.75;max-width:36rem;margin-bottom:1.6rem}
+.view[hidden]{display:none}
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
-}
+/* bubble */
+.bub{--c:var(--c1);border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;position:relative;
+  background:radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,.4) 6% 15%,transparent 16%),
+  radial-gradient(circle at 50% 55%,var(--c) 0 50%,color-mix(in srgb,var(--c) 65%,#000) 100%);
+  box-shadow:inset -.35em -.5em 1em rgba(0,0,0,.18),0 .6em 1.4em color-mix(in srgb,var(--c) 45%,transparent);
+  text-shadow:0 .06em .15em rgba(0,0,0,.3);user-select:none}
 
-html, body {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background: var(--bg-gradient);
-  color: var(--ink);
-  touch-action: manipulation;
-}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;
+  padding:.6rem 1.2rem;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.1rem;margin-right:auto;border:0;background:none}
+.logo .bub{width:2.2rem;height:2.2rem;font-size:.8rem}
+nav .lk{border:0;background:none;font-weight:600;padding:.3rem .6rem;border-radius:99px}
+nav .lk:hover{background:var(--line)}
+nav .lk.on{background:var(--c1);color:#fff}
+.pal{display:flex;gap:.3rem;align-items:center}
+.pal i{width:1.2rem;height:1.2rem;border-radius:50%;border:2px solid var(--card);box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.tg{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:.25rem .7rem;font-weight:600}
 
-#app-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transform-origin: top left;
-}
+/* hero */
+.hero{text-align:center;padding-top:3rem;position:relative}
+.word{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin:1rem 0}
+.row{display:flex;gap:clamp(.2rem,1.2vw,.7rem);justify-content:center}
+.row .bub{width:clamp(3.2rem,15vw,8rem);height:clamp(3.2rem,15vw,8rem);font-size:clamp(1.6rem,8vw,4.6rem);cursor:pointer;
+  animation:bob 3.2s ease-in-out infinite;transition:transform .15s}
+.row .bub:nth-child(2n){animation-delay:-.8s}.row .bub:nth-child(3n){animation-delay:-1.6s}
+.row .bub:active{transform:scale(.92)}
+@keyframes bob{50%{transform:translateY(-.5rem) rotate(3deg)}}
+.bub.pop{animation:pop .4s forwards;pointer-events:none}
+@keyframes pop{40%{transform:scale(1.35);opacity:1}100%{transform:scale(1.7);opacity:0}}
+.bub.back{animation:back .6s cubic-bezier(.3,1.5,.5,1)}
+@keyframes back{from{transform:scale(0)}to{transform:scale(1)}}
+.spark{position:fixed;width:.6rem;height:.6rem;border-radius:50%;pointer-events:none;z-index:50;animation:sp .7s forwards}
+@keyframes sp{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+.hint{font-weight:600;opacity:.7;margin-top:.4rem}
+.cta{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+.btn{border:0;border-radius:99px;padding:.8rem 1.6rem;font-weight:700;font-size:1rem;color:#fff;background:linear-gradient(90deg,var(--c1),var(--c2));box-shadow:0 .4rem 1.2rem color-mix(in srgb,var(--c1) 40%,transparent);transition:transform .2s}
+.btn:hover{transform:scale(1.05)}.btn.alt{background:var(--card);color:var(--ink);border:2px solid var(--line);box-shadow:none}
 
-/* Header Compact */
-header {
-  height: 3rem;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  z-index: 100;
-  flex-shrink: 0;
-}
+/* band */
+.band{display:flex;justify-content:center;gap:clamp(.3rem,2vw,1.2rem);flex-wrap:wrap;padding:1rem 1.2rem 0}
+.band .bub{width:clamp(3.4rem,11vw,6.5rem);height:clamp(3.4rem,11vw,6.5rem);font-size:clamp(1.1rem,4vw,2.2rem);font-family:'Times New Roman',serif;font-style:italic}
+.band .bub:nth-child(odd){margin-top:1.4rem}
 
-header h1 {
-  font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+/* ribbons */
+.rib{position:relative;height:12rem;overflow:hidden;margin:1rem 0}
+.rib div{position:absolute;left:-10%;width:120%;top:50%;overflow:hidden;white-space:nowrap;padding:.7rem 0;font-weight:700;font-size:1.3rem;letter-spacing:.08em}
+.rib .r1{background:var(--c1);color:#fff;transform:translateY(-50%) rotate(-4deg)}
+.rib .r2{background:var(--c3);color:#1d2340;transform:translateY(-50%) rotate(4deg)}
+.rib span{display:inline-block;animation:mq 26s linear infinite}
+.rib .r2 span{animation-direction:reverse}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-.header-btns {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-}
+/* edisi */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.1rem}
+.ed{position:relative;overflow:hidden;text-align:left;background:var(--card);border:2px solid var(--line);border-radius:1.6rem;padding:1.3rem;min-height:13rem;transition:transform .25s}
+.ed:nth-child(odd){transform:rotate(-1deg)}.ed:nth-child(even){transform:rotate(1deg)}
+.ed:hover{transform:translateY(-.4rem) rotate(0)}
+.ed .n{font-size:4.5rem;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:2px var(--c)}
+.ed h3{font-size:1.3rem;margin:.3rem 0}.ed p{opacity:.75;font-size:.95rem;max-width:11rem}
+.ed .bub{position:absolute;right:-1.5rem;bottom:-1.5rem;width:7rem;height:7rem;font-size:1.6rem;padding:0 0 1rem 0}
+.ed .bub b{position:relative;top:-.7rem;left:-.7rem;font-family:'Times New Roman',serif;font-style:italic}
 
-.hb {
-  border: none;
-  border-radius: 0.6rem;
-  padding: 0.3rem 0.7rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  background: white;
-  color: var(--primary);
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
+/* kalender */
+.cal{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:1.2rem}
+@media(max-width:760px){.cal{grid-template-columns:1fr}}
+.cp{background:var(--card);border:2px solid var(--line);border-radius:1.6rem;padding:1rem}
+.dn,.dg{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;text-align:center}
+.dn{font-weight:700;font-size:.8rem;opacity:.6;margin-bottom:.3rem}
+.dg button{aspect-ratio:1;border:1px solid var(--line);background:transparent;border-radius:.8rem;font-size:.75rem;line-height:1.1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.dg button b{font-size:1rem}.dg button small{color:var(--c2);font-weight:700}
+.dg button.on{background:var(--c1);color:#fff;border-color:var(--c1)}.dg button.on small{color:#fff}
+.dg button.td{outline:3px solid var(--c3)}
+.big{display:flex;flex-direction:column;align-items:center;gap:.6rem;text-align:center}
+.big .bub{width:8rem;height:8rem;font-size:1.7rem}
+.eq{font-weight:700;font-size:1.1rem}.eq em{color:var(--c2)}
 
-.hb:active {
-  transform: scale(0.95);
-}
+/* kartu */
+.mem{display:flex;gap:1.4rem;flex-wrap:wrap;align-items:center;justify-content:center}
+#card{width:min(22rem,100%);aspect-ratio:1.6;border-radius:1.4rem;padding:1.1rem;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 1.2rem 2.4rem rgba(0,0,0,.25);display:flex;flex-direction:column;justify-content:space-between}
+#card .bub{position:absolute;right:-1.5rem;top:-1.5rem;width:7rem;height:7rem;--c:var(--c3);opacity:.9}
+#card small{letter-spacing:.15em;font-weight:700;opacity:.85}
+#cn{font-size:1.6rem;font-weight:700;position:relative;word-break:break-word}
+.bar{height:1.6rem;background:repeating-linear-gradient(90deg,#fff 0 2px,transparent 2px 5px,#fff 5px 6px,transparent 6px 10px);opacity:.8;border-radius:2px}
+.frm{display:flex;flex-direction:column;gap:.6rem;min-width:14rem}
+.frm input{font:inherit;padding:.7rem 1rem;border-radius:99px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+@media print{body *{visibility:hidden}#card,#card *{visibility:visible}#card{position:fixed;left:1cm;top:1cm;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 
-/* Navigasi Utama Top Menu Bar */
-nav.main-nav {
-  display: flex;
-  gap: 0.4rem;
-  padding: 0.4rem 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid rgba(75, 47, 184, 0.1);
-  overflow-x: auto;
-  flex-shrink: 0;
-}
+/* footer */
+footer{margin-top:3rem;padding:3rem 1.2rem 2rem;text-align:center;background:var(--c1);color:#fff;border-radius:3rem 3rem 0 0;position:relative;overflow:hidden}
+footer .fb{display:flex;justify-content:center;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+footer .bub{width:clamp(3rem,12vw,5rem);height:clamp(3rem,12vw,5rem);font-size:1.3rem;--c:var(--c2)}
+footer .bub:nth-child(2n){--c:var(--c3)}footer .bub:nth-child(3n){--c:var(--c4)}
+footer p{opacity:.85;font-weight:600}
 
-.nav-btn {
-  border: 2px solid transparent;
-  background: white;
-  color: var(--ink);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.8rem;
-  font-weight: 700;
-  font-size: 0.85rem;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  transition: all 0.2s;
-}
+/* ============ PANGGUNG MATERI (isi pembelajaran) ============ */
+.stage{
+  --primary:#4b2fb8;--primary-light:#7a4dff;--secondary:#12a6c9;--accent-yellow:#ffd34d;--accent-orange:#ff8a1f;
+  --accent-green:#3ecf6e;--accent-red:#ff5470;--ink:#1d2340;--panel-bg:rgba(255,255,255,.96);
+  position:relative;display:flex;flex-direction:column;max-width:76rem;margin:.8rem auto;padding:0 .8rem;
+  height:calc(100dvh - var(--navh,4rem) - 1.6rem);min-height:32rem;color:var(--ink)}
+:where(.stage) *{padding:0}
+.stage button{-webkit-user-select:none;user-select:none}
+.stage .sub{position:relative;flex:1;min-height:0}
+.stage .slide{position:absolute;inset:0;background:var(--panel-bg);border-radius:1.2rem;box-shadow:0 8px 32px rgba(31,38,135,.12);
+  border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column;padding:1.2rem;opacity:0;transform:translateY(20px);overflow-y:auto;
+  visibility:hidden;pointer-events:none;transition:opacity .35s ease,transform .35s ease,visibility 0s linear .35s}
+.stage .slide.active{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition:opacity .35s ease,transform .35s ease,visibility 0s}
+#s4,#s5,#s6,#s7,#s8,#s9,#s10{background:linear-gradient(180deg,#fff,#f3f0ff)}
+.stage .slide *{-webkit-user-select:none;user-select:none}
+.stage .qz-in,.stage .qz-in *{-webkit-user-select:text;user-select:text}
 
-.nav-btn.active {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary-light);
-  box-shadow: 0 4px 10px rgba(75, 47, 184, 0.3);
-}
+.slide-sub{font-size:1rem;text-align:center;font-weight:600;color:#4b5563;margin-bottom:1rem}
+.slide-footer{margin-top:auto;display:flex;justify-content:space-between;gap:.6rem;padding-top:.8rem;flex-shrink:0}
+.btn-next{margin-left:auto;background:linear-gradient(135deg,var(--accent-orange),#ff6b00);color:#fff;border:none;padding:.6rem 1.4rem;font-weight:700;font-size:1rem;border-radius:1rem;box-shadow:0 4px 12px rgba(255,138,31,.4);transition:transform .15s}
+.btn-prev{background:linear-gradient(135deg,#64748b,#475569);color:#fff;border:none;padding:.6rem 1.4rem;font-weight:700;font-size:1rem;border-radius:1rem;box-shadow:0 4px 12px rgba(71,85,105,.35);transition:transform .15s}
+.btn-next:active,.btn-prev:active{transform:scale(.95)}
+.interactive-area{flex:1;display:flex;justify-content:center;align-items:center;position:relative;gap:1.5rem;flex-wrap:wrap;min-height:0}
+.card-box{background:#fff;border-radius:1rem;padding:1rem;box-shadow:0 4px 15px rgba(0,0,0,.08);border:2px solid #e5e7eb}
+.btn-action{background:var(--primary);color:#fff;border:none;border-radius:.8rem;padding:.6rem 1.2rem;font-weight:700;font-size:1rem;box-shadow:0 4px 10px rgba(75,47,184,.3);min-height:2.8rem}
+.btn-action:active{transform:scale(.95)}
+.hb{border:none;border-radius:.6rem;padding:.3rem .7rem;font-size:.85rem;font-weight:700;background:#fff;color:var(--primary);box-shadow:0 2px 4px rgba(0,0,0,.1);white-space:nowrap}
+.hb:active{transform:scale(.95)}
+.nav-btn{border:2px solid transparent;background:#fff;color:var(--ink);padding:.4rem .8rem;border-radius:.8rem;font-weight:700;font-size:.85rem;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.05);transition:all .2s;flex-shrink:0}
+.nav-btn.active{background:var(--primary);color:#fff;border-color:var(--primary-light);position:relative;overflow:hidden;box-shadow:0 4px 10px rgba(75,47,184,.3)}
+.nav-btn.active::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:navShine 2.4s ease-in-out infinite}
+@keyframes navShine{to{transform:translateX(120%)}}
+.tabs{display:flex;gap:.3rem;margin-bottom:.5rem;overflow-x:auto;background:#fff;padding:.4rem;border-radius:.8rem;box-shadow:0 2px 5px rgba(0,0,0,.05);flex-shrink:0}
 
-/* Main Content Area */
-main {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  padding: 0.8rem;
-  display: flex;
-  flex-direction: column;
-}
+/* modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.7);backdrop-filter:blur(5px);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-card{background:#fff;color:#1d2340;border-radius:1.5rem;padding:1.5rem 2rem;max-width:90%;width:500px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.25);transform:scale(.8);transition:transform .3s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;align-items:center;gap:1rem}
+.modal-overlay.active .modal-card{transform:scale(1)}
 
-.slide {
-  position: absolute;
-  inset: 0.8rem;
-  background: var(--panel-bg);
-  border-radius: 1.2rem;
-  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  display: flex;
-  flex-direction: column;
-  padding: 1.2rem;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(20px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  overflow-y: auto;
-}
-
-.slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-/* Slide Typography & Highlights */
-.slide-title {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--primary);
-  text-align: center;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: pulseGlow 3s infinite ease-in-out;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(122, 77, 255, 0.2)); }
-  50% { transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(122, 77, 255, 0.4)); }
-}
-
-.slide-sub {
-  font-size: 1rem;
-  text-align: center;
-  font-weight: 600;
-  color: #4b5563;
-  margin-bottom: 1rem;
-}
-
-.slide-footer {
-  margin-top: auto;
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 0.8rem;
-}
-
-.btn-next {
-  background: linear-gradient(135deg, var(--accent-orange), #ff6b00);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  font-weight: 800;
-  font-size: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 138, 31, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: transform 0.15s;
-}
-
-.btn-next:active {
-  transform: scale(0.95);
-}
-
-/* UI Elements & Controls */
-.interactive-area {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  gap: 1.5rem;
-}
-
-.card-box {
-  background: white;
-  border-radius: 1rem;
-  padding: 1rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  border: 2px solid #e5e7eb;
-}
-
-/* Modals & Popups */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(5px);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-card {
-  background: white;
-  border-radius: 1.5rem;
-  padding: 1.5rem 2rem;
-  max-width: 90%;
-  width: 500px;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  transform: scale(0.8);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.modal-overlay.active .modal-card {
-  transform: scale(1);
-}
-
-.btn-action {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 0.8rem;
-  padding: 0.6rem 1.2rem;
-  font-weight: 700;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(75, 47, 184, 0.3);
-}
-
-.btn-action:active {
-  transform: scale(0.95);
-}
-
-/* ===== SLIDE 1 ===== */
-.s1-title{font-size:clamp(1.4rem,3.6vw,2.4rem);font-weight:900;text-align:center;line-height:1.2;margin-bottom:.3rem}
-.s1-title .w{display:inline-block;padding:0 .25em;border-radius:.4em;margin:.1em .08em;
-  background:none;box-shadow:none;color:var(--primary);
-  animation:s1Float 2.2s ease-in-out infinite;text-shadow:0 .08em .2em rgba(75,47,184,.25)}
+/* judul */
+.s1-title{font-size:clamp(1.2rem,3vw,2rem);font-weight:700;text-align:center;line-height:1.2;margin-bottom:.6rem;flex-shrink:0}
+.s1-title .w{display:inline-block;padding:0 .25em;margin:.1em .08em;color:var(--primary);animation:s1Float 2.2s ease-in-out infinite;text-shadow:0 .08em .2em rgba(75,47,184,.25)}
 .s1-title .w:nth-child(2){animation-delay:.15s}.s1-title .w:nth-child(3){animation-delay:.3s}
 .s1-title .w:nth-child(4){animation-delay:.45s}.s1-title .w:nth-child(5){animation-delay:.6s}
 @keyframes s1Shift{to{background-position:300% 0}}
 @keyframes s1Float{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-.25em) rotate(1.5deg) scale(1.05)}}
-.s1-q{text-align:center;font-weight:700;color:#4b5563;font-size:clamp(.9rem,1.8vw,1.1rem)}
+.s1-q{text-align:center;font-weight:600;color:#4b5563;font-size:clamp(.9rem,1.8vw,1.1rem)}
 .s1-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;min-height:0}
 .s1-svg{width:min(100%,620px);height:auto;max-height:44vh;overflow:visible;filter:drop-shadow(0 .5rem .8rem rgba(2,132,199,.25))}
-.s1-svg .ltr{font-weight:900;font-size:28px;transform-box:fill-box;transform-origin:center}
+.s1-svg .ltr{font-weight:700;font-size:28px;transform-box:fill-box;transform-origin:center}
 .s1-svg .side .hl{opacity:0;stroke-width:10;stroke-linecap:round;transform-box:fill-box;transform-origin:center}
 .s1-svg .side .badge{opacity:0;transform-box:fill-box;transform-origin:center}
 .s1-svg .side.pop .hl{animation:s1Drop 1.1s cubic-bezier(.2,.9,.3,1.15) forwards}
 .s1-svg .side.pop .badge{animation:s1Zoom .9s cubic-bezier(.2,.9,.3,1.2) forwards}
 .s1-svg .side.pop .ltr{animation:s1Ltr .9s ease-out forwards}
-@keyframes s1Drop{
-  0%{opacity:0;stroke-width:30;transform:scale(1.3);filter:drop-shadow(0 30px 14px rgba(0,0,0,.45))}
-  55%{opacity:1;stroke-width:16;transform:scale(1.07);filter:drop-shadow(0 16px 8px rgba(0,0,0,.4))}
-  100%{opacity:1;stroke-width:10;transform:scale(1);filter:drop-shadow(0 4px 3px rgba(0,0,0,.35))}}
+@keyframes s1Drop{0%{opacity:0;stroke-width:30;transform:scale(1.3);filter:drop-shadow(0 30px 14px rgba(0,0,0,.45))}55%{opacity:1;stroke-width:16;transform:scale(1.07);filter:drop-shadow(0 16px 8px rgba(0,0,0,.4))}100%{opacity:1;stroke-width:10;transform:scale(1);filter:drop-shadow(0 4px 3px rgba(0,0,0,.35))}}
 @keyframes s1Zoom{0%{opacity:0;transform:scale(3.4) translateY(-25px)}60%{opacity:1;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
 @keyframes s1Ltr{0%{transform:scale(3)}60%{transform:scale(.9)}100%{transform:scale(1.25)}}
 .s1-btn{font-size:1.05rem;padding:.7rem 1.6rem;animation:s1Pulse 1.6s ease-in-out infinite}
 .s1-btn:disabled{opacity:.6;animation:none;cursor:wait}
 @keyframes s1Pulse{50%{transform:scale(1.07);box-shadow:0 0 0 .6rem rgba(75,47,184,.12)}}
-
-/* Special Layouts */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: 100%; }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; width: 100%; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
-
-/* ===== Slide 2 ===== */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;width:100%}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;width:100%}
+.flex-center{display:flex;align-items:center;justify-content:center}
 @keyframes bounce{50%{transform:translateY(.25rem)}}
-.s2-board{position:relative;width:360px;height:250px;flex-shrink:0;max-width:100%}
-.s2-tri{position:absolute;left:70px;top:30px;width:240px;height:176px}
-.drop-zone{border:2px dashed #94a3b8;background:#fff;position:absolute;height:40px;border-radius:20px;
-  font-weight:800;font-size:.85rem;color:var(--primary);display:flex;align-items:center;justify-content:center;padding:0 .4rem;transition:all 0.2s;}
+
+/* slide 2 */
+.s2-board{position:relative;width:400px;height:280px;flex-shrink:0;max-width:100%}
+.s2-tri{position:absolute;left:0;top:0;width:100%;height:100%}
+.s2-tri.spin{animation:s2Spin .6s cubic-bezier(.3,1.3,.5,1)}
+@keyframes s2Spin{from{transform:rotate(-90deg) scale(.8);opacity:.3}to{transform:none;opacity:1}}
+.drop-zone{border:2px dashed #94a3b8;background:#fff;position:absolute;height:40px;border-radius:20px;font-weight:700;font-size:.85rem;color:var(--primary);display:flex;align-items:center;justify-content:center;padding:0 .4rem;transition:all .2s}
 .drop-zone:empty::before{content:'?';color:#94a3b8;font-size:1.1rem}
 .drop-zone.hover{border-color:var(--primary);background:#eef2ff;transform:scale(1.08)}
-.drop-zone.filled{border:2px solid var(--accent-green);background:#dcfce7;color:#166534;
-  box-shadow:0 0 0 .3rem rgba(62,207,110,.3);animation:s2Pop .5s ease-out}
+.drop-zone.filled{border:2px solid var(--accent-green);background:#dcfce7;color:#166534;box-shadow:0 0 0 .3rem rgba(62,207,110,.3);animation:s2Pop .5s ease-out}
 @keyframes s2Pop{0%{transform:scale(.7)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
-.z-a{left:0;top:90px;width:88px}
-.z-b{left:140px;top:200px;width:100px}
-.z-c{left:200px;top:60px;width:110px}
-.drag-item{touch-action:none;cursor:grab;padding:0.6rem 1rem;background:linear-gradient(135deg,var(--accent-yellow),var(--accent-orange));color:#3b2000;font-weight:800;border-radius:0.8rem;box-shadow:0 4px 8px rgba(0,0,0,0.12);z-index:10;position:relative}
-.drag-item.dragging{opacity:0.8;z-index:100;scale:1.08}
+.z-a{left:0;top:90px;width:88px}.z-b{left:140px;top:200px;width:100px}.z-c{left:200px;top:60px;width:110px}
+.drag-item{touch-action:none;cursor:grab;padding:.6rem 1rem;background:linear-gradient(135deg,var(--accent-yellow),var(--accent-orange));color:#3b2000;font-weight:700;border-radius:.8rem;box-shadow:0 4px 8px rgba(0,0,0,.12);z-index:10;position:relative}
+.drag-item.dragging{opacity:.8;z-index:100;scale:1.08}
 .drag-item.used{opacity:.3;pointer-events:none;filter:grayscale(1)}
 .s2-tray{flex:1;display:flex;flex-direction:column;gap:.8rem;max-width:240px}
 
-/* ===== Slide 3 ===== */
+/* slide 3 */
 .s3-svg{width:300px;max-width:100%;height:auto;max-height:46vh;flex-shrink:0}
 .sq{cursor:pointer}
 .sq rect,.sq polygon{transition:all .2s}
 .sq:hover rect,.sq:hover polygon{filter:brightness(1.07)}
 .sq.sel rect,.sq.sel polygon{stroke:#ff8a1f;stroke-width:5}
-.sq text{pointer-events:none;font-size:20px;font-weight:800;fill:#1d2340}
-.fcard{font-weight:800;text-align:center;transition:all .25s;padding:1rem;border-radius:1rem;background:white;border:2px solid #e5e7eb;box-shadow:0 4px 15px rgba(0,0,0,0.08);}
-.fcard.hl{background:#fff7d6;border-color:var(--accent-orange);transform:scale(1.07);
-  box-shadow:0 0 0 .3rem rgba(255,138,31,.25)}
-#s3 .fcard{display:block !important}
+.sq text{pointer-events:none;font-size:20px;font-weight:700;fill:#1d2340}
+.fcard{display:block;font-weight:700;text-align:center;transition:all .25s;padding:1rem;border-radius:1rem;background:#fff;border:2px solid #e5e7eb;box-shadow:0 4px 15px rgba(0,0,0,.08)}
+.fcard.hl{background:#fff7d6;border-color:var(--accent-orange);transform:scale(1.07);box-shadow:0 0 0 .3rem rgba(255,138,31,.25)}
 
-/* ===== Slide 4: Misi Detektif ===== */
+/* slide 4 */
 .d-head{display:flex;align-items:center;gap:.8rem;background:#f1f5f9;border-radius:1rem;padding:.4rem .8rem}
 #d-char{width:84px;height:84px;flex-shrink:0}
 #d-char.jump{animation:dJump .8s ease}
 @keyframes dJump{0%,100%{transform:translateY(0)}30%{transform:translateY(-22px) rotate(-6deg)}60%{transform:translateY(0) scale(1.08,.92)}80%{transform:translateY(-8px)}}
 #d-char.wobble{animation:dWob .5s}
 @keyframes dWob{25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
-#d-say{font-weight:800;color:var(--primary);font-size:.95rem;line-height:1.35}
-.d-inst{text-align:center;font-weight:700;color:#475569;font-size:.9rem;margin:.4rem 0 .2rem}
-.d-prog{display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--primary);margin-bottom:.4rem}
+#d-say{font-weight:700;color:var(--primary);font-size:.95rem;line-height:1.35}
+.d-inst{text-align:center;font-weight:600;color:#475569;font-size:.9rem;margin:.4rem 0 .2rem}
+.d-prog{display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--primary);margin-bottom:.4rem}
 #d-badges{font-size:1.5rem;letter-spacing:.2rem}
 .d-card{display:grid;grid-template-columns:minmax(200px,1fr) minmax(260px,1.3fr);gap:1rem;align-items:center;background:#fff;border:2px solid #e5e7eb;border-radius:1rem;padding:.8rem}
 .d-svg{width:100%;max-height:36vh;height:auto}
 .d-card h3{color:var(--primary);margin-bottom:.3rem}
-.d-q{font-weight:700;margin-bottom:.6rem;line-height:1.4}
+.d-q{font-weight:600;margin-bottom:.6rem;line-height:1.4}
 .d-opts{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-.d-opt{min-height:3.2rem;border:2px solid #d5dbff;background:#f1f4ff;color:var(--ink);font-weight:800;font-size:1rem;border-radius:.8rem;cursor:pointer;padding:.4rem}
+.d-opt{min-height:3.2rem;border:2px solid #d5dbff;background:#f1f4ff;color:var(--ink);font-weight:700;font-size:1rem;border-radius:.8rem;padding:.4rem}
 .d-opt:active{transform:scale(.96)}
 .d-opt.no{background:var(--accent-red);color:#fff;border-color:var(--accent-red);animation:dWob .4s}
 .d-opt.ok{background:var(--accent-green);color:#fff;border-color:var(--accent-green)}
 .d-opt:disabled{cursor:default}
-#d-fb{margin-top:.6rem;font-weight:700}
-.d-box{display:inline-block;border:3px solid var(--primary);border-radius:.7rem;padding:.3rem .9rem;font-weight:900;background:#eef2ff;font-size:1.15rem}
-.d-line{display:block;font-size:1.05rem;font-weight:700;margin:.15rem 0;animation:s2Pop .4s}
+#d-fb{margin-top:.6rem;font-weight:600}
+.d-box{display:inline-block;border:3px solid var(--primary);border-radius:.7rem;padding:.3rem .9rem;font-weight:700;background:#eef2ff;font-size:1.15rem}
+.d-line{display:block;font-size:1.05rem;font-weight:600;margin:.15rem 0;animation:s2Pop .4s}
 .d-safe{border:4px solid #64748b;border-radius:1rem;background:#e2e8f0;padding:.8rem;text-align:center;transition:all .5s}
 .d-safe.open{border-color:var(--accent-green);background:#dcfce7;box-shadow:0 0 0 .4rem rgba(62,207,110,.3)}
 .d-lock{font-size:2.4rem}
-.d-form{display:flex;gap:.5rem;justify-content:center;align-items:center;font-size:1.6rem;font-weight:900;flex-wrap:wrap}
+.d-form{display:flex;gap:.5rem;justify-content:center;align-items:center;font-size:1.6rem;font-weight:700;flex-wrap:wrap}
 .d-slot{min-width:3.6rem;height:3.2rem;border:3px dashed #94a3b8;border-radius:.7rem;background:#fff;display:flex;align-items:center;justify-content:center}
 .d-cards{display:flex;gap:.5rem;flex-wrap:wrap}
-.d-cards .d-card2{touch-action:none;cursor:grab;min-width:4.2rem;min-height:3rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;background:linear-gradient(135deg,var(--accent-yellow),var(--accent-orange));color:#3b2000;border-radius:.8rem;box-shadow:0 .2rem 0 #c78500;padding:0 .8rem}
+.d-cards .d-card2{touch-action:none;cursor:grab;min-width:4.2rem;min-height:3rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:700;background:linear-gradient(135deg,var(--accent-yellow),var(--accent-orange));color:#3b2000;border-radius:.8rem;box-shadow:0 .2rem 0 #c78500;padding:0 .8rem}
 .d-card2.drag{z-index:50;scale:1.1}
 .d-card2.no{background:var(--accent-red);color:#fff;box-shadow:none}
-.d-score{font-size:3.2rem;font-weight:900;color:var(--primary)}
+.d-score{font-size:3.2rem;font-weight:700;color:var(--primary)}
+.d-fill{display:flex;gap:.5rem;align-items:center}
+.d-fill .qz-in{flex:1;min-width:0}
 
-/* IFP Embed Frame */
-.embed-frame {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 1rem;
-}
+/* kuis */
+.qz-card{background:#fff;border:3px solid #d5dbff;border-radius:1.2rem;padding:1rem 1.2rem;box-shadow:0 6px 18px rgba(75,47,184,.12);width:100%}
+.qz-top{display:flex;justify-content:space-between;font-weight:700;color:var(--primary)}
+.qz-bar{height:.6rem;background:#e5e7eb;border-radius:1rem;margin:.5rem 0 .8rem;overflow:hidden}
+.qz-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--secondary),var(--accent-orange));transition:width .4s}
+.qz-q{font-size:1.15rem;font-weight:600;line-height:1.4;margin-bottom:.8rem}
+.qz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.qz-opt{min-height:3.2rem;border:2px solid #d5dbff;background:#f1f4ff;color:var(--ink);font-weight:700;font-size:1rem;border-radius:.8rem;padding:.4rem}
+.qz-opt:active{transform:scale(.96)}
+.qz-opt.ok{background:var(--accent-green);border-color:var(--accent-green);color:#fff}
+.qz-opt.no{background:var(--accent-red);border-color:var(--accent-red);color:#fff}
+.qz-fb{margin-top:.8rem;font-weight:600;display:flex;flex-direction:column;gap:.5rem;align-items:flex-start}
+.qz-score{font-size:3rem;font-weight:700;color:var(--primary)}
+.qz-in{width:100%;font:600 1rem inherit;font-family:inherit;padding:.6rem .8rem;border:2px solid #d5dbff;border-radius:.8rem;background:#f8faff;color:var(--ink);outline:none}
+.qz-in:focus{border-color:var(--primary-light)}
+.qz-in.no{border-color:var(--accent-red);background:#fff1f3;animation:dWob .4s}
+textarea.qz-in{resize:vertical;min-height:5rem}
+.qz-tag{display:inline-block;padding:.15rem .7rem;margin:0 0 .5rem;border-radius:999px;font-size:.75rem;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--secondary),var(--primary-light))}
+.qz-model{background:#f0fdf4;border:2px solid var(--accent-green);border-radius:.8rem;padding:.6rem .8rem;line-height:1.5;text-align:left;width:100%}
+.qz-rub{background:#fff7d6;border:2px solid var(--accent-orange);border-radius:.8rem;padding:.5rem .8rem;line-height:1.5;text-align:left;width:100%;font-size:.9rem}
+.qz-selfrow{display:flex;gap:.5rem;flex-wrap:wrap}
+.math-var{font-style:italic;font-family:'Times New Roman',serif}
 
-/* Confetti */
-.confetti-particle {
-  position: absolute;
-  font-size: 1.5rem;
-  pointer-events: none;
-  z-index: 300;
-  animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-  to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-}
-
-/* Custom Math Styling */
-.math-var { font-style: italic; font-family: 'Times New Roman', serif; }
-.math-sq { vertical-align: super; font-size: 0.75em; }
-
-/* Slide 2: papan lebih besar, segitiga bisa berputar */
-.s2-board{width:400px;height:280px}
-.s2-tri{left:0;top:0;width:100%;height:100%}
-.s2-tri.spin{animation:s2Spin .6s cubic-bezier(.3,1.3,.5,1)}
-@keyframes s2Spin{from{transform:rotate(-90deg) scale(.8);opacity:.3}to{transform:none;opacity:1}}
-/* Kilau logam pada tombol menu aktif (warna tetap) */
-.main-nav .nav-btn.active{position:relative;overflow:hidden;  box-shadow:0 0 0 1px rgba(0,0,0,.3),0 6px 10px rgba(0,0,0,.12),0 4px 14px rgba(75,47,184,.35)}
-.main-nav .nav-btn.active::after{content:'';position:absolute;inset:0;pointer-events:none;  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);  transform:translateX(-120%);animation:navShine 2.4s ease-in-out infinite}
-@keyframes navShine{to{transform:translateX(120%)}}
-.main-nav .nav-btn:active{transform:translateY(1px) scale(.98)}
-
-/* ===== BERANDA ===== */
-#view-beranda{padding:0;overflow:hidden;background:#0f0a2e;border:none}
-.bh-bg{position:absolute;inset:0;overflow:hidden}
+/* refleksi */
+#rf-slide{padding:0;overflow:hidden;background:#0f0a2e;border:none}
+.bh-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .bh-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.75;animation:bhMove 14s ease-in-out infinite alternate}
 .bh-blob.b1{width:55%;height:70%;left:-10%;top:-15%;background:#4b2fb8}
 .bh-blob.b2{width:50%;height:60%;right:-10%;top:10%;background:#12a6c9;animation-delay:-4s}
 .bh-blob.b3{width:40%;height:50%;left:30%;bottom:-25%;background:#ff8a1f;opacity:.5;animation-delay:-8s}
 @keyframes bhMove{to{transform:translate(10%,12%) scale(1.25)}}
 .bh-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%);mask-image:radial-gradient(circle at 50% 40%,#000,transparent 75%)}
-.bh-sym{position:absolute;font-weight:900;color:rgba(255,255,255,.16);font-family:'Times New Roman',serif;font-style:italic;animation:bhFloat 6s ease-in-out infinite;pointer-events:none}
+.bh-sym{position:absolute;font-weight:700;color:rgba(255,255,255,.16);font-family:'Times New Roman',serif;font-style:italic;animation:bhFloat 6s ease-in-out infinite;pointer-events:none}
 @keyframes bhFloat{50%{transform:translateY(-1.2rem) rotate(6deg)}}
-.bh-in{position:relative;z-index:2;height:100%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;gap:.9rem;padding:1.2rem 1.6rem 4.5rem;color:#fff}
-.bh-badge{align-self:flex-start;padding:.4rem 1rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);font-weight:700;font-size:.85rem;animation:bhIn .6s both}
-.bh-h1{line-height:1.05;letter-spacing:-.5px;animation:bhIn .8s .15s both}
-.bh-h1 .l1{display:block;font-weight:300;font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.15em;background:linear-gradient(90deg,#fff,#12a6c9,#ff8a1f,#fff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:s1Shift 8s linear infinite}
-.bh-h1 .l2{display:block;font-weight:900;font-size:clamp(2.2rem,7vw,4.6rem);text-shadow:0 .1em .4em rgba(0,0,0,.4)}
-.bh-h1 .l3{display:block;font-weight:300;font-style:italic;font-size:clamp(1.1rem,3vw,1.8rem);color:rgba(255,255,255,.8)}
-.bh-p{max-width:34rem;font-weight:300;color:rgba(255,255,255,.75);line-height:1.5;font-size:clamp(.85rem,1.8vw,1.05rem);animation:bhIn .8s .3s both}
-.bh-cta{display:flex;gap:.8rem;flex-wrap:wrap;animation:bhIn .8s .45s both}
-.bh-btn{border:none;border-radius:999px;padding:.75rem 1.8rem;font-weight:800;font-size:.95rem;cursor:pointer;color:#fff;transition:transform .2s}
-.bh-btn:hover{transform:scale(1.05)}.bh-btn:active{transform:scale(.95)}
-.bh-btn.fill{background:linear-gradient(90deg,#12a6c9,#ff8a1f);box-shadow:0 .4rem 1.2rem rgba(255,138,31,.35)}
-.bh-btn.line{background:transparent;border:2px solid rgba(255,255,255,.35);backdrop-filter:blur(4px)}
-.bh-btn.line:hover{background:rgba(255,255,255,.12);border-color:#12a6c9}
-.bh-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;max-width:46rem;animation:bhIn .8s .6s both}
-.bh-card{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);color:#fff;border-radius:1rem;padding:.7rem .5rem;cursor:pointer;text-align:center;transition:all .25s}
-.bh-card:hover{background:rgba(255,255,255,.18);transform:translateY(-.3rem);border-color:#12a6c9}
-.bh-card:active{transform:scale(.96)}
-.bh-card b{display:block;font-size:1.6rem}.bh-card span{font-weight:800;font-size:.85rem}
 @keyframes bhIn{from{opacity:0;transform:translateY(1.2rem)}to{opacity:1;transform:none}}
-.bh-ring{position:absolute;right:1.2rem;bottom:1rem;z-index:3;width:5.5rem;height:5.5rem;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.bh-ring .pulse{position:absolute;width:3.4rem;height:3.4rem;border-radius:50%;background:conic-gradient(#12a6c9,#7a4dff,#ff8a1f,#12a6c9);animation:bhSpin 3s linear infinite;-webkit-mask:radial-gradient(circle,transparent 58%,#000 60%);mask:radial-gradient(circle,transparent 58%,#000 60%);filter:drop-shadow(0 0 .5rem #12a6c9)}
-.bh-ring svg{position:absolute;inset:0;width:100%;height:100%;animation:bhSpin 18s linear infinite}
-.bh-ring .ic{font-size:1.4rem}
-@keyframes bhSpin{to{transform:rotate(360deg)}}
-
-/* Beranda: pastikan semua tombol bisa diklik */
-.bh-bg,.bh-bg *{pointer-events:none}
-.bh-in{z-index:5;justify-content:flex-start}
-.bh-in>:first-child{margin-top:auto}
-.bh-in>:last-child{margin-bottom:auto}
-.bh-cta,.bh-menu{position:relative;z-index:6}
-.bh-card,.bh-btn{position:relative;z-index:6;pointer-events:auto;touch-action:manipulation;font-family:inherit}
-.bh-ring{z-index:4;pointer-events:none}
-
-/* ===== REFLEKSI (senada Beranda) ===== */
-#view-refleksi{padding:0;overflow:hidden;background:#0f0a2e;border:none}
+.bh-badge{align-self:center;padding:.4rem 1rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px);font-weight:600;font-size:.85rem;animation:bhIn .6s both}
 .rf-in{position:relative;z-index:5;height:100%;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:.8rem;padding:1rem 1.2rem 1.4rem;color:#fff;text-align:center}
-.rf-in>.bh-badge{align-self:center}
-.rf-in>:first-child{margin-top:auto}
-.rf-in>:last-child{margin-bottom:auto}
-.rf-h{font-weight:900;font-size:clamp(1.4rem,4vw,2.4rem);line-height:1.15;text-shadow:0 .1em .4em rgba(0,0,0,.4);animation:bhIn .7s .1s both}
+.rf-in>:first-child{margin-top:auto}.rf-in>:last-child{margin-bottom:auto}
+.rf-h{font-weight:700;font-size:clamp(1.4rem,4vw,2.4rem);line-height:1.15;text-shadow:0 .1em .4em rgba(0,0,0,.4);animation:bhIn .7s .1s both}
 .rf-h span{background:linear-gradient(90deg,#12a6c9,#ff8a1f,#fff,#12a6c9);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:s1Shift 6s linear infinite}
-.rf-p{max-width:34rem;font-weight:300;color:rgba(255,255,255,.78);line-height:1.5;font-size:clamp(.85rem,1.8vw,1.05rem);animation:bhIn .7s .25s both}
-
+.rf-p{max-width:34rem;font-weight:400;color:rgba(255,255,255,.78);line-height:1.5;font-size:clamp(.85rem,1.8vw,1.05rem);animation:bhIn .7s .25s both}
 .rf-stage{width:min(92%,30rem);min-height:15rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1rem 1.2rem;border-radius:1.4rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);box-shadow:0 .8rem 2rem rgba(0,0,0,.3)}
 .rf-face{font-size:clamp(4.5rem,13vw,6.5rem);line-height:1;filter:drop-shadow(0 .4rem .8rem rgba(0,0,0,.4))}
-.rf-title{font-weight:900;font-size:clamp(1.2rem,3vw,1.7rem)}
-.rf-msg{font-weight:400;color:rgba(255,255,255,.85);line-height:1.45;font-size:clamp(.85rem,1.8vw,1rem);max-width:24rem}
-.rf-award{margin-top:.3rem;padding:.45rem 1.1rem;border-radius:999px;font-weight:800;font-size:.95rem;background:linear-gradient(90deg,#12a6c9,#ff8a1f);box-shadow:0 .4rem 1.2rem rgba(255,138,31,.4);animation:s2Pop .6s both}
+.rf-title{font-weight:700;font-size:clamp(1.2rem,3vw,1.7rem)}
+.rf-msg{color:rgba(255,255,255,.85);line-height:1.45;font-size:clamp(.85rem,1.8vw,1rem);max-width:24rem}
+.rf-award{margin-top:.3rem;padding:.45rem 1.1rem;border-radius:999px;font-weight:700;font-size:.95rem;background:linear-gradient(90deg,#12a6c9,#ff8a1f);box-shadow:0 .4rem 1.2rem rgba(255,138,31,.4);animation:s2Pop .6s both}
 .rf-award[hidden]{display:none}
-
 .rf-face.a-pop{animation:rfPop .9s cubic-bezier(.2,.9,.3,1.3)}
 .rf-face.a-bounce{animation:rfBounce 1s ease}
 .rf-face.a-sway{animation:rfSway 1.2s ease-in-out}
@@ -495,449 +310,383 @@ main {
 @keyframes rfSway{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
 @keyframes rfWobble{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-.8rem) rotate(-14deg)}40%{transform:translateX(.8rem) rotate(14deg)}60%{transform:translateX(-.5rem) rotate(-8deg)}80%{transform:translateX(.5rem) rotate(8deg)}}
 @keyframes rfDroop{0%{transform:translateY(-.8rem) scale(1.1)}40%{transform:translateY(.4rem) scale(.9,1.05)}100%{transform:translateY(0) scale(1)}}
-
 .rf-row{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;position:relative;z-index:6;animation:bhIn .8s .4s both}
-.rf-btn{width:5.6rem;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);color:#fff;border-radius:1rem;padding:.6rem .3rem;cursor:pointer;font-family:inherit;transition:all .25s;touch-action:manipulation}
+.rf-btn{width:5.6rem;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px);color:#fff;border-radius:1rem;padding:.6rem .3rem;transition:all .25s;touch-action:manipulation}
 .rf-btn b{display:block;font-size:2.2rem;line-height:1.1;transition:transform .25s}
-.rf-btn span{font-weight:800;font-size:.8rem}
+.rf-btn span{font-weight:600;font-size:.8rem}
 .rf-btn:hover{background:rgba(255,255,255,.18);transform:translateY(-.3rem);border-color:#12a6c9}
 .rf-btn:hover b{transform:scale(1.2) rotate(-6deg)}
 .rf-btn:active{transform:scale(.94)}
 .rf-btn.sel{background:linear-gradient(135deg,rgba(18,166,201,.55),rgba(255,138,31,.55));border-color:#fff;box-shadow:0 0 0 .25rem rgba(255,255,255,.2)}
-
 .rf-q{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;max-width:44rem;animation:bhIn .8s .55s both}
-.rf-q span{padding:.4rem .8rem;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);font-size:.78rem;font-weight:600;color:rgba(255,255,255,.8)}
-#view-refleksi .confetti-particle{top:0}
+.rf-q span{padding:.4rem .8rem;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);font-size:.78rem;font-weight:500;color:rgba(255,255,255,.8)}
+.confetti-particle{position:absolute;top:0;font-size:1.5rem;pointer-events:none;z-index:300;animation:fall 3s linear forwards}
+@keyframes fall{to{transform:translateY(100vh) rotate(720deg);opacity:0}}
 
-html, body { width: 100%; height: 100%; }
-#app-container { width: 100%; height: 100vh; height: 100dvh; }
-/* header tidak pecah */
-header { height: auto; min-height: 3rem; flex-wrap: wrap; gap: .4rem; padding: .3rem 1rem; }
-header h1 { display: block; flex: 1 1 12rem; min-width: 0; white-space: nowrap;  overflow: hidden; text-overflow: ellipsis; font-size: clamp(.9rem, 1.6vw, 1.1rem); }
-.header-btns { flex-wrap: wrap; }
-.hb { white-space: nowrap; }
-/* area materi tidak saling menumpuk */
-#view-materi { min-height: 0; }
-#view-materi > div:first-child { flex-shrink: 0; }
-#view-materi > div:last-child { min-height: 0; }
-#view-materi .slide { inset: 0; }
-.interactive-area { flex-wrap: wrap; min-height: 0; }
-.slide-footer { flex-shrink: 0; }
-/* layar kecil / sempit */
-@media (max-width: 820px) {
-  .grid-2, .d-card, .grid-3 { grid-template-columns: 1fr !important; }
-  .grid-4 { grid-template-columns: 1fr 1fr; }
-  .slide { padding: .8rem; }
-}
-/* layar pendek (laptop kecil) */
-@media (max-height: 700px) {
-  .slide-title { font-size: 1.25rem; }
-  .slide-sub { font-size: .9rem; margin-bottom: .5rem; }
-  .s1-svg, .d-svg, .s3-svg { max-height: 30vh; }
-}
+/* gim */
+#v-game .slide{padding:0;background:transparent;border:none;box-shadow:none;overflow:hidden}
+.embed-frame{width:100%;height:100%;border:none;border-radius:1rem}
 
-.qz-card, #s4 .d-card {
-  background: #fff; border: 3px solid #d5dbff; border-radius: 1.2rem;
-  padding: 1rem 1.2rem; box-shadow: 0 6px 18px rgba(75,47,184,.12); width: 100%;
-}
-.qz-top { display: flex; justify-content: space-between; font-weight: 800; color: var(--primary); }
-.qz-bar { height: .6rem; background: #e5e7eb; border-radius: 1rem; margin: .5rem 0 .8rem; overflow: hidden; }
-.qz-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--secondary), var(--accent-orange)); transition: width .4s; }
-.qz-q { font-size: 1.15rem; font-weight: 800; line-height: 1.4; margin-bottom: .8rem; }
-.qz-opts { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
-.qz-opt { min-height: 3.2rem; border: 2px solid #d5dbff; background: #f1f4ff; color: var(--ink);  font-weight: 800; font-size: 1rem; border-radius: .8rem; cursor: pointer; padding: .4rem; }
-.qz-opt:active { transform: scale(.96); }
-.qz-opt.ok { background: var(--accent-green); border-color: var(--accent-green); color: #fff; }
-.qz-opt.no { background: var(--accent-red); border-color: var(--accent-red); color: #fff; }
-.qz-fb { margin-top: .8rem; font-weight: 700; display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
-.qz-score { font-size: 3rem; font-weight: 900; color: var(--primary); }
-@media (max-width: 560px) { .qz-opts { grid-template-columns: 1fr; } }
-/* slide materi 5, 7, 9 ikut tampilan senada */
-#s4, #s5, #s6, #s7, #s8, #s9, #s10 { background: linear-gradient(180deg, #fff, #f3f0ff); }
-#s5 .card-box, #s7 .card-box, #s9 .card-box { border: 3px solid #d5dbff; border-radius: 1.2rem; box-shadow: 0 6px 18px rgba(75,47,184,.12); }
-#s5 .btn-action, #s7 .btn-action, #s9 .btn-action { min-height: 2.8rem; border-radius: .8rem; }
+@media (max-width:820px){.grid-2,.d-card,.grid-3{grid-template-columns:1fr !important}.grid-4{grid-template-columns:1fr 1fr}.stage .slide{padding:.8rem}}
+@media (max-height:700px){.slide-sub{font-size:.9rem;margin-bottom:.5rem}.s1-svg,.d-svg,.s3-svg{max-height:30vh}}
+@media (max-width:560px){.btn-prev,.btn-next{padding:.5rem .9rem;font-size:.9rem}.qz-opts{grid-template-columns:1fr}}
 
-/* halaman yang tidak aktif benar-benar tidak bisa diklik */
-main > .slide:not(.active) {
-  visibility: hidden;
-  pointer-events: none !important;
-}
-main > .slide:not(.active) * {
-  pointer-events: none !important;
-}
-main > .slide { transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s; }
-main > .slide.active { transition: opacity .35s ease, transform .35s ease, visibility 0s; }
+/* kartu terang slide 4-10 (menyesuaikan slide 1 / tampilan beranda) */
+.pc{background:linear-gradient(180deg,#fff 0%,#f3f0ff 100%) !important;color:var(--ink);border:1px solid rgba(29,35,64,.08) !important;border-radius:28px !important;padding:1.4rem 1.6rem !important;box-shadow:0 8px 32px rgba(31,38,135,.12),inset 0 -70px 90px -60px rgba(255,138,31,.1) !important}
+.pc-status{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:rgba(29,35,64,.55);margin-bottom:1rem;flex-shrink:0}
+.pc-l{display:flex;align-items:center;gap:.5rem}
+.pc-dot{width:.65rem;height:.65rem;border-radius:50%;background:var(--accent-green);animation:pcPulse 1.6s ease-in-out infinite}
+@keyframes pcPulse{50%{opacity:.35;transform:scale(.8)}}
+.pc-r{opacity:.9;font-variant-numeric:tabular-nums}
+.pc-head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-shrink:0}
+.pc-av{width:3.5rem;height:3.5rem;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;background:linear-gradient(135deg,var(--primary-light),var(--secondary));box-shadow:0 0 0 2px rgba(255,255,255,.7);color:#fff}
+.pc-txt{min-width:0}
+.pc-txt p{font-size:.85rem;color:rgba(29,35,64,.5);margin-top:.1rem}
+.pc .s1-title{text-align:left;margin-bottom:0 !important}
 
-#s2 .s1-title, #s3 .s1-title, #s4 .s1-title, #s5 .s1-title, #s6 .s1-title,
-#s7 .s1-title, #s8 .s1-title, #s9 .s1-title, #s10 .s1-title {
-  flex-shrink: 0;
-  margin-bottom: .6rem;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-}
-.slide-footer { justify-content: space-between; gap: .6rem; }
-.btn-next { margin-left: auto; }
-.btn-prev {
-  background: linear-gradient(135deg, #64748b, #475569);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  font-weight: 800;
-  font-size: 1rem;
-  border-radius: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(71, 85, 105, 0.35);
-  transition: transform 0.15s;
-}
-.btn-prev:active { transform: scale(0.95); }
-@media (max-width: 560px) {
-  .btn-prev, .btn-next { padding: .5rem .9rem; font-size: .9rem; }
-}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
-<div id="app-container">
-  <!-- Header Compact -->
-  <header>
-    <h1>📐 <span>Matematika SMP Kelas 8: Teorema Pythagoras</span></h1>
-    <div class="header-btns">
-      <button class="hb" id="btn-home" onclick="switchNav('beranda')">🏠 Beranda</button>
-      <button class="hb" id="btn-sound">🔊 Suara</button>
-      <button class="hb" id="btn-zoom-out">🔍− Zoom Out</button>
-      <button class="hb" id="btn-zoom-in">🔍＋ Zoom In</button>
-      <button class="hb" id="btn-fullscreen">⛶ Layar Penuh</button>
+<nav id="topnav">
+  <button class="logo" data-go="beranda" aria-label="Beranda"><span class="bub">a²</span>Pythagoras Club</button>
+  <button class="tg" id="btn-sound">🔊 Suara</button>
+</nav>
+
+<!-- ================= BERANDA ================= -->
+<div id="v-beranda" class="view">
+  <section class="hero">
+    <div class="kick">Matematika · Kelas 8 SMP</div>
+    <div class="word" id="word"></div>
+    <p class="hint">👆 Pecahkan bubble hurufnya!</p>
+    <p class="lead" style="margin:.8rem auto 0">Temukan rahasia segitiga siku-siku: a² + b² = c². Belajar, bermain, dan jadi detektif Pythagoras.</p>
+    <div class="cta">
+      <button class="btn" data-go="tujuan">🚀 Mulai Belajar</button>
+      <button class="btn alt" data-go="materi">📚 Langsung ke Materi</button>
+      <button class="btn alt" data-go="game">🎮 Gim Edukasi</button>
+      <button class="btn alt" data-go="refleksi">💭 Refleksi</button>
     </div>
-  </header>
+  </section>
 
-  <!-- Main Display -->
-  <main>
-    <!-- 0. BERANDA -->
-    <div id="view-beranda" class="slide active">
-      <div class="bh-bg">
-        <div class="bh-blob b1"></div><div class="bh-blob b2"></div><div class="bh-blob b3"></div>
-        <div class="bh-grid"></div>
-        <span class="bh-sym" style="left:8%;top:14%;font-size:3rem">a²</span>
-        <span class="bh-sym" style="right:30%;top:10%;font-size:2.4rem;animation-delay:-2s">b²</span>
-        <span class="bh-sym" style="right:8%;top:42%;font-size:3.4rem;animation-delay:-4s">c²</span>
-        <span class="bh-sym" style="left:46%;bottom:22%;font-size:2.6rem;animation-delay:-1s">√</span>
-        <span class="bh-sym" style="left:4%;bottom:26%;font-size:2.2rem;animation-delay:-3s">90°</span>
-      </div>
+  <div class="band" id="band"></div>
+  <div class="rib" aria-hidden="true"><div class="r1"><span id="m1"></span></div><div class="r2"><span id="m2"></span></div></div>
 
-      <div class="bh-in">
-        <div class="bh-badge">✨ Media Pembelajaran Interaktif · Matematika Kelas 8 SMP</div>
-        <h1 class="bh-h1">
-          <span class="l1">Teorema</span>
-          <span class="l2">Pythagoras</span>
-          <span class="l3">Belajar seru, kapan saja 📐</span>
-        </h1>
-        <p class="bh-p">Kenali segitiga siku-siku, temukan rumusnya, pecahkan misi detektif, dan terapkan dalam kehidupan sehari-hari. Pilih menu mana pun untuk mulai!</p>
-        <div class="bh-cta">
-          <button class="bh-btn fill" data-go="tujuan">🚀 Mulai Belajar</button>
-          <button class="bh-btn line" data-go="materi">📚 Langsung ke Materi</button>
-        </div>
-        <div class="bh-menu">
-          <button class="bh-card" data-go="tujuan"><b>🎯</b><span>Tujuan</span></button>
-          <button class="bh-card" data-go="video"><b>🎥</b><span>Video</span></button>
-          <button class="bh-card" data-go="materi"><b>📚</b><span>Materi</span></button>
-          <button class="bh-card" data-go="game"><b>🎮</b><span>Gim Edukasi</span></button>
-          <button class="bh-card" data-go="refleksi"><b>💭</b><span>Refleksi</span></button>
-        </div>
-      </div>
-
-      <div class="bh-ring">
-        <div class="pulse"></div><span class="ic">📐</span>
-        <svg viewBox="0 0 100 100" style="transform:scale(1.5)">
-          <defs><path id="bhCircle" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
-          <text font-size="9" font-weight="700" fill="rgba(255,255,255,.85)"><textPath href="#bhCircle">Pythagoras • a² + b² = c² • Kelas 8 SMP • </textPath></text>
-        </svg>
-      </div>
+  <section id="video">
+    <div class="kick">Video Pembelajaran</div>
+    <h2 class="sec">Tonton videonya dulu, yuk!</h2>
+    <p class="lead">Simak penjelasan singkatnya sebelum lanjut ke materi dan gim.</p>
+    <div style="position:relative;width:100%;max-width:50rem;aspect-ratio:16/9;margin:0 auto;border-radius:1.4rem;overflow:hidden;box-shadow:0 1.2rem 2.4rem rgba(0,0,0,.18);border:2px solid var(--line)">
+      <iframe src="https://www.youtube.com/embed/JJaptwjRbxc" title="Video Pembelajaran Pythagoras" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
+  </section>
 
-    <!-- 1. TUJUAN PEMBELAJARAN -->
-    <div id="view-tujuan" class="slide">
+  <section id="edisi">
+    <div class="kick">Edisi Belajar</div>
+    <h2 class="sec">Enam edisi, satu rumus.</h2>
+    <p class="lead">Ketuk poster untuk membuka materinya.</p>
+    <div class="grid" id="eds"></div>
+  </section>
+
+  <section id="kal">
+    <div class="kick">Kalender Tripel</div>
+    <h2 class="sec">Tripel Pythagoras hari ini</h2>
+    <p class="lead">Setiap tanggal punya tripelnya sendiri. Pilih tanggal dan buktikan rumusnya.</p>
+    <div class="cal">
+      <div class="cp"><h3 id="mn" style="margin-bottom:.6rem"></h3><div class="dn"><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span></div><div class="dg" id="dg"></div></div>
+      <div class="cp big"><span class="kick" id="dl"></span><span class="bub" id="db">c</span><div class="eq" id="dq"></div><p id="dn" style="opacity:.75"></p></div>
+    </div>
+  </section>
+
+  <section id="kartu">
+    <div class="kick">Kartu Anggota</div>
+    <h2 class="sec">Kartu Detektif Pythagoras</h2>
+    <p class="lead">Tulis namamu, lalu cetak kartunya.</p>
+    <div class="mem">
+      <div id="card"><span class="bub">△</span><small>DETEKTIF PYTHAGORAS</small><div><small>NAMA</small><div id="cn">Nama Kamu</div></div><div><div class="bar"></div><small id="ci">ID · 3-4-5</small></div></div>
+      <div class="frm"><input id="in" maxlength="22" placeholder="Ketik namamu..." autocomplete="off"><button class="btn" onclick="print()">🖨️ Cetak Kartu</button></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fb" id="fb"></div>
+    <p>a² + b² = c² · Media Pembelajaran Matematika Kelas 8 SMP</p>
+  </footer>
+</div>
+
+<!-- ================= TUJUAN ================= -->
+<div id="v-tujuan" class="view" hidden>
+  <div class="stage">
+    <div class="slide active" id="tujuan-slide">
       <h2 class="slide-title">🎯 Tujuan Pembelajaran</h2>
       <p class="slide-sub">Apa yang akan kamu kuasai setelah mempelajari modul ini?</p>
-      
-      <div class="interactive-area flex-center">
-        <div style="max-width: 700px; display: flex; flex-direction: column; gap: 1rem; width: 100%;">
-          <div class="card-box" style="border-left: 6px solid var(--primary); background: #f8fafc;">
-            <h3 style="color: var(--primary); margin-bottom: 0.3rem;">1. Pemahaman Konsep</h3>
-            <p style="font-size: 1.1rem; font-weight: 600;">Murid dapat memahami konsep Pythagoras bukan hanya sekadar menghafal rumus.</p>
-          </div>
-          <div class="card-box" style="border-left: 6px solid var(--secondary); background: #f8fafc;">
-            <h3 style="color: var(--secondary); margin-bottom: 0.3rem;">2. Keterampilan Berhitung</h3>
-            <p style="font-size: 1.1rem; font-weight: 600;">Murid dapat menghitung panjang sisi segitiga siku-siku dengan benar.</p>
-          </div>
-          <div class="card-box" style="border-left: 6px solid var(--accent-orange); background: #f8fafc;">
-            <h3 style="color: var(--accent-orange); margin-bottom: 0.3rem;">3. Penerapan Praktis</h3>
-            <p style="font-size: 1.1rem; font-weight: 600;">Murid dapat menerapkan konsep Pythagoras dalam kehidupan sehari-hari.</p>
-          </div>
+      <div class="interactive-area">
+        <div style="max-width:700px;display:flex;flex-direction:column;gap:1rem;width:100%">
+          <div class="card-box" style="border-left:6px solid var(--primary);background:#f8fafc"><h3 style="color:var(--primary);margin-bottom:.3rem">1. Pemahaman Konsep</h3><p style="font-size:1.1rem;font-weight:500">Murid dapat memahami konsep Pythagoras bukan hanya sekadar menghafal rumus.</p></div>
+          <div class="card-box" style="border-left:6px solid var(--secondary);background:#f8fafc"><h3 style="color:var(--secondary);margin-bottom:.3rem">2. Keterampilan Berhitung</h3><p style="font-size:1.1rem;font-weight:500">Murid dapat menghitung panjang sisi segitiga siku-siku dengan benar.</p></div>
+          <div class="card-box" style="border-left:6px solid var(--accent-orange);background:#f8fafc"><h3 style="color:var(--accent-orange);margin-bottom:.3rem">3. Penerapan Praktis</h3><p style="font-size:1.1rem;font-weight:500">Murid dapat menerapkan konsep Pythagoras dalam kehidupan sehari-hari.</p></div>
         </div>
       </div>
-
-      <div class="slide-footer">
-        <button class="btn-next" onclick="switchNav('materi')">Mulai Belajar Materi ➜</button>
-      </div>
+      <div class="slide-footer"><button class="btn-prev" onclick="switchNav('beranda')">⬅ Beranda</button><button class="btn-next" onclick="switchNav('materi')">Mulai Belajar Materi ➜</button></div>
     </div>
+  </div>
+</div>
 
-    <!-- 2. MATERI SLIDES CONTAINER -->
-    <div id="view-materi" class="slide" style="padding: 0; background: transparent; box-shadow: none; border: none;">
-      <!-- Sub Navigasi Slide Materi -->
-      <div style="display: flex; gap: 0.3rem; margin-bottom: 0.5rem; overflow-x: auto; background: white; padding: 0.4rem; border-radius: 0.8rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-        <button class="nav-btn slide-tab active" onclick="gotoSlide(1)">Slide 1</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(2)">Slide 2</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(3)">Slide 3</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(4)">Slide 4 (Detektif)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(5)">Slide 5 (Tripel)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(6)">Slide 6 (Eval 1)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(7)">Slide 7 (Kebalikan)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(8)">Slide 8 (Eval 2)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(9)">Slide 9 (Penerapan)</button>
-        <button class="nav-btn slide-tab" onclick="gotoSlide(10)">Slide 10 (Eval 3)</button>
+<!-- ================= MATERI ================= -->
+<div id="v-materi" class="view" hidden>
+  <div class="stage">
+    <div class="tabs">
+      <button class="nav-btn slide-tab active" onclick="gotoSlide(1)">Slide 1</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(2)">Slide 2</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(3)">Slide 3</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(4)">Slide 4 (Detektif)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(5)">Slide 5 (Tripel)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(6)">Slide 6 (Eval 1)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(7)">Slide 7 (Kebalikan)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(8)">Slide 8 (Eval 2)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(9)">Slide 9 (Penerapan)</button>
+      <button class="nav-btn slide-tab" onclick="gotoSlide(10)">Slide 10 (Eval 3)</button>
+    </div>
+    <div class="sub">
+
+      <!-- SLIDE 1 -->
+      <div id="s1" class="slide active">
+        <h2 class="s1-title"><span class="w">Ayo</span> <span class="w">Berkenalan</span> <span class="w">dengan</span> <span class="w">Segitiga</span> <span class="w">Siku-Siku!</span></h2>
+        <p class="s1-q">Apakah kamu sudah kenal dengan nama bagian-bagian segitiga siku-siku?</p>
+        <div class="s1-wrap">
+          <svg class="s1-svg" viewBox="-40 0 540 330" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="s1Fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#ede9fe"/></linearGradient></defs>
+            <polygon points="150,260 430,260 150,60" fill="url(#s1Fill)" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M150 230 L180 230 L180 260" fill="none" stroke="#0369a1" stroke-width="3"/>
+            <rect x="190" y="224" width="64" height="28" rx="8" fill="#fff" stroke="#0369a1" stroke-width="2"/>
+            <text x="222" y="244" text-anchor="middle" font-size="16" font-weight="700" fill="#0369a1">90°</text>
+            <g class="side" id="g-a"><line class="hl" x1="150" y1="60" x2="150" y2="260" stroke="#ff8a1f"/><text class="ltr" x="136" y="172" text-anchor="end" fill="#ff8a1f">a</text><g class="badge"><rect x="-34" y="148" width="104" height="30" rx="15" fill="#ff8a1f"/><text x="18" y="168" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Sisi siku-siku</text></g></g>
+            <g class="side" id="g-b"><line class="hl" x1="150" y1="260" x2="430" y2="260" stroke="#3ecf6e"/><text class="ltr" x="296" y="300" text-anchor="end" fill="#2aa957">b</text><g class="badge"><rect x="312" y="278" width="110" height="30" rx="15" fill="#3ecf6e"/><text x="367" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Sisi siku-siku</text></g></g>
+            <g class="side" id="g-c"><line class="hl" x1="150" y1="60" x2="430" y2="260" stroke="#ff5470"/><text class="ltr" x="312" y="136" text-anchor="end" fill="#ff5470">c</text><g class="badge"><rect x="328" y="110" width="160" height="30" rx="15" fill="#ff5470"/><text x="408" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Hipotenusa (sisi miring)</text></g></g>
+          </svg>
+          <button id="s1-btn" class="btn-action s1-btn" onclick="animBerkenalan()">✨ Berkenalan!</button>
+          <p class="s1-q">Nah sekarang kamu sudah mengenal bagian-bagian segitiga siku-siku?</p>
+        </div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(2)">Selanjutnya ➜</button></div>
       </div>
 
-      <div style="position: relative; flex: 1;">
-        <!-- SLIDE 1 -->
-        <div id="s1" class="slide active">
-          <h2 class="s1-title">
-            <span class="w">Ayo</span> <span class="w">Berkenalan</span> <span class="w">dengan</span>
-            <span class="w">Segitiga</span> <span class="w">Siku-Siku!</span>
-          </h2>
-          <p class="s1-q">Apakah kamu sudah kenal dengan nama bagian-bagian segitiga siku-siku?</p>
-
-          <div class="s1-wrap">
-            <svg class="s1-svg" viewBox="-40 0 540 330" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="s1Fill" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#e0f2fe"/><stop offset="1" stop-color="#ede9fe"/>
-                </linearGradient>
-              </defs>
-              <!-- segitiga dasar -->
-              <polygon points="150,260 430,260 150,60" fill="url(#s1Fill)" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
-              <!-- tanda siku-siku + 90° -->
-              <path d="M150 230 L180 230 L180 260" fill="none" stroke="#0369a1" stroke-width="3"/>
-              <rect x="190" y="224" width="64" height="28" rx="8" fill="#fff" stroke="#0369a1" stroke-width="2"/>
-              <text x="222" y="244" text-anchor="middle" font-size="16" font-weight="800" fill="#0369a1">90°</text>
-
-              <!-- sisi a (vertikal) -->
-              <g class="side" id="g-a">  <line class="hl" x1="150" y1="60" x2="150" y2="260" stroke="#ff8a1f"/>  <text class="ltr" x="136" y="172" text-anchor="end" fill="#ff8a1f">a</text>  <g class="badge"><rect x="-34" y="148" width="104" height="30" rx="15" fill="#ff8a1f"/>    <text x="18" y="168" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Sisi siku-siku</text></g></g>
-              <!-- sisi b (horizontal) -->
-              <g class="side" id="g-b">
-                <line class="hl" x1="150" y1="260" x2="430" y2="260" stroke="#3ecf6e"/>
-                <text class="ltr" x="296" y="300" text-anchor="end" fill="#2aa957">b</text>
-                <g class="badge"><rect x="312" y="278" width="110" height="30" rx="15" fill="#3ecf6e"/>
-                  <text x="367" y="298" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Sisi siku-siku</text></g>
-              </g>
-              <!-- sisi c (miring) -->
-              <g class="side" id="g-c">
-                <line class="hl" x1="150" y1="60" x2="430" y2="260" stroke="#ff5470"/>
-                <text class="ltr" x="312" y="136" text-anchor="end" fill="#ff5470">c</text>
-                <g class="badge"><rect x="328" y="110" width="160" height="30" rx="15" fill="#ff5470"/>
-                  <text x="408" y="130" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">Hipotenusa (sisi miring)</text></g>
-              </g>
+      <!-- SLIDE 2 -->
+      <div id="s2" class="slide">
+        <h2 class="slide-title">Ayo Uji Ingatan Bersama!</h2>
+        <p class="slide-sub">Mencocokkan <span style="display:inline-block;animation:bounce 1s infinite">⬇️</span></p>
+        <div class="interactive-area" style="gap:2rem">
+          <div class="s2-board">
+            <svg class="s2-tri" id="s2-svg" viewBox="0 0 400 280">
+              <polygon id="s2-poly" points="125,190 275,190 125,90" fill="#fef3c7" stroke="#d97706" stroke-width="4" stroke-linejoin="round"/>
+              <path id="s2-mark" d="" fill="none" stroke="#d97706" stroke-width="2"/>
             </svg>
-
-            <button id="s1-btn" class="btn-action s1-btn" onclick="animBerkenalan()">✨ Berkenalan!</button>
-            <p class="s1-q">Nah sekarang kamu sudah mengenal bagian-bagian segitiga siku-siku?</p>
+            <div class="drop-zone s2-drop z-a" data-side="sisi-siku1"></div>
+            <div class="drop-zone s2-drop z-b" data-side="sisi-siku2"></div>
+            <div class="drop-zone s2-drop z-c" data-side="hipotenusa"></div>
           </div>
-
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(2)">Selanjutnya ➜</button></div>
+          <div class="s2-tray" id="s2-source-tray">
+            <div class="drag-item s2-drag" data-label="hipotenusa">Hipotenusa</div>
+            <div class="drag-item s2-drag" data-label="sisi-siku1">Sisi Siku-siku</div>
+            <div class="drag-item s2-drag" data-label="sisi-siku2">Sisi Siku-siku</div>
+            <div class="drag-item s2-drag" data-label="sisi-lengkung">Sisi Lengkung</div>
+          </div>
         </div>
-
-        <!-- SLIDE 2 -->
-        <div id="s2" class="slide">  <h2 class="slide-title">Ayo Uji Ingatan Bersama!</h2>  <p class="slide-sub">Mencocokkan <span style="display:inline-block; animation: bounce 1s infinite;">⬇️</span></p>  <div class="interactive-area" style="gap: 2rem;">    <div class="s2-board">      <svg class="s2-tri" id="s2-svg" viewBox="0 0 400 280">        <polygon id="s2-poly" points="125,190 275,190 125,90" fill="#fef3c7" stroke="#d97706" stroke-width="4" stroke-linejoin="round"/>        <path id="s2-mark" d="" fill="none" stroke="#d97706" stroke-width="2"/>      </svg>      <div class="drop-zone s2-drop z-a" data-side="sisi-siku1"></div>      <div class="drop-zone s2-drop z-b" data-side="sisi-siku2"></div>      <div class="drop-zone s2-drop z-c" data-side="hipotenusa"></div>    </div>    <div class="s2-tray" id="s2-source-tray">      <div class="drag-item s2-drag" data-label="hipotenusa">Hipotenusa</div>      <div class="drag-item s2-drag" data-label="sisi-siku1">Sisi Siku-siku</div>      <div class="drag-item s2-drag" data-label="sisi-siku2">Sisi Siku-siku</div>      <div class="drag-item s2-drag" data-label="sisi-lengkung">Sisi Lengkung</div>    </div>  </div>  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 0.5rem;">    <button class="btn-action" onclick="checkMatchS2()">🔍 Periksa Kecocokan</button>    <button class="btn-action" style="background: #64748b;" onclick="resetS2()">🔄 Mulai Ulang</button>  </div>  <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(3)">Selanjutnya ➜</button></div></div>
-
-        <!-- SLIDE 3 -->
-        <div id="s3" class="slide">
-          <h2 class="slide-title">Ayo Menemukan Konsep Pythagoras!</h2>
-          <p class="slide-sub">Sudah kenal dengan bagian-bagian segitiga siku-siku? Sekarang ayo kita menemukan konsep Pythagoras! Untuk memudahkan pemahaman, kita bisa pakai persegi ya!</p>
-          <div class="interactive-area flex-center" style="gap: 2rem;">
-            <svg class="s3-svg" viewBox="20 -20 320 350">
-              <g class="sq" id="sq-a" onclick="clickSquare('a')">
-                <rect x="30" y="110" width="90" height="90" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-                <text x="75" y="162" text-anchor="middle">a²</text>
-              </g>
-              <g class="sq" id="sq-b" onclick="clickSquare('b')">
-                <rect x="120" y="200" width="120" height="120" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-                <text x="180" y="267" text-anchor="middle">b²</text>
-              </g>
-              <g class="sq" id="sq-c" onclick="clickSquare('c')">
-                <polygon points="120,110 240,200 330,80 210,-10" fill="#fbcfe8" stroke="#db2777" stroke-width="2" stroke-linejoin="round"/>
-                <text x="225" y="102" text-anchor="middle">c²</text>
-              </g>
-              <polygon points="120,200 240,200 120,110" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" pointer-events="none"/>
-              <path d="M120 182 H138 V200" fill="none" stroke="#7c3aed" stroke-width="2" pointer-events="none"/>
-            </svg>
-
-            <div style="display:flex; flex-direction:column; gap:.6rem; min-width:220px;">
-              <p style="font-weight:700; color:#64748b; text-align:center;">👆 Klik persegi untuk menyorot rumusnya</p>
-              <div id="f-main" class="card-box fcard">a² + b² = c²</div>
-              <div id="f-c" class="card-box fcard">c = √(a² + b²)</div>
-              <div id="f-a" class="card-box fcard">a = √(c² − b²)</div>
-              <div id="f-b" class="card-box fcard">b = √(c² − a²)</div>
-            </div>
-          </div>
-          <p style="text-align:center; font-weight:700; color:var(--primary);">Apakah kamu paham?</p>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(4)">Selanjutnya ➜</button></div>
+        <div style="display:flex;gap:1rem;justify-content:center;margin-top:.5rem">
+          <button class="btn-action" onclick="checkMatchS2()">🔍 Periksa Kecocokan</button>
+          <button class="btn-action" style="background:#64748b" onclick="resetS2()">🔄 Mulai Ulang</button>
         </div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(3)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 4: MISI DETEKTIF PYTHAGORAS -->
-        <div id="s4" class="slide">
-          <h2 class="slide-title">🕵️ Misi Detektif Pythagoras</h2>
-          <div class="d-head">
-            <svg id="d-char" viewBox="0 0 110 110">
-              <polygon points="20,95 90,95 20,30" fill="#bae6fd" stroke="#0284c7" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M20 83H32V95" fill="none" stroke="#0284c7" stroke-width="2"/>
-              <path d="M6 36Q20 4 40 30Z" fill="#92400e"/><rect x="4" y="33" width="38" height="5" rx="2.5" fill="#78350f"/>
-              <circle cx="34" cy="72" r="4" fill="#1d2340"/><circle cx="52" cy="72" r="4" fill="#1d2340"/>
-              <circle cx="35.5" cy="70.5" r="1.4" fill="#fff"/><circle cx="53.5" cy="70.5" r="1.4" fill="#fff"/>
-              <path d="M34 82Q43 92 52 82" fill="none" stroke="#1d2340" stroke-width="3" stroke-linecap="round"/>
-              <circle cx="82" cy="60" r="11" fill="rgba(255,255,255,.6)" stroke="#92400e" stroke-width="4"/>
-              <line x1="90" y1="68" x2="102" y2="82" stroke="#92400e" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-            <p id="d-say">Hebat! Kamu sudah mempelajari rahasia Teorema Pythagoras. Sekarang, saatnya kita menguji kemampuanmu! Siap membantuku menyelesaikan empat tantangan?</p>
+      <!-- SLIDE 3 -->
+      <div id="s3" class="slide">
+        <h2 class="slide-title">Ayo Menemukan Konsep Pythagoras!</h2>
+        <p class="slide-sub">Sudah kenal dengan bagian-bagian segitiga siku-siku? Sekarang ayo kita menemukan konsep Pythagoras! Untuk memudahkan pemahaman, kita bisa pakai persegi ya!</p>
+        <div class="interactive-area" style="gap:2rem">
+          <svg class="s3-svg" viewBox="20 -20 320 350">
+            <g class="sq" id="sq-a" onclick="clickSquare('a')"><rect x="30" y="110" width="90" height="90" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/><text x="75" y="162" text-anchor="middle">a²</text></g>
+            <g class="sq" id="sq-b" onclick="clickSquare('b')"><rect x="120" y="200" width="120" height="120" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/><text x="180" y="267" text-anchor="middle">b²</text></g>
+            <g class="sq" id="sq-c" onclick="clickSquare('c')"><polygon points="120,110 240,200 330,80 210,-10" fill="#fbcfe8" stroke="#db2777" stroke-width="2" stroke-linejoin="round"/><text x="225" y="102" text-anchor="middle">c²</text></g>
+            <polygon points="120,200 240,200 120,110" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" pointer-events="none"/>
+            <path d="M120 182 H138 V200" fill="none" stroke="#7c3aed" stroke-width="2" pointer-events="none"/>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:.6rem;min-width:220px">
+            <p style="font-weight:600;color:#64748b;text-align:center">👆 Klik persegi untuk menyorot rumusnya</p>
+            <div id="f-main" class="card-box fcard">a² + b² = c²</div>
+            <div id="f-c" class="card-box fcard">c = √(a² + b²)</div>
+            <div id="f-a" class="card-box fcard">a = √(c² − b²)</div>
+            <div id="f-b" class="card-box fcard">b = √(c² − a²)</div>
           </div>
-          <p class="d-inst">Selesaikan setiap tantangan untuk menuntaskan Misi Detektif Pythagoras!</p>
-          <div class="d-prog"><span id="d-step">Tantangan 1 dari 4</span><span id="d-badges"></span></div>
-          <div id="d-stage"></div>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(5)">Selanjutnya ➜</button></div>
         </div>
+        <p style="text-align:center;font-weight:600;color:var(--primary)">Apakah kamu paham?</p>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(4)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 5: TRIPEL PYTHAGORAS -->
-        <div id="s5" class="slide">
-          <h2 class="slide-title">✨ Tripel Pythagoras</h2>
-          <p class="slide-sub">Tiga bilangan bulat positif <span class="math-var">a</span>, <span class="math-var">b</span>, dan <span class="math-var">c</span> yang memenuhi <span class="math-var">a</span>² + <span class="math-var">b</span>² = <span class="math-var">c</span>².</p>
-          
-          <div class="interactive-area flex-center" style="flex-direction: column;">
-            <div style="display: flex; gap: 1rem; align-items: center;">
-              <button class="btn-action" onclick="proveTriple()">🧪 Buktikan (3, 4, 5)</button>
-              <div style="display: flex; gap: 0.4rem;">
-                <button class="hb" onclick="scaleTriple(2)">×2 (6,8,10)</button>
-                <button class="hb" onclick="scaleTriple(3)">×3 (9,12,15)</button>
-                <button class="hb" onclick="scaleTriple(4)">×4 (12,16,20)</button>
-              </div>
-            </div>
-
-            <div id="triple-visual" style="margin: 1rem 0; font-weight: 800; font-size: 1.2rem; text-align: center; color: var(--primary);">
-              (3, 4, 5) ➔ 3² + 4² = 9 + 16 = 25 = 5²
-            </div>
-
-            <div class="grid-4" style="max-width: 600px;">
-              <div class="card-box" style="text-align:center; cursor:pointer;" onclick="flipTripleCard(this, '3, 4, 5')"><strong>(3, 4, 5)</strong></div>
-              <div class="card-box" style="text-align:center; cursor:pointer;" onclick="flipTripleCard(this, '5, 12, 13')"><strong>(5, 12, 13)</strong></div>
-              <div class="card-box" style="text-align:center; cursor:pointer;" onclick="flipTripleCard(this, '8, 15, 17')"><strong>(8, 15, 17)</strong></div>
-              <div class="card-box" style="text-align:center; cursor:pointer;" onclick="flipTripleCard(this, '7, 24, 25')"><strong>(7, 24, 25)</strong></div>
-            </div>
-
-            <div style="margin-top: 1rem; text-align: center;">
-              <p style="font-weight: 700;">Cari Sisi Hilang: 8, 15, ?</p>
-              <button class="btn-action" style="margin-top: 0.3rem;" onclick="solveMissingTriple()">🔍 Cari Jawabannya</button>
-              <p id="triple-missing-res" style="font-weight: 800; color: var(--accent-green); margin-top: 0.3rem;"></p>
-            </div>
-          </div>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(6)">Selanjutnya ➜</button></div>
+      <!-- SLIDE 4 -->
+      <div id="s4" class="slide">
+        <h2 class="slide-title">🕵️ Misi Detektif Pythagoras</h2>
+        <div class="d-head">
+          <svg id="d-char" viewBox="0 0 110 110">
+            <polygon points="20,95 90,95 20,30" fill="#bae6fd" stroke="#0284c7" stroke-width="3" stroke-linejoin="round"/>
+            <path d="M20 83H32V95" fill="none" stroke="#0284c7" stroke-width="2"/>
+            <path d="M6 36Q20 4 40 30Z" fill="#92400e"/><rect x="4" y="33" width="38" height="5" rx="2.5" fill="#78350f"/>
+            <circle cx="34" cy="72" r="4" fill="#1d2340"/><circle cx="52" cy="72" r="4" fill="#1d2340"/>
+            <circle cx="35.5" cy="70.5" r="1.4" fill="#fff"/><circle cx="53.5" cy="70.5" r="1.4" fill="#fff"/>
+            <path d="M34 82Q43 92 52 82" fill="none" stroke="#1d2340" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="82" cy="60" r="11" fill="rgba(255,255,255,.6)" stroke="#92400e" stroke-width="4"/>
+            <line x1="90" y1="68" x2="102" y2="82" stroke="#92400e" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <p id="d-say">Hebat! Kamu sudah mempelajari rahasia Teorema Pythagoras. Sekarang, saatnya kita menguji kemampuanmu! Siap membantuku menyelesaikan empat tantangan?</p>
         </div>
+        <p class="d-inst">Selesaikan setiap tantangan untuk menuntaskan Misi Detektif Pythagoras!</p>
+        <div class="d-prog"><span id="d-step">Tantangan 1 dari 4</span><span id="d-badges"></span></div>
+        <div id="d-stage"></div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(5)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 6: EVALUASI TRIPEL PYTHAGORAS -->
-        <div id="s6" class="slide">
-          <h2 class="slide-title">📝 Evaluasi Tripel Pythagoras</h2>
-          <div class="interactive-area" style="flex-direction: column; overflow-y: auto;">
-            <!-- Quiz items -->
-            <div id="quiz-s6-container" style="width: 100%; max-width: 700px;"></div>
+      <!-- SLIDE 5 -->
+      <div id="s5" class="slide">
+        <h2 class="slide-title">✨ Tripel Pythagoras</h2>
+        <p class="slide-sub">Tiga bilangan bulat positif <span class="math-var">a</span>, <span class="math-var">b</span>, dan <span class="math-var">c</span> yang memenuhi <span class="math-var">a</span>² + <span class="math-var">b</span>² = <span class="math-var">c</span>².</p>
+        <div class="interactive-area" style="flex-direction:column">
+          <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">
+            <button class="btn-action" onclick="proveTriple()">🧪 Buktikan (3, 4, 5)</button>
+            <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+              <button class="hb" onclick="scaleTriple(2)">×2 (6,8,10)</button>
+              <button class="hb" onclick="scaleTriple(3)">×3 (9,12,15)</button>
+              <button class="hb" onclick="scaleTriple(4)">×4 (12,16,20)</button>
+            </div>
           </div>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(7)">Selanjutnya ➜</button></div>
+          <div id="triple-visual" style="margin:1rem 0;font-weight:700;font-size:1.2rem;text-align:center;color:var(--primary)">(3, 4, 5) ➔ 3² + 4² = 9 + 16 = 25 = 5²</div>
+          <div class="grid-4" style="max-width:600px">
+            <div class="card-box" style="text-align:center;cursor:pointer" onclick="flipTripleCard(this,'3, 4, 5')"><strong>(3, 4, 5)</strong></div>
+            <div class="card-box" style="text-align:center;cursor:pointer" onclick="flipTripleCard(this,'5, 12, 13')"><strong>(5, 12, 13)</strong></div>
+            <div class="card-box" style="text-align:center;cursor:pointer" onclick="flipTripleCard(this,'8, 15, 17')"><strong>(8, 15, 17)</strong></div>
+            <div class="card-box" style="text-align:center;cursor:pointer" onclick="flipTripleCard(this,'7, 24, 25')"><strong>(7, 24, 25)</strong></div>
+          </div>
+          <div style="margin-top:1rem;text-align:center">
+            <p style="font-weight:600">Cari Sisi Hilang: 8, 15, ?</p>
+            <button class="btn-action" style="margin-top:.3rem" onclick="solveMissingTriple()">🔍 Cari Jawabannya</button>
+            <p id="triple-missing-res" style="font-weight:700;color:var(--accent-green);margin-top:.3rem"></p>
+          </div>
         </div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(6)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 7: KEBALIKAN TEOREMA PYTHAGORAS -->
-        <div id="s7" class="slide">
-          <h2 class="slide-title">🔄 Kebalikan Teorema Pythagoras</h2>
-          <p class="slide-sub">"Jika tiga sisi sebuah segitiga memenuhi <span class="math-var">a</span>² + <span class="math-var">b</span>² = <span class="math-var">c</span>², apakah segitiga itu pasti siku-siku?"</p>
-          
-          <div class="interactive-area flex-center" style="flex-direction: column;">
-            <div class="grid-3" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; width: 100%; max-width: 700px;">
-              <div class="card-box" style="background: #f0fdf4; border-color: var(--accent-green); text-align: center;">
-                <h4 style="color: var(--accent-green);">siku-siku</h4>
-                <p><span class="math-var">c</span>² = <span class="math-var">a</span>² + <span class="math-var">b</span>²</p>
-              </div>
-              <div class="card-box" style="background: #eff6ff; border-color: var(--secondary); text-align: center;">
-                <h4 style="color: var(--secondary);">Lancip</h4>
-                <p><span class="math-var">c</span>² &lt; <span class="math-var">a</span>² + <span class="math-var">b</span>²</p>
-              </div>
-              <div class="card-box" style="background: #fef2f2; border-color: var(--accent-red); text-align: center;">
-                <h4 style="color: var(--accent-red);">Tumpul</h4>
-                <p><span class="math-var">c</span>² &gt; <span class="math-var">a</span>² + <span class="math-var">b</span>²</p>
-              </div>
-            </div>
+      <!-- SLIDE 6 -->
+      <div id="s6" class="slide">
+        <h2 class="slide-title">📝 Evaluasi Tripel Pythagoras</h2>
+        <div class="interactive-area" style="flex-direction:column;overflow-y:auto"><div id="quiz-s6-container" style="width:100%;max-width:700px"></div></div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(7)">Selanjutnya ➜</button></div>
+      </div>
 
-            <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
-              <button class="btn-action" onclick="testTriangleType(6,8,10)">Uji (6,8,10)</button>
-              <button class="btn-action" onclick="testTriangleType(5,6,7)">Uji (5,6,7)</button>
-              <button class="btn-action" onclick="testTriangleType(4,5,7)">Uji (4,5,7)</button>
-            </div>
-            <div id="s7-res" style="font-weight: 800; font-size: 1.2rem; margin-top: 0.8rem; color: var(--primary);"></div>
+      <!-- SLIDE 7 -->
+      <div id="s7" class="slide">
+        <h2 class="slide-title">🔄 Kebalikan Teorema Pythagoras</h2>
+        <p class="slide-sub">"Jika tiga sisi sebuah segitiga memenuhi <span class="math-var">a</span>² + <span class="math-var">b</span>² = <span class="math-var">c</span>², apakah segitiga itu pasti siku-siku?"</p>
+        <div class="interactive-area" style="flex-direction:column">
+          <div class="grid-3" style="width:100%;max-width:700px">
+            <div class="card-box" style="background:#f0fdf4;border-color:var(--accent-green);text-align:center"><h4 style="color:var(--accent-green)">siku-siku</h4><p><span class="math-var">c</span>² = <span class="math-var">a</span>² + <span class="math-var">b</span>²</p></div>
+            <div class="card-box" style="background:#eff6ff;border-color:var(--secondary);text-align:center"><h4 style="color:var(--secondary)">Lancip</h4><p><span class="math-var">c</span>² &lt; <span class="math-var">a</span>² + <span class="math-var">b</span>²</p></div>
+            <div class="card-box" style="background:#fef2f2;border-color:var(--accent-red);text-align:center"><h4 style="color:var(--accent-red)">Tumpul</h4><p><span class="math-var">c</span>² &gt; <span class="math-var">a</span>² + <span class="math-var">b</span>²</p></div>
           </div>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(8)">Selanjutnya ➜</button></div>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center">
+            <button class="btn-action" onclick="testTriangleType(6,8,10)">Uji (6,8,10)</button>
+            <button class="btn-action" onclick="testTriangleType(5,6,7)">Uji (5,6,7)</button>
+            <button class="btn-action" onclick="testTriangleType(4,5,7)">Uji (4,5,7)</button>
+          </div>
+          <div id="s7-res" style="font-weight:700;font-size:1.2rem;margin-top:.8rem;color:var(--primary);text-align:center"></div>
         </div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(8)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 8: EVALUASI KEBALIKAN -->
-        <div id="s8" class="slide">
-          <h2 class="slide-title">📝 Evaluasi Kebalikan Pythagoras</h2>
-          <div class="interactive-area" style="flex-direction: column;">
-            <div id="quiz-s8-container" style="width: 100%; max-width: 700px;"></div>
-          </div>
-          <p style="text-align: center; font-size: 0.85rem; color: #64748b; font-weight: 700;">Kalau sudah selesai, beritahu guru ya! 👨‍🏫</p>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(9)">Selanjutnya ➜</button></div>
+      <!-- SLIDE 8 -->
+      <div id="s8" class="slide">
+        <h2 class="slide-title">📝 Evaluasi Kebalikan Pythagoras</h2>
+        <div class="interactive-area" style="flex-direction:column"><div id="quiz-s8-container" style="width:100%;max-width:700px"></div></div>
+        <p style="text-align:center;font-size:.85rem;color:#64748b;font-weight:600">Kalau sudah selesai, beritahu guru ya! 👨‍🏫</p>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(9)">Selanjutnya ➜</button></div>
+      </div>
+
+      <!-- SLIDE 9 -->
+      <div id="s9" class="slide">
+        <h2 class="slide-title">🌉 Penerapan Pythagoras Sehari-hari</h2>
+        <p class="slide-sub">Tahukah kamu, rumus Pythagoras dipakai tukang bangunan, pelaut, dan pemain bola?</p>
+        <div class="interactive-area grid-2" style="max-width:800px;margin:0 auto">
+          <div class="card-box" style="display:flex;flex-direction:column;gap:.5rem"><h3>🪜 Tangga & Dinding</h3><p>Tangga 5 m, jarak kaki 3 m. Tinggi dinding = ?</p><button class="btn-action" onclick="calcApp(1)">Hitung</button><p id="app-res-1" style="font-weight:700;color:var(--accent-green)"></p></div>
+          <div class="card-box" style="display:flex;flex-direction:column;gap:.5rem"><h3>🚩 Tiang Bendera & Kabel</h3><p>Tiang 8 m, jarak kabel 6 m. Panjang kabel = ?</p><button class="btn-action" onclick="calcApp(2)">Hitung</button><p id="app-res-2" style="font-weight:700;color:var(--accent-green)"></p></div>
+          <div class="card-box" style="display:flex;flex-direction:column;gap:.5rem"><h3>🚶 Jalan Pintas</h3><p>12 m ke Timur, 5 m ke Utara. Jalan pintas = ?</p><button class="btn-action" onclick="calcApp(3)">Lewat Jalan Pintas</button><p id="app-res-3" style="font-weight:700;color:var(--accent-green)"></p></div>
+          <div class="card-box" style="display:flex;flex-direction:column;gap:.5rem"><h3>⚽ Lapangan & Layar TV</h3><p>Lapangan 40 m × 30 m. Ukur Diagonal = ?</p><button class="btn-action" onclick="calcApp(4)">Ukur Diagonal</button><p id="app-res-4" style="font-weight:700;color:var(--accent-green)"></p></div>
         </div>
+        <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(10)">Selanjutnya ➜</button></div>
+      </div>
 
-        <!-- SLIDE 9: PENERAPAN SEHARI-HARI -->
-        <div id="s9" class="slide">
-          <h2 class="slide-title">🌉 Penerapan Pythagoras Sehari-hari</h2>
-          <p class="slide-sub">Tahukah kamu, rumus Pythagoras dipakai tukang bangunan, pelaut, dan pemain bola?</p>
-          
-          <div class="interactive-area grid-2" style="max-width: 800px; margin: 0 auto;">
-            <div class="card-box" style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <h3>🪜 Tangga & Dinding</h3>
-              <p>Tangga 5 m, jarak kaki 3 m. Tinggi dinding = ?</p>
-              <button class="btn-action" onclick="calcApp(1)">Hitung</button>
-              <p id="app-res-1" style="font-weight: 800; color: var(--accent-green);"></p>
-            </div>
-            <div class="card-box" style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <h3>🚩 Tiang Bendera & Kabel</h3>
-              <p>Tiang 8 m, jarak kabel 6 m. Panjang kabel = ?</p>
-              <button class="btn-action" onclick="calcApp(2)">Hitung</button>
-              <p id="app-res-2" style="font-weight: 800; color: var(--accent-green);"></p>
-            </div>
-            <div class="card-box" style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <h3>🚶 Jalan Pintas</h3>
-              <p>12 m ke Timur, 5 m ke Utara. Jalan pintas = ?</p>
-              <button class="btn-action" onclick="calcApp(3)">Lewat Jalan Pintas</button>
-              <p id="app-res-3" style="font-weight: 800; color: var(--accent-green);"></p>
-            </div>
-            <div class="card-box" style="display: flex; flex-direction: column; gap: 0.5rem;">
-              <h3>⚽ Lapangan & Layar TV</h3>
-              <p>Lapangan 40 m × 30 m. Ukur Diagonal = ?</p>
-              <button class="btn-action" onclick="calcApp(4)">Ukur Diagonal</button>
-              <p id="app-res-4" style="font-weight: 800; color: var(--accent-green);"></p>
-            </div>
-          </div>
-          <div class="slide-footer"><button class="btn-next" onclick="gotoSlide(10)">Selanjutnya ➜</button></div>
+      <!-- SLIDE 10 -->
+      <div id="s10" class="slide">
+        <h2 class="slide-title">📝 Evaluasi Penerapan Pythagoras</h2>
+        <div class="interactive-area" style="flex-direction:column"><div id="quiz-s10-container" style="width:100%;max-width:700px"></div></div>
+        <p style="text-align:center;font-size:.85rem;color:#64748b;font-weight:600">Kalau sudah selesai, beritahu guru ya! 👨‍🏫</p>
+        <div class="slide-footer"><button class="btn-next" onclick="switchNav('game')">Lanjut ke Gim Edukasi 🎮</button></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= GIM ================= -->
+<div id="v-game" class="view" hidden>
+  <div class="stage"><div class="sub"><div class="slide active"><iframe id="game-frame" class="embed-frame" allow="fullscreen" allowfullscreen></iframe></div></div></div>
+</div>
+
+<!-- ================= REFLEKSI ================= -->
+<div id="v-refleksi" class="view" hidden>
+  <div class="stage">
+    <div class="slide active" id="rf-slide">
+      <div class="bh-bg">
+        <div class="bh-blob b1"></div><div class="bh-blob b2"></div><div class="bh-blob b3"></div><div class="bh-grid"></div>
+        <span class="bh-sym" style="left:6%;top:12%;font-size:2.6rem">😊</span>
+        <span class="bh-sym" style="right:8%;top:10%;font-size:2.4rem;animation-delay:-2s">⭐</span>
+        <span class="bh-sym" style="right:6%;bottom:22%;font-size:2.8rem;animation-delay:-4s">💖</span>
+        <span class="bh-sym" style="left:5%;bottom:20%;font-size:2.2rem;animation-delay:-1s">📐</span>
+      </div>
+      <div class="rf-in">
+        <div class="bh-badge">💭 Refleksi Pembelajaran</div>
+        <h2 class="rf-h">Bagaimana perasaanmu <span>hari ini?</span></h2>
+        <p class="rf-p">Ketuk salah satu emote untuk menceritakan perasaanmu setelah belajar Pythagoras!</p>
+        <div class="rf-stage">
+          <div class="rf-face" id="rf-face">🤔</div>
+          <div class="rf-title" id="rf-title">Pilih emote di bawah ya!</div>
+          <div class="rf-msg" id="rf-msg">Tidak ada jawaban yang salah, ceritakan saja apa adanya 😉</div>
+          <div class="rf-award" id="rf-award" hidden></div>
         </div>
-
-        <!-- SLIDE 10: EVALUASI PENERAPAN -->
-        <div id="s10" class="slide">
-          <h2 class="slide-title">📝 Evaluasi Penerapan Pythagoras</h2>
-          <div class="interactive-area" style="flex-direction: column;">
-            <div id="quiz-s10-container" style="width: 100%; max-width: 700px;"></div>
-          </div>
-          <p style="text-align: center; font-size: 0.85rem; color: #64748b; font-weight: 700;">Kalau sudah selesai, beritahu guru ya! 👨‍🏫</p>
-          <div class="slide-footer"><button class="btn-next" onclick="switchNav('game')">Lanjut ke Gim Edukasi 🎮</button></div>
+        <div class="rf-row">
+          <button class="rf-btn" data-k="wow" onclick="rfPick('wow')"><b>🤩</b><span>Luar biasa!</span></button>
+          <button class="rf-btn" data-k="happy" onclick="rfPick('happy')"><b>😄</b><span>Senang</span></button>
+          <button class="rf-btn" data-k="ok" onclick="rfPick('ok')"><b>🙂</b><span>Biasa saja</span></button>
+          <button class="rf-btn" data-k="confused" onclick="rfPick('confused')"><b>😵‍💫</b><span>Bingung</span></button>
+          <button class="rf-btn" data-k="sad" onclick="rfPick('sad')"><b>😢</b><span>Sedih</span></button>
+        </div>
+        <div class="rf-q">
+          <span>💡 Bagian Pythagoras mana yang paling kamu suka?</span>
+          <span>🛠️ Soal mana yang sempat keliru, dan bagaimana memperbaikinya?</span>
+          <span>🌍 Di mana lagi Pythagoras bisa dipakai di sekitarmu?</span>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- 3. GIM EDUKASI (DUEL PYTHAGORAS EMBED) -->
-    <div id="view-game" class="slide">
-      <iframe class="embed-frame" allow="fullscreen" allowfullscreen srcdoc='<!DOCTYPE html>
+<div id="modal-alert" class="modal-overlay">
+  <div class="modal-card">
+    <div id="modal-icon" style="font-size:3rem">🎉</div>
+    <h3 id="modal-title" style="color:#4b2fb8">Pesan</h3>
+    <p id="modal-body" style="font-weight:500;font-size:1.05rem"></p>
+    <button class="btn-action" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
+
+<!-- Kode gim Duel Pythagoras (dimuat ke iframe saat pertama dibuka) -->
+<script type="text/plain" id="game-src"><!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Duel Pythagoras</title>
@@ -997,568 +746,341 @@ main{flex:1;display:flex;gap:.6rem;padding:.6rem;min-height:0}
 <script>
 const $=(s,r=document)=>r.querySelector(s);
 let AC,muted=false,Z=1,bt;
-function tn(f,d=.12,ty=&#39;sine&#39;,v=.15,t=0){if(muted)return;AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state===&#39;suspended&#39;)AC.resume();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+t;o.type=ty;o.frequency.setValueAtTime(f,s);g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}
-const SFX={click:()=>tn(700,.06,&#39;square&#39;,.08),pop:()=>tn(420,.1,&#39;sine&#39;,.15),beep:()=>tn(880,.15,&#39;square&#39;,.12),go:()=>tn(1320,.4,&#39;square&#39;,.14),
-ok:()=>[523,659,784,1047].forEach((f,i)=>tn(f,.18,&#39;triangle&#39;,.18,i*.09)),
-no:()=>{tn(180,.25,&#39;sawtooth&#39;,.18);tn(140,.3,&#39;sawtooth&#39;,.18,.2)},
-win:()=>[523,659,784,1047,784,1047,1319].forEach((f,i)=>tn(f,.22,&#39;triangle&#39;,.2,i*.12))};
+function tn(f,d=.12,ty='sine',v=.15,t=0){if(muted)return;AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+t;o.type=ty;o.frequency.setValueAtTime(f,s);g.gain.setValueAtTime(v,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}
+const SFX={click:()=>tn(700,.06,'square',.08),pop:()=>tn(420,.1,'sine',.15),beep:()=>tn(880,.15,'square',.12),go:()=>tn(1320,.4,'square',.14),
+ok:()=>[523,659,784,1047].forEach((f,i)=>tn(f,.18,'triangle',.18,i*.09)),
+no:()=>{tn(180,.25,'sawtooth',.18);tn(140,.3,'sawtooth',.18,.2)},
+win:()=>[523,659,784,1047,784,1047,1319].forEach((f,i)=>tn(f,.22,'triangle',.2,i*.12))};
 const N=[262,330,392,330,294,349,440,349];
-function bgm(){let i=0;clearInterval(bt);bt=setInterval(()=>tn(N[i++%8],.25,&#39;triangle&#39;,.05),420)}
+function bgm(){let i=0;clearInterval(bt);bt=setInterval(()=>tn(N[i++%8],.25,'triangle',.05),420)}
 const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const TRI=[[3,4],[6,8],[5,12],[8,15],[9,12]];
 const MC=[
-{q:&#39;Segitiga siku-siku punya a = 6 cm dan b = 8 cm. Berapa panjang sisi miring (c)?&#39;,f:[&#39;6 cm&#39;,&#39;8 cm&#39;,&#39;?&#39;],o:[&#39;10 cm&#39;,&#39;14 cm&#39;,&#39;12 cm&#39;,&#39;100 cm&#39;],a:0},
-{q:&#39;Sisi miring (c) = 13 cm dan a = 5 cm. Berapa panjang sisi b?&#39;,f:[&#39;5 cm&#39;,&#39;?&#39;,&#39;13 cm&#39;],o:[&#39;8 cm&#39;,&#39;12 cm&#39;,&#39;18 cm&#39;,&#39;144 cm&#39;],a:1},
-{q:&#39;Tangga 5 m disandarkan ke dinding. Jarak kaki tangga ke dinding 3 m. Berapa tinggi dinding yang dicapai tangga?&#39;,f:[&#39;? m&#39;,&#39;3 m&#39;,&#39;5 m&#39;],o:[&#39;2 m&#39;,&#39;4 m&#39;,&#39;8 m&#39;,&#39;16 m&#39;],a:1}];
-const TF=[[&#39;Segitiga dengan sisi 3, 4, 5 adalah segitiga siku-siku.&#39;,1],[&#39;Sisi miring (hipotenusa) adalah sisi terpendek.&#39;,0],[&#39;Rumus Pythagoras: a² + b² = c², dengan c sisi miring.&#39;,1]];
+{q:'Segitiga siku-siku punya a = 6 cm dan b = 8 cm. Berapa panjang sisi miring (c)?',f:['6 cm','8 cm','?'],o:['10 cm','14 cm','12 cm','100 cm'],a:0},
+{q:'Sisi miring (c) = 13 cm dan a = 5 cm. Berapa panjang sisi b?',f:['5 cm','?','13 cm'],o:['8 cm','12 cm','18 cm','144 cm'],a:1},
+{q:'Tangga 5 m disandarkan ke dinding. Jarak kaki tangga ke dinding 3 m. Berapa tinggi dinding yang dicapai tangga?',f:['? m','3 m','5 m'],o:['2 m','4 m','8 m','16 m'],a:1}];
+const TF=[['Segitiga dengan sisi 3, 4, 5 adalah segitiga siku-siku.',1],['Sisi miring (hipotenusa) adalah sisi terpendek.',0],['Rumus Pythagoras: a² + b² = c², dengan c sisi miring.',1]];
 const tri=(a,b,c)=>`<svg viewBox="0 0 220 130" style="height:6.5rem;align-self:center"><path d="M30 110H190L30 20Z" fill="#dfe6ff" stroke="#4b2fb8" stroke-width="3"/><path d="M30 96h14v14" fill="none" stroke="#4b2fb8" stroke-width="2"/><g font-size="15" font-weight="800" fill="#d6246e"><text x="2" y="70">a=${a}</text><text x="90" y="128">b=${b}</text><text x="115" y="58">c=${c}</text></g></svg>`;
 let P=[];
 function mk(el,name,list){return{el,name,q:list,i:0,s:0,busy:false,done:false}}
 function start(){
- const rest=[...MC.map(m=>({t:&#39;mc&#39;,...m})),{t:&#39;tf&#39;}],S={t:&#39;sort&#39;};
- P=[mk($(&#39;.A&#39;),&#39;Tim A&#39;,[S,...sh(rest)]),mk($(&#39;.B&#39;),&#39;Tim B&#39;,[...sh(rest),S])];
- P.forEach(p=>{$(&#39;.sc&#39;,p.el).textContent=&#39;⭐ 0&#39;;render(p)});bgm()}
-function render(p){const q=p.q[p.i],b=$(&#39;.pb&#39;,p.el);p.busy=false;$(&#39;.pr&#39;,p.el).textContent=`Soal ${p.i+1}/${p.q.length}`;
- q.t===&#39;sort&#39;?sortQ(p,b):q.t===&#39;tf&#39;?tfQ(p,b):mcQ(p,b,q)}
+ const rest=[...MC.map(m=>({t:'mc',...m})),{t:'tf'}],S={t:'sort'};
+ P=[mk($('.A'),'Tim A',[S,...sh(rest)]),mk($('.B'),'Tim B',[...sh(rest),S])];
+ P.forEach(p=>{$('.sc',p.el).textContent='⭐ 0';render(p)});bgm()}
+function render(p){const q=p.q[p.i],b=$('.pb',p.el);p.busy=false;$('.pr',p.el).textContent=`Soal ${p.i+1}/${p.q.length}`;
+ q.t==='sort'?sortQ(p,b):q.t==='tf'?tfQ(p,b):mcQ(p,b,q)}
 function mcQ(p,b,q){const o=sh(q.o.map((t,i)=>[t,i===q.a]));
- b.innerHTML=`<div class="q">${q.q}</div>${q.f?tri(...q.f):&#39;&#39;}<div class="opts">${o.map((x,i)=>`<button class="opt" data-i="${i}">${x[0]}</button>`).join(&#39;&#39;)}</div>`;
- b.querySelectorAll(&#39;.opt&#39;).forEach(btn=>btn.onclick=()=>{if(p.busy)return;p.busy=true;const x=o[btn.dataset.i];btn.classList.add(x[1]?&#39;ok&#39;:&#39;no&#39;);answer(p,x[1]?15:0,15,x[1]?&#39;&#39;:&#39;Jawaban benar: &#39;+q.o[q.a])})}
+ b.innerHTML=`<div class="q">${q.q}</div>${q.f?tri(...q.f):''}<div class="opts">${o.map((x,i)=>`<button class="opt" data-i="${i}">${x[0]}</button>`).join('')}</div>`;
+ b.querySelectorAll('.opt').forEach(btn=>btn.onclick=()=>{if(p.busy)return;p.busy=true;const x=o[btn.dataset.i];btn.classList.add(x[1]?'ok':'no');answer(p,x[1]?15:0,15,x[1]?'':'Jawaban benar: '+q.o[q.a])})}
 function tfQ(p,b){const a=[];
- b.innerHTML=`<div class="q">Benar atau Salah?</div>`+TF.map((t,i)=>`<div class="tf"><span>${t[0]}</span><button class="opt" data-r="${i}" data-v="1">Benar</button><button class="opt" data-r="${i}" data-v="0">Salah</button></div>`).join(&#39;&#39;);
- b.querySelectorAll(&#39;.opt&#39;).forEach(x=>x.onclick=()=>{if(p.busy)return;SFX.click();const r=+x.dataset.r;a[r]=+x.dataset.v;b.querySelectorAll(`[data-r="${r}"]`).forEach(y=>y.classList.toggle(&#39;sel&#39;,y===x));
-  if(TF.every((_,i)=>a[i]!==undefined)){p.busy=true;const n=TF.filter((t,i)=>a[i]===t[1]).length;answer(p,n*5,15,n<3?`Benar ${n} dari 3`:&#39;&#39;)}})}
+ b.innerHTML=`<div class="q">Benar atau Salah?</div>`+TF.map((t,i)=>`<div class="tf"><span>${t[0]}</span><button class="opt" data-r="${i}" data-v="1">Benar</button><button class="opt" data-r="${i}" data-v="0">Salah</button></div>`).join('');
+ b.querySelectorAll('.opt').forEach(x=>x.onclick=()=>{if(p.busy)return;SFX.click();const r=+x.dataset.r;a[r]=+x.dataset.v;b.querySelectorAll(`[data-r="${r}"]`).forEach(y=>y.classList.toggle('sel',y===x));
+  if(TF.every((_,i)=>a[i]!==undefined)){p.busy=true;const n=TF.filter((t,i)=>a[i]===t[1]).length;answer(p,n*5,15,n<3?`Benar ${n} dari 3`:'')}})}
 function sortQ(p,b){const T=sh(TRI),H=[];
- b.innerHTML=`<div class="q">Urutkan segitiga dari sisi miring (c) <u>terpendek</u> ke <u>terpanjang</u>! Seret kartunya ke kotak.</div><div class="tray">${T.map(t=>`<div class="card" data-c="${Math.hypot(...t)}">a=${t[0]}<br>b=${t[1]}</div>`).join(&#39;&#39;)}</div><div class="slots">${T.map((_,i)=>`<div class="slot" data-n="${i+1}"></div>`).join(&#39;&#39;)}</div><div class="row"><button class="act" data-u>↩ Undo</button><button class="act" data-k>✔ Kirim</button></div>`;
- const tray=$(&#39;.tray&#39;,b),slots=[...b.querySelectorAll(&#39;.slot&#39;)];
- b.querySelectorAll(&#39;.card&#39;).forEach(c=>{
-  c.onpointerdown=e=>{if(p.busy)return;e.preventDefault();c.setPointerCapture(e.pointerId);SFX.pop();const x0=e.clientX,y0=e.clientY;c.classList.add(&#39;drag&#39;);
-   c.onpointermove=m=>{c.style.transform=`translate(${(m.clientX-x0)/Z}px,${(m.clientY-y0)/Z}px)`};
-   c.onpointerup=c.onpointercancel=u=>{c.onpointermove=c.onpointerup=c.onpointercancel=null;c.classList.remove(&#39;drag&#39;);c.style.transform=&#39;&#39;;
-    c.style.visibility=&#39;hidden&#39;;const t=document.elementFromPoint(u.clientX,u.clientY);c.style.visibility=&#39;&#39;;
-    const s=t&&t.closest(&#39;.slot&#39;),from=c.parentNode;
-    if(s&&p.el.contains(s)&&s!==from){const bp=s.firstElementChild;if(bp)tray.appendChild(bp);s.appendChild(c);H.push({c,from,s,bp});SFX.click()}
-    else if(t&&t.closest(&#39;.tray&#39;)&&p.el.contains(t)&&from!==tray){tray.appendChild(c);H.push({c,from,s:null,bp:null});SFX.click()}}}});
- $(&#39;[data-u]&#39;,b).onclick=()=>{const h=H.pop();if(!h||p.busy)return;SFX.click();h.from.appendChild(h.c);if(h.bp&&h.s)h.s.appendChild(h.bp)};
- $(&#39;[data-k]&#39;,b).onclick=()=>{if(p.busy)return;
-  if(slots.some(s=>!s.firstElementChild)){SFX.no();const sl=$(&#39;.slots&#39;,b);sl.classList.add(&#39;shake&#39;);setTimeout(()=>sl.classList.remove(&#39;shake&#39;),400);return}
-  p.busy=true;const so=T.map(t=>Math.hypot(...t)).sort((x,y)=>x-y);let n=0;
-  slots.forEach((s,i)=>{if(+s.firstElementChild.dataset.c===so[i])n++});
-  answer(p,n*3,15,n<5?&#39;Urutan benar: c = &#39;+so.join(&#39; &lt; &#39;):&#39;&#39;)}}
-function answer(p,pts,max,msg){p.s+=pts;$(&#39;.sc&#39;,p.el).textContent=&#39;⭐ &#39;+p.s;pts?SFX.ok():SFX.no();
- const f=document.createElement(&#39;div&#39;);f.className=&#39;fb&#39;;
- f.innerHTML=pts===max?`🎉 Yey! Benar!<small>+${pts} poin</small>`:pts?`👍 Lumayan! +${pts} poin<small>${msg}</small>`:`😅 Tetot! Belum tepat<small>${msg}</small>`;
- p.el.appendChild(f);
- setTimeout(()=>{f.remove();p.i++;p.i>=p.q.length?finish(p):render(p)},1700)}
-function finish(p){p.done=true;$(&#39;.pr&#39;,p.el).textContent=&#39;Selesai&#39;;
- $(&#39;.pb&#39;,p.el).innerHTML=`<div class="q" style="font-size:2rem">🏁 Selesai!<br>Skor: ${p.s}</div><div class="q">Menunggu tim lain…</div>`;
- if(P.every(x=>x.done))setTimeout(winner,900)}
-const ov=$(&#39;#ov&#39;),show=h=>{ov.innerHTML=h;ov.hidden=false},hide=()=>{ov.hidden=true};
-function confetti(){const e=[&#39;🎉&#39;,&#39;⭐&#39;,&#39;🎊&#39;,&#39;✨&#39;,&#39;📐&#39;];for(let i=0;i<40;i++){const s=document.createElement(&#39;span&#39;);s.className=&#39;conf&#39;;s.textContent=e[i%5];s.style.left=Math.random()*100+&#39;%&#39;;s.style.animationDuration=2+Math.random()*2.5+&#39;s&#39;;s.style.animationDelay=Math.random()+&#39;s&#39;;$(&#39;#st&#39;).appendChild(s);setTimeout(()=>s.remove(),6000)}}
+ b.innerHTML=`<div class="q">Urutkan segitiga dari sisi miring (c) <u>terpendek</u> ke <u>terpanjang</u>! Seret kartunya ke kotak.</div><div class="tray">${T.map(t=>`<div class="card" data-c="${Math.hypot(...t)}">a=${t[0]}<br>b=${t[1]}</div>`).join('')}</div><div class="slots">${T.map((_,i)=>`<div class="slot" data-n="${i+1}"></div>`).join('')}</div><div class="row"><button class="act" data-u>↩ Undo</button><button class="act" data-k>✔ Kirim</button></div>`;
+ const tray=$('.tray',b),slots=[...b.querySelectorAll('.slot')];
+ b.querySelectorAll('.card').forEach(c=>{
+  c.onpointerdown=e=>{if(p.busy)return;e.preventDefault();c.setPointerCapture(e.pointerId);SFX.pop();const x0=e.clientX,y0=e.clientY;c.classList.add('drag');
+   c.onpointermove=m=>{c.style.transform=`translate(${(m.clientX-x0)/Z}px,${(m.clientY-y0)/Z}px)`};
+   c.onpointerup=c.onpointercancel=u=>{c.onpointermove=c.onpointerup=c.onpointercancel=null;c.classList.remove('drag');c.style.transform='';
+    c.style.visibility='hidden';const t=document.elementFromPoint(u.clientX,u.clientY);c.style.visibility='';
+    const s=t&&t.closest('.slot'),from=c.parentNode;
+    if(s&&p.el.contains(s)&&s!==from){const bp=s.firstElementChild;if(bp)tray.appendChild(bp);s.appendChild(c);H.push({c,from,s,bp});SFX.click()}
+    else if(t&&t.closest('.tray')&&p.el.contains(t)&&from!==tray){tray.appendChild(c);H.push({c,from,s:null,bp:null});SFX.click()}}}});
+ $('[data-u]',b).onclick=()=>{const h=H.pop();if(!h||p.busy)return;SFX.click();h.from.appendChild(h.c);if(h.bp&&h.s)h.s.appendChild(h.bp)};
+ $('[data-k]',b).onclick=()=>{if(p.busy)return;
+  if(slots.some(s=>!s.firstElementChild)){SFX.no();const sl=$('.slots',b);sl.classList.add('shake');setTimeout(()=>sl.classList.remove('shake'),400);return}
+  p.busy=true;const so=T.map(t=>Math.hypot(...t)).sort((x,y)=>x-y);let n=0;
+  slots.forEach((s,i)=>{if(+s.firstElementChild.dataset.c===so[i])n++});
+  answer(p,n*3,15,n<5?'Urutan benar: c = '+so.join(' < '):'')}}
+function answer(p,pts,max,msg){p.s+=pts;$('.sc',p.el).textContent='⭐ '+p.s;pts?SFX.ok():SFX.no();
+ const f=document.createElement('div');f.className='fb';
+ f.innerHTML=pts===max?`🎉 Yey! Benar!<small>+${pts} poin</small>`:pts?`👍 Lumayan! +${pts} poin<small>${msg}</small>`:`😅 Tetot! Belum tepat<small>${msg}</small>`;
+ p.el.appendChild(f);
+ setTimeout(()=>{f.remove();p.i++;p.i>=p.q.length?finish(p):render(p)},1700)}
+function finish(p){p.done=true;$('.pr',p.el).textContent='Selesai';
+ $('.pb',p.el).innerHTML=`<div class="q" style="font-size:2rem">🏁 Selesai!<br>Skor: ${p.s}</div><div class="q">Menunggu tim lain…</div>`;
+ if(P.every(x=>x.done))setTimeout(winner,900)}
+const ov=$('#ov'),show=h=>{ov.innerHTML=h;ov.hidden=false},hide=()=>{ov.hidden=true};
+function confetti(){const e=['🎉','⭐','🎊','✨','📐'];for(let i=0;i<40;i++){const s=document.createElement('span');s.className='conf';s.textContent=e[i%5];s.style.left=Math.random()*100+'%';s.style.animationDuration=2+Math.random()*2.5+'s';s.style.animationDelay=Math.random()+'s';$('#st').appendChild(s);setTimeout(()=>s.remove(),6000)}}
 function winner(){clearInterval(bt);SFX.win();confetti();const[a,b]=P;
- const t=a.s===b.s?&#39;🤝 Seri!&#39;:`🏆 ${(a.s>b.s?a:b).name} Menang!`;
- show(`<div class="box"><h2>${t}</h2><div class="sb"><span style="color:var(--a)">Tim A: ${a.s}</span><span style="color:var(--b)">Tim B: ${b.s}</span></div><p>Skor maksimal 75 poin</p><div class="row"><button class="act" data-go="again">🔁 Main Lagi</button><button class="act" data-go="refl">💭 Refleksi</button></div></div>`)}
+ const t=a.s===b.s?'🤝 Seri!':`🏆 ${(a.s>b.s?a:b).name} Menang!`;
+ show(`<div class="box"><h2>${t}</h2><div class="sb"><span style="color:var(--a)">Tim A: ${a.s}</span><span style="color:var(--b)">Tim B: ${b.s}</span></div><p>Skor maksimal 75 poin</p><div class="row"><button class="act" data-go="again">🔁 Main Lagi</button><button class="act" data-go="refl">💭 Refleksi</button></div></div>`)}
 function intro(){show(`<div class="box"><h2>📐 Duel Pythagoras</h2><ul><li>Dua tim bermain bersamaan di panel masing-masing.</li><li>Tidak ada batas waktu. Jawab cepat, langsung lanjut ke soal berikutnya!</li><li>Semua soal harus diselesaikan. Tim dengan skor tertinggi menang.</li></ul><button class="act" style="font-size:1.6rem" data-go="count">▶ Mulai!</button></div>`)}
 function count(){let n=3;const t=()=>{if(n>0){show(`<div class="big">${n}</div>`);SFX.beep();n--;setTimeout(t,900)}else{show(`<div class="big">GO!</div>`);SFX.go();setTimeout(()=>{hide();start()},700)}};t()}
 function refl(){ clearInterval(bt); try{window.parent.postMessage({type:"goto",view:"refleksi"},"*")}catch(e){} }
 ov.onclick=e=>{const g=e.target.dataset.go;if(!g)return;SFX.click();({again:intro,count,refl,close:()=>P.length&&P.every(x=>x.done)?winner():hide()})[g]()};
-const setZ=v=>{Z=Math.min(1.6,Math.max(.6,Z+v));const s=$(&#39;#st&#39;);s.style.zoom=Z;s.style.width=100/Z+&#39;vw&#39;;s.style.height=100/Z+&#39;vh&#39;};
-$(&#39;#zi&#39;).onclick=()=>{SFX.click();setZ(.1)};$(&#39;#zo&#39;).onclick=()=>{SFX.click();setZ(-.1)};
-$(&#39;#fs&#39;).onclick=()=>{SFX.click();document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})};
-$(&#39;#bs&#39;).onclick=e=>{muted=!muted;e.target.textContent=muted?&#39;🔇&#39;:&#39;🔊&#39;;muted?clearInterval(bt):P.length&&!P.every(x=>x.done)&&bgm()};
-$(&#39;#br&#39;).onclick=()=>{SFX.click();refl()};
+const setZ=v=>{Z=Math.min(1.6,Math.max(.6,Z+v));const s=$('#st');s.style.zoom=Z;s.style.width=100/Z+'vw';s.style.height=100/Z+'vh'};
+$('#zi').onclick=()=>{SFX.click();setZ(.1)};$('#zo').onclick=()=>{SFX.click();setZ(-.1)};
+$('#fs').onclick=()=>{SFX.click();document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})};
+$('#bs').onclick=e=>{muted=!muted;e.target.textContent=muted?'🔇':'🔊';muted?clearInterval(bt):P.length&&!P.every(x=>x.done)&&bgm()};
+$('#br').onclick=()=>{SFX.click();refl()};
 intro();
-</script></body></html>'></iframe>
-    </div>
-
-    <!-- 4. REFLEKSI -->
-    <div id="view-refleksi" class="slide">
-      <div class="bh-bg">
-        <div class="bh-blob b1"></div><div class="bh-blob b2"></div><div class="bh-blob b3"></div>
-        <div class="bh-grid"></div>
-        <span class="bh-sym" style="left:6%;top:12%;font-size:2.6rem">😊</span>
-        <span class="bh-sym" style="right:8%;top:10%;font-size:2.4rem;animation-delay:-2s">⭐</span>
-        <span class="bh-sym" style="right:6%;bottom:22%;font-size:2.8rem;animation-delay:-4s">💖</span>
-        <span class="bh-sym" style="left:5%;bottom:20%;font-size:2.2rem;animation-delay:-1s">📐</span>
-      </div>
-
-      <div class="rf-in">
-        <div class="bh-badge">💭 Refleksi Pembelajaran</div>
-        <h2 class="rf-h">Bagaimana perasaanmu <span>hari ini?</span></h2>
-        <p class="rf-p">Ketuk salah satu emote untuk menceritakan perasaanmu setelah belajar Pythagoras!</p>
-
-        <div class="rf-stage" id="rf-stage">
-          <div class="rf-face" id="rf-face">🤔</div>
-          <div class="rf-title" id="rf-title">Pilih emote di bawah ya!</div>
-          <div class="rf-msg" id="rf-msg">Tidak ada jawaban yang salah, ceritakan saja apa adanya 😉</div>
-          <div class="rf-award" id="rf-award" hidden></div>
-        </div>
-
-        <div class="rf-row">
-          <button class="rf-btn" data-k="wow" onclick="rfPick('wow')"><b>🤩</b><span>Luar biasa!</span></button>
-          <button class="rf-btn" data-k="happy" onclick="rfPick('happy')"><b>😄</b><span>Senang</span></button>
-          <button class="rf-btn" data-k="ok" onclick="rfPick('ok')"><b>🙂</b><span>Biasa saja</span></button>
-          <button class="rf-btn" data-k="confused" onclick="rfPick('confused')"><b>😵‍💫</b><span>Bingung</span></button>
-          <button class="rf-btn" data-k="sad" onclick="rfPick('sad')"><b>😢</b><span>Sedih</span></button>
-        </div>
-
-        <div class="rf-q">
-          <span>💡 Bagian Pythagoras mana yang paling kamu suka?</span>
-          <span>🛠️ Soal mana yang sempat keliru, dan bagaimana memperbaikinya?</span>
-          <span>🌍 Di mana lagi Pythagoras bisa dipakai di sekitarmu?</span>
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-
-<!-- Modal Dialog Audio & Alert Pop-up -->
-<div id="modal-alert" class="modal-overlay">
-  <div class="modal-card">
-    <div id="modal-icon" style="font-size: 3rem;">🎉</div>
-    <h3 id="modal-title" style="color: var(--primary);">Pesan</h3>
-    <p id="modal-body" style="font-weight: 600; font-size: 1.05rem;"></p>
-    <button class="btn-action" onclick="closeModal()">Tutup</button>
-  </div>
-</div>
+<\/script></body></html></script>
 
 <script>
-/* Synthesized Web Audio API Sound Effects */
-let audioCtx = null;
-let soundMuted = false;
+const $=s=>document.querySelector(s),cols=['--c1','--c2','--c3','--c4'];
+let currentZoom=1;
 
-function initAudio() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
+/* ---------- Audio ---------- */
+let audioCtx=null,soundMuted=false;
+function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume()}
+function playSound(type){
+  if(soundMuted)return;initAudio();const now=audioCtx.currentTime;
+  const tone=(freq,t0,dur,wave,vol,endF)=>{const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=wave;o.frequency.setValueAtTime(freq,t0);if(endF)o.frequency.exponentialRampToValueAtTime(endF,t0+dur);g.gain.setValueAtTime(vol,t0);g.gain.exponentialRampToValueAtTime(.01,t0+dur);o.connect(g);g.connect(audioCtx.destination);o.start(t0);o.stop(t0+dur)};
+  if(type==='click')tone(600,now,.08,'sine',.2,800);
+  else if(type==='pop')tone(400,now,.08,'sine',.2,800);
+  else if(type==='yey'||type==='correct')[523.25,659.25,783.99,1046.5].forEach((f,i)=>tone(f,now+i*.08,.2,'triangle',.2));
+  else if(type==='tetot'||type==='wrong'){const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sawtooth';o.frequency.setValueAtTime(180,now);o.frequency.linearRampToValueAtTime(110,now+.3);g.gain.setValueAtTime(.25,now);g.gain.exponentialRampToValueAtTime(.01,now+.3);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+.3)}
+  else if(type==='jeng')[261.63,329.63,392].forEach(f=>tone(f,now,.4,'sine',.15));
 }
+$('#btn-sound').onclick=function(){soundMuted=!soundMuted;this.textContent=soundMuted?'🔇 Mute':'🔊 Suara'};
 
-function playSound(type) {
-  if (soundMuted) return;
-  initAudio();
-  const now = audioCtx.currentTime;
-
-  if (type === 'click' || type === 'pop') {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(type === 'click' ? 600 : 400, now);
-    osc.frequency.exponentialRampToValueAtTime(800, now + 0.08);
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(now);
-    osc.stop(now + 0.08);
-  } else if (type === 'yey' || type === 'correct') {
-    [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-      gain.gain.setValueAtTime(0.2, now + idx * 0.08);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + idx * 0.08 + 0.2);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(now + idx * 0.08);
-      osc.stop(now + idx * 0.08 + 0.2);
-    });
-  } else if (type === 'tetot' || type === 'wrong') {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(180, now);
-    osc.frequency.linearRampToValueAtTime(110, now + 0.3);
-    gain.gain.setValueAtTime(0.25, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start(now);
-    osc.stop(now + 0.3);
-  } else if (type === 'jeng') {
-    [261.63, 329.63, 392.00].forEach((freq) => {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start(now);
-      osc.stop(now + 0.4);
-    });
-  }
-}
-
-/* Sound Toggle */
-document.getElementById('btn-sound').onclick = function() {
-  soundMuted = !soundMuted;
-  this.textContent = soundMuted ? '🔇 Mute' : '🔊 Suara';
-};
-
-/* Screen Scale / Zoom Controls */
-let currentZoom = 1;
-function applyZoom(delta) {
-  currentZoom = Math.min(1.5, Math.max(0.7, currentZoom + delta));
-  const c = document.getElementById('app-container');
-  c.style.zoom = currentZoom;
-  c.style.width = (100 / currentZoom) + 'vw';
-  c.style.height = (100 / currentZoom) + 'dvh';
-  playSound('pop');
-}
-document.getElementById('btn-zoom-in').onclick = () => applyZoom(0.1);
-document.getElementById('btn-zoom-out').onclick = () => applyZoom(-0.1);
-
-/* Fullscreen Control */
-function fsActive() {
-  return document.fullscreenElement || document.webkitFullscreenElement;
-}
-function fsFallback() {
-  showModal('Layar Penuh',
-    'Tempat file ini dibuka tidak mengizinkan layar penuh. Buka file langsung di browser (klik dua kali file .html), lalu tekan F11.',
-    '⛶');
-}
-function toggleFullscreen() {
-  const el = document.documentElement;
-  if (!fsActive()) {
-    const req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
-    if (!req) return fsFallback();
-    try {
-      const p = req.call(el);
-      if (p && p.catch) p.catch(fsFallback);
-    } catch (e) { fsFallback(); }
-  } else {
-    const exit = document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen;
-    if (exit) exit.call(document);
-  }
-}
-document.getElementById('btn-fullscreen').onclick = function () {
+/* ---------- Navigasi antar halaman ---------- */
+function sizeStage(){document.documentElement.style.setProperty('--navh',$('#topnav').offsetHeight+'px')}
+addEventListener('resize',sizeStage);
+function loadGame(){const f=$('#game-frame');if(f.dataset.ok)return;f.dataset.ok=1;f.srcdoc=$('#game-src').textContent.replace(/<\\\/script>/g,'</'+'script>')}
+function switchNav(k){
   playSound('click');
-  toggleFullscreen();
-};
-['fullscreenchange', 'webkitfullscreenchange'].forEach(ev =>
-  document.addEventListener(ev, () => {
-    document.getElementById('btn-fullscreen').textContent = fsActive() ? '⛶ Keluar Layar Penuh' : '⛶ Layar Penuh';
-  })
-);
+  document.querySelectorAll('.view').forEach(v=>v.hidden=v.id!=='v-'+k);
+  document.querySelectorAll('nav .lk[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===k));
+  if(k==='game')loadGame();
+  sizeStage();scrollTo(0,0);
+}
+function openYoutubeVideo(){playSound('click');window.open('https://youtu.be/JJaptwjRbxc?si=QqU1fzTN1Ne1J7Nw','_blank')}
+function go(k){
+  if(k==='video')return openYoutubeVideo();
+  const m=/^slide(\d+)$/.exec(k);
+  if(m){switchNav('materi');gotoSlide(+m[1]);return}
+  switchNav(k);
+}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
+  const s=e.target.closest('[data-s]');
+  if(s){switchNav('beranda');setTimeout(()=>document.getElementById(s.dataset.s).scrollIntoView(),30)}
+});
+addEventListener('message',e=>{const d=e.data;if(d&&d.type==='goto'&&d.view==='refleksi')switchNav('refleksi')});
 
-/* Navigation Switcher */
-function switchNav(navKey) {
+
+/* ---------- Beranda: bubble hero ---------- */
+['PYTHA','GORAS'].forEach(w=>{const r=document.createElement('div');r.className='row';
+  [...w].forEach((ch,i)=>{const b=document.createElement('span');b.className='bub';b.textContent=ch;b.style.setProperty('--c',`var(${cols[(i+w.length)%4]})`);b.onclick=()=>popB(b);r.appendChild(b)});$('#word').appendChild(r)});
+function popB(b){const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+  for(let i=0;i<10;i++){const s=document.createElement('i');s.className='spark';s.style.cssText=`left:${x}px;top:${y}px;background:var(${cols[i%4]});--x:${Math.cos(i*.63)*60}px;--y:${Math.sin(i*.63)*60}px`;document.body.appendChild(s);setTimeout(()=>s.remove(),800)}
+  b.classList.add('pop');setTimeout(()=>{b.classList.remove('pop');b.classList.add('back');setTimeout(()=>b.classList.remove('back'),700)},1500)}
+['a²','b²','c²','√','90°','π','△','='].forEach((t,i)=>{const b=document.createElement('span');b.className='bub';b.textContent=t;b.style.setProperty('--c',`var(${cols[i%4]})`);$('#band').appendChild(b)});
+const t1='a² + b² = c² ✦ SEGITIGA SIKU-SIKU ✦ HIPOTENUSA ✦ TRIPEL 3-4-5 ✦ MISI DETEKTIF ✦ ',t2='√(a² + b²) ✦ SISI MIRING ✦ 5-12-13 ✦ 8-15-17 ✦ KEBALIKAN PYTHAGORAS ✦ ';
+$('#m1').textContent=t1.repeat(6);$('#m2').textContent=t2.repeat(6);
+
+/* edisi → langsung membuka slide materinya */
+[['Kenali Segitiga','Sisi siku-siku dan hipotenusa.','a','slide1'],['Temukan Rumus','Luas persegi pada tiap sisi.','c²','slide3'],['Misi Detektif','Empat tantangan seru.','🔍','slide4'],['Tripel Pythagoras','3-4-5 dan kawan-kawannya.','3·4·5','slide5'],['Kebalikan Teorema','Siku-siku, lancip, atau tumpul?','90°','slide7'],['Penerapan','Tangga, tiang, dan jalan pintas.','√','slide9']]
+.forEach((x,i)=>{const b=document.createElement('button');b.className='ed';b.dataset.go=x[3];b.style.setProperty('--c',`var(${cols[i%4]})`);
+  b.innerHTML=`<div class="n">${String(i+1).padStart(2,'0')}</div><h3>${x[0]}</h3><p>${x[1]}</p><span class="bub"><b>${x[2]}</b></span>`;$('#eds').appendChild(b)});
+
+/* kalender tripel */
+const TR=[[3,4,5],[5,12,13],[8,15,17],[7,24,25],[20,21,29],[9,40,41],[12,35,37],[11,60,61],[6,8,10],[9,12,15],[15,20,25],[12,16,20]];
+const now=new Date(),Y=now.getFullYear(),M=now.getMonth(),dim=new Date(Y,M+1,0).getDate(),off=(new Date(Y,M,1).getDay()+6)%7;
+$('#mn').textContent=now.toLocaleDateString('id-ID',{month:'long',year:'numeric'});
+for(let i=0;i<off;i++)$('#dg').appendChild(document.createElement('span'));
+function sel(d){const t=TR[(d-1)%12];document.querySelectorAll('#dg button').forEach(b=>b.classList.toggle('on',+b.dataset.d===d));
+  $('#dl').textContent='Tanggal '+d;$('#db').textContent=t.join('·');
+  $('#dq').innerHTML=`${t[0]}² + ${t[1]}² = ${t[0]**2} + ${t[1]**2} = ${t[2]**2} = <em>${t[2]}²</em>`;
+  $('#dn').textContent=d===now.getDate()?'Tripel hari ini! Segitiga siku-siku dengan sisi '+t.join(', ')+'.':'Segitiga siku-siku dengan sisi '+t.join(', ')+'.'}
+for(let d=1;d<=dim;d++){const b=document.createElement('button');b.dataset.d=d;b.innerHTML=`<b>${d}</b><small>${TR[(d-1)%12][2]}</small>`;if(d===now.getDate())b.classList.add('td');b.onclick=()=>sel(d);$('#dg').appendChild(b)}
+sel(now.getDate());
+
+/* kartu anggota */
+$('#in').oninput=e=>{const v=e.target.value.trim();$('#cn').textContent=v||'Nama Kamu';let h=0;for(const c of v)h=(h*31+c.charCodeAt(0))%9000;$('#ci').textContent='ID · '+String(1000+h)+' · 3-4-5'};
+['a²','+','b²','=','c²','√','90°','△'].forEach(t=>{const b=document.createElement('span');b.className='bub';b.textContent=t;$('#fb').appendChild(b)});
+
+/* ---------- Modal ---------- */
+function showModal(title,text,icon='🎉'){$('#modal-title').textContent=title;$('#modal-body').textContent=text;$('#modal-icon').textContent=icon;$('#modal-alert').classList.add('active')}
+function closeModal(){playSound('click');$('#modal-alert').classList.remove('active')}
+
+/* ---------- Slide materi ---------- */
+function gotoSlide(n){
   playSound('click');
-  document.querySelectorAll('main > .slide').forEach(s => s.classList.remove('active'));
-  const t = document.getElementById('view-' + navKey);
-  if (t) t.classList.add('active');
+  document.querySelectorAll('.slide-tab').forEach((t,i)=>t.classList.toggle('active',i+1===n));
+  for(let i=1;i<=10;i++){const s=document.getElementById('s'+i);if(s)s.classList.toggle('active',i===n)}
+  const a=document.querySelector('.slide-tab.active');if(a)a.scrollIntoView({block:'nearest',inline:'center'});
 }
 
-/* Youtube Direct Launcher */
-function openYoutubeVideo() {
-  playSound('click');
-  window.open('https://youtu.be/JJaptwjRbxc?si=QqU1fzTN1Ne1J7Nw', '_blank');
-}
-
-/* Slide Materi Switcher */
-let activeSlideNum = 1;
-function gotoSlide(n) {
-  playSound('click');
-  activeSlideNum = n;
-  document.querySelectorAll('.slide-tab').forEach((tab, i) => {
-    tab.classList.toggle('active', (i + 1) === n);
-  });
-  for (let i = 1; i <= 10; i++) {
-    const s = document.getElementById('s' + i);
-    if (s) s.classList.toggle('active', i === n);
-  }
-}
-
-/* Modal Alert Helper */
-function showModal(title, text, icon = '🎉') {
-  document.getElementById('modal-title').textContent = title;
-  document.getElementById('modal-body').textContent = text;
-  document.getElementById('modal-icon').textContent = icon;
-  document.getElementById('modal-alert').classList.add('active');
-}
-function closeModal() {
-  playSound('click');
-  document.getElementById('modal-alert').classList.remove('active');
-}
-
-/* SLIDE 1 Animation Logic */
-let s1Busy = false;
-async function animBerkenalan() {
-  if (s1Busy) return;
-  s1Busy = true;
-  const btn = document.getElementById('s1-btn');
-  btn.disabled = true;
-  const ids = ['g-a', 'g-b', 'g-c'];
-  const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-  // reset supaya bisa diulang
-  ids.forEach(id => document.getElementById(id).classList.remove('pop'));
+/* Slide 1 */
+let s1Busy=false;
+async function animBerkenalan(){
+  if(s1Busy)return;s1Busy=true;
+  const btn=document.getElementById('s1-btn');btn.disabled=true;
+  const ids=['g-a','g-b','g-c'],sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  ids.forEach(id=>document.getElementById(id).classList.remove('pop'));
   void document.getElementById('s1').offsetWidth;
-
-  // urutan acak
-  const order = ids.slice().sort(() => Math.random() - 0.5);
-  for (const id of order) {
-    playSound('pop');
-    document.getElementById(id).classList.add('pop');
-    await sleep(900);
-    playSound('click');   // bunyi "ter-drop"
-    await sleep(900);
+  for(const id of ids.slice().sort(()=>Math.random()-.5)){
+    playSound('pop');document.getElementById(id).classList.add('pop');await sleep(900);playSound('click');await sleep(900);
   }
-  playSound('yey');
-  btn.textContent = '🔁 Ulangi Perkenalan';
-  btn.disabled = false;
-  s1Busy = false;
+  playSound('yey');btn.textContent='🔁 Ulangi Perkenalan';btn.disabled=false;s1Busy=false;
 }
 
-/* SLIDE 2: drag & drop (mouse + sentuh) dengan highlight */
-function s2Free(zone) {
-  if (zone._item) zone._item.classList.remove('used');
-  zone._item = null;
-  zone.textContent = '';
-  delete zone.dataset.current;
-  zone.classList.remove('filled');
+/* Slide 2 */
+function s2Free(zone){if(zone._item)zone._item.classList.remove('used');zone._item=null;zone.textContent='';delete zone.dataset.current;zone.classList.remove('filled')}
+function s2Place(zone,item){
+  document.querySelectorAll('.s2-drop').forEach(z=>{if(z._item===item)s2Free(z)});
+  s2Free(zone);zone._item=item;zone.dataset.current=item.dataset.label;zone.textContent=item.textContent;item.classList.add('used');
+  zone.classList.remove('filled');void zone.offsetWidth;zone.classList.add('filled');playSound('pop');
 }
-function s2Place(zone, item) {
-  document.querySelectorAll('.s2-drop').forEach(z => { if (z._item === item) s2Free(z); });
-  s2Free(zone);
-  zone._item = item;
-  zone.dataset.current = item.dataset.label;
-  zone.textContent = item.textContent;
-  item.classList.add('used');
-  zone.classList.remove('filled');
-  void zone.offsetWidth;
-  zone.classList.add('filled');
-  playSound('pop');
-}
-function initS2DragDrop() {
-  const zones = document.querySelectorAll('.s2-drop');
-  const zoneAt = (el, x, y) => {
-    el.style.visibility = 'hidden';
-    const t = document.elementFromPoint(x, y);
-    el.style.visibility = '';
-    return t && t.closest('.s2-drop');
-  };
-  document.querySelectorAll('.s2-drag').forEach(el => {
-    el.draggable = false;
-    el.addEventListener('pointerdown', e => {
-      if (el.classList.contains('used')) return;
-      e.preventDefault();
-      el.setPointerCapture(e.pointerId);
-      playSound('pop');
-      const x0 = e.clientX, y0 = e.clientY;
-      el.classList.add('dragging');
-      el.onpointermove = m => {
-        el.style.transform = `translate(${(m.clientX - x0) / currentZoom}px, ${(m.clientY - y0) / currentZoom}px)`;
-        const z = zoneAt(el, m.clientX, m.clientY);
-        zones.forEach(d => d.classList.toggle('hover', d === z));
-      };
-      const end = u => {
-        el.onpointermove = el.onpointerup = el.onpointercancel = null;
-        el.classList.remove('dragging');
-        el.style.transform = '';
-        const z = zoneAt(el, u.clientX, u.clientY);
-        zones.forEach(d => d.classList.remove('hover'));
-        if (z) s2Place(z, el);
-      };
-      el.onpointerup = end;
-      el.onpointercancel = end;
+function initS2DragDrop(){
+  const zones=document.querySelectorAll('.s2-drop');
+  const zoneAt=(el,x,y)=>{el.style.visibility='hidden';const t=document.elementFromPoint(x,y);el.style.visibility='';return t&&t.closest('.s2-drop')};
+  document.querySelectorAll('.s2-drag').forEach(el=>{
+    el.draggable=false;
+    el.addEventListener('pointerdown',e=>{
+      if(el.classList.contains('used'))return;
+      e.preventDefault();el.setPointerCapture(e.pointerId);playSound('pop');
+      const x0=e.clientX,y0=e.clientY;el.classList.add('dragging');
+      el.onpointermove=m=>{el.style.transform=`translate(${(m.clientX-x0)/currentZoom}px,${(m.clientY-y0)/currentZoom}px)`;const z=zoneAt(el,m.clientX,m.clientY);zones.forEach(d=>d.classList.toggle('hover',d===z))};
+      const end=u=>{el.onpointermove=el.onpointerup=el.onpointercancel=null;el.classList.remove('dragging');el.style.transform='';const z=zoneAt(el,u.clientX,u.clientY);zones.forEach(d=>d.classList.remove('hover'));if(z)s2Place(z,el)};
+      el.onpointerup=end;el.onpointercancel=end;
     });
   });
-  zones.forEach(z => z.addEventListener('click', () => {
-    if (z._item) { playSound('click'); s2Free(z); }
-  }));
+  zones.forEach(z=>z.addEventListener('click',()=>{if(z._item){playSound('click');s2Free(z)}}));
 }
-
-let s2Errors = 0;
-function checkMatchS2() {
+let s2Errors=0;
+function checkMatchS2(){
   playSound('jeng');
-  const drops = document.querySelectorAll('.s2-drop');
-  let correct = true;
-  drops.forEach(d => {
-    if (!d.dataset.current || d.dataset.current !== d.dataset.side) {
-      if (d.dataset.side.startsWith('sisi-siku') && d.dataset.current && d.dataset.current.startsWith('sisi-siku')) {
-        // valid
-      } else {
-        correct = false;
-      }
+  let correct=true;
+  document.querySelectorAll('.s2-drop').forEach(d=>{
+    if(!d.dataset.current||d.dataset.current!==d.dataset.side){
+      if(!(d.dataset.side.startsWith('sisi-siku')&&d.dataset.current&&d.dataset.current.startsWith('sisi-siku')))correct=false;
     }
   });
-
-  if (correct) {
-    playSound('yey');
-    showModal('Hebat!', 'Semua bagian segitiga siku-siku terpasang dengan tepat!', '🎉');
-  } else {
-    s2Errors++;
-    playSound('tetot');
-    if (s2Errors >= 3) {
-      showModal('Aduh Salah!', 'Jawaban belum tepat. Sisi miring dinamakan Hipotenusa dan dua sisi lainnya adalah Sisi Siku-siku.', '😅');
-    } else {
-      showModal('Coba Lagi', 'Masih ada posisi bubble yang belum tepat ya!', '🤔');
-    }
+  if(correct){playSound('yey');showModal('Hebat!','Semua bagian segitiga siku-siku terpasang dengan tepat!','🎉')}
+  else{s2Errors++;playSound('tetot');
+    if(s2Errors>=3)showModal('Aduh Salah!','Jawaban belum tepat. Sisi miring dinamakan Hipotenusa dan dua sisi lainnya adalah Sisi Siku-siku.','😅');
+    else showModal('Coba Lagi','Masih ada posisi bubble yang belum tepat ya!','🤔');
   }
 }
-
-/* SLIDE 2: segitiga berputar 90° tiap "Mulai Ulang", kotak jawaban mengikuti sisi */
-let s2Rot = 0;
-function s2Layout(animate) {
-  const C = [200, 140], W = 400, H = 280;
-  const base = [[125, 190], [275, 190], [125, 90]]; // R (siku), P, Q
-  const rot = (p, k) => {
-    let x = p[0] - C[0], y = p[1] - C[1];
-    for (let i = 0; i < k; i++) [x, y] = [-y, x];
-    return [x + C[0], y + C[1]];
-  };
-  const [R, P, Q] = base.map(p => rot(p, s2Rot % 4));
-  document.getElementById('s2-poly').setAttribute('points', `${R} ${P} ${Q}`);
-  // tanda siku-siku di sudut R
-  const un = (a, b) => { const d = Math.hypot(b[0]-a[0], b[1]-a[1]); return [(b[0]-a[0])/d*16, (b[1]-a[1])/d*16]; };
-  const u = un(R, P), v = un(R, Q);
-  document.getElementById('s2-mark').setAttribute('d',
-    `M ${R[0]+u[0]} ${R[1]+u[1]} L ${R[0]+u[0]+v[0]} ${R[1]+u[1]+v[1]} L ${R[0]+v[0]} ${R[1]+v[1]}`);
-  const cen = [(R[0]+P[0]+Q[0])/3, (R[1]+P[1]+Q[1])/3];
-  const sides = [['.z-a', R, Q, 100], ['.z-b', R, P, 100], ['.z-c', Q, P, 112]];
-  sides.forEach(([sel, A, B, w]) => {
-    const h = 40;
-    const m = [(A[0]+B[0])/2, (A[1]+B[1])/2];
-    let n = [-(B[1]-A[1]), B[0]-A[0]];
-    const len = Math.hypot(n[0], n[1]); n = [n[0]/len, n[1]/len];
-    if (n[0]*(m[0]-cen[0]) + n[1]*(m[1]-cen[1]) < 0) n = [-n[0], -n[1]];
-    const d = Math.abs(n[0])*w/2 + Math.abs(n[1])*h/2 + 12;   // jarak aman dari garis
-    const cx = m[0] + n[0]*d, cy = m[1] + n[1]*d;
-    const z = document.querySelector('.s2-board ' + sel);
-    z.style.width = w + 'px';
-    z.style.left = Math.max(0, Math.min(W - w, cx - w/2)) + 'px';
-    z.style.top  = Math.max(0, Math.min(H - h, cy - h/2)) + 'px';
+let s2Rot=0;
+function s2Layout(animate){
+  const C=[200,140],W=400,H=280,base=[[125,190],[275,190],[125,90]];
+  const rot=(p,k)=>{let x=p[0]-C[0],y=p[1]-C[1];for(let i=0;i<k;i++)[x,y]=[-y,x];return[x+C[0],y+C[1]]};
+  const [R,P,Q]=base.map(p=>rot(p,s2Rot%4));
+  document.getElementById('s2-poly').setAttribute('points',`${R} ${P} ${Q}`);
+  const un=(a,b)=>{const d=Math.hypot(b[0]-a[0],b[1]-a[1]);return[(b[0]-a[0])/d*16,(b[1]-a[1])/d*16]};
+  const u=un(R,P),v=un(R,Q);
+  document.getElementById('s2-mark').setAttribute('d',`M ${R[0]+u[0]} ${R[1]+u[1]} L ${R[0]+u[0]+v[0]} ${R[1]+u[1]+v[1]} L ${R[0]+v[0]} ${R[1]+v[1]}`);
+  const cen=[(R[0]+P[0]+Q[0])/3,(R[1]+P[1]+Q[1])/3];
+  [['.z-a',R,Q,100],['.z-b',R,P,100],['.z-c',Q,P,112]].forEach(([sel,A,B,w])=>{
+    const h=40,m=[(A[0]+B[0])/2,(A[1]+B[1])/2];
+    let n=[-(B[1]-A[1]),B[0]-A[0]];const len=Math.hypot(n[0],n[1]);n=[n[0]/len,n[1]/len];
+    if(n[0]*(m[0]-cen[0])+n[1]*(m[1]-cen[1])<0)n=[-n[0],-n[1]];
+    const d=Math.abs(n[0])*w/2+Math.abs(n[1])*h/2+12,cx=m[0]+n[0]*d,cy=m[1]+n[1]*d;
+    const z=document.querySelector('.s2-board '+sel);
+    z.style.width=w+'px';z.style.left=Math.max(0,Math.min(W-w,cx-w/2))+'px';z.style.top=Math.max(0,Math.min(H-h,cy-h/2))+'px';
   });
-  if (animate) {
-    const svg = document.getElementById('s2-svg');
-    svg.classList.remove('spin'); void svg.offsetWidth; svg.classList.add('spin');
-  }
+  if(animate){const svg=document.getElementById('s2-svg');svg.classList.remove('spin');void svg.offsetWidth;svg.classList.add('spin')}
 }
-
-function resetS2() {
-  playSound('click');
-  s2Errors = 0;
+function resetS2(){
+  playSound('click');s2Errors=0;
   document.querySelectorAll('.s2-drop').forEach(s2Free);
-  document.querySelectorAll('.s2-drag').forEach(i => i.classList.remove('used'));
-  s2Rot++;
-  s2Layout(true);
+  document.querySelectorAll('.s2-drag').forEach(i=>i.classList.remove('used'));
+  s2Rot++;s2Layout(true);
 }
 
-/* SLIDE 3: klik persegi → sorot rumus di kanan (tanpa pop-up) */
-function clickSquare(sq) {
+/* Slide 3 */
+function clickSquare(sq){
   playSound('pop');
-  document.querySelectorAll('.sq').forEach(g => g.classList.toggle('sel', g.id === 'sq-' + sq));
-  document.querySelectorAll('.fcard').forEach(c =>
-    c.classList.toggle('hl', c.id === 'f-main' || c.id === 'f-' + sq)
-  );
+  document.querySelectorAll('.sq').forEach(g=>g.classList.toggle('sel',g.id==='sq-'+sq));
+  document.querySelectorAll('.fcard').forEach(c=>c.classList.toggle('hl',c.id==='f-main'||c.id==='f-'+sq));
 }
 
-/* ===== SLIDE 4: MISI DETEKTIF ===== */
-const Ds = {i:0, score:0, tries:0, badges:[], locked:false};
-const dI = v => `<i>${v}</i>`, dP = (b,e) => `${b}<sup>${e}</sup>`, dS = v => dP(dI(v),2);
-const dBadgeIco = ['🔍','🗝️','📏','🏃'];
-const dEl = id => document.getElementById(id);
-const dSay = t => dEl('d-say').innerHTML = t;
+/* ---------- Slide 4: Misi Detektif ---------- */
+const Ds={i:0,score:0,tries:0,badges:[],locked:false};
+const dI=v=>`<i>${v}</i>`,dP=(b,e)=>`${b}<sup>${e}</sup>`,dS=v=>dP(dI(v),2);
+const dBadgeIco=['🔍','🗝️','📏','🏃'];
+const dEl=id=>document.getElementById(id);
+const dSay=t=>dEl('d-say').innerHTML=t;
 function dAnim(cls){const c=dEl('d-char');c.classList.remove('jump','wobble');void c.offsetWidth;c.classList.add(cls)}
 
-const DCH = [
- { t:'Mencari Luas yang Hilang',
-   q:'Jika luas kedua persegi pada sisi siku-siku adalah 25 dan 144 satuan persegi, berapakah luas persegi pada sisi miring?',
-   o:['119 satuan persegi','149 satuan persegi','169 satuan persegi','289 satuan persegi'], a:2,
-   hint:'Petunjuk: jumlahkan dulu kedua luas yang sudah diketahui, yaitu 25 dan 144.',
-   vis:()=>`<svg class="d-svg" viewBox="0 0 260 300">
-     <polygon points="70,125 178,170 223,62 115,17" fill="#fbcfe8" stroke="#db2777" stroke-width="2"/>
-     <rect x="25" y="125" width="45" height="45" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
-     <rect x="70" y="170" width="108" height="108" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
-     <polygon points="70,170 178,170 70,125" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
-     <path d="M70 158H82V170" fill="none" stroke="#7c3aed" stroke-width="2"/>
-     <g font-weight="800" text-anchor="middle"><text x="47" y="151" font-size="13">25</text><text x="124" y="229" font-size="22">144</text>
-     <text id="d1-t" x="146" y="100" font-size="26">🔒</text>
-     <text x="12" y="152" font-size="11" fill="#7c3aed">5</text><text x="124" y="293" font-size="12" fill="#7c3aed">12</text><text x="118" y="152" font-size="11" fill="#7c3aed">13</text></g>
-     <rect id="d1-g1" x="25" y="125" width="45" height="45" fill="#fef08a" opacity="0"/><rect id="d1-g2" x="70" y="170" width="108" height="108" fill="#bbf7d0" opacity="0"/></svg>
-     <p style="font-size:.8rem;text-align:center;font-weight:700;color:#64748b">Panjang sisi: 5, 12, 13 satuan</p>`,
-   win:()=>{
-     playSound('pop'); dEl('d1-t').textContent='🔓';
-     const mv=(id,dx,dy,d)=>dEl(id).animate([{opacity:.9,transform:'translate(0,0) scale(1)'},{opacity:.9,transform:`translate(${dx}px,${dy}px) scale(.45)`,offset:.8},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.45)`}],{duration:1500,delay:d,fill:'forwards'});
-     const g1=dEl('d1-g1'),g2=dEl('d1-g2');
-     g1.style.transformOrigin='47px 147px';g2.style.transformOrigin='124px 224px';
-     mv('d1-g1',99,-54,0);mv('d1-g2',22,-130,300);
-     setTimeout(()=>{const t=dEl('d1-t');t.textContent='169';t.setAttribute('font-size','22');playSound('click')},1700);
-     dFb(`${dEl('d-fb').innerHTML}`,true);
-     dEl('d-fb').innerHTML=`<span class="d-box">25 + 144 = 169</span><br>Benar! Jumlah luas kedua persegi pada sisi siku-siku sama dengan luas persegi pada sisi miring.`;
-     dNextBtn();
-   }},
- { t:'Lengkapi Rumus Rahasia', type:'safe',
-   q:'Rumus Pythagoras belum lengkap. Bisakah kamu menemukan bagian yang hilang? Seret atau ketuk kartu jawabanmu.',
-   cards:[['c',dI('c')],['c²',dS('c')],['a + b',`${dI('a')} + ${dI('b')}`],['(a + b)²',`(${dI('a')} + ${dI('b')})<sup>2</sup>`]], a:'c²',
-   hint:'Petunjuk: bagian yang hilang adalah kuadrat dari sisi miring.',
-   vis:()=>`<div class="d-safe" id="d2-safe"><div class="d-lock" id="d2-lock">🔒</div>
-     <div class="d-form"><span>${dS('a')}</span><span>+ ${dS('b')} =</span><span class="d-slot" id="d2-slot">?</span></div></div>`,
-   win:()=>{
-     dEl('d2-safe').classList.add('open');dEl('d2-lock').textContent='🔓';dEl('d2-slot').innerHTML=dS('c');dEl('d2-slot').style.border='3px solid var(--accent-green)';
-     dEl('d-fb').innerHTML=`<span class="d-box">${dS('a')} + ${dS('b')} = ${dS('c')}</span><br>Benar! ${dI('a')} dan ${dI('b')} adalah sisi siku-siku, sedangkan ${dI('c')} adalah sisi miring (hipotenusa).`;
-     dNextBtn();
-   }},
- { t:'Hitung Panjang Sisi',
-   q:'Berapakah panjang sisi siku-siku yang belum diketahui?',
-   o:['9 cm','12 cm','15 cm','25 cm'], a:2,
-   hint:'Petunjuk: 17 cm adalah sisi miring. Kuadratkan dulu, lalu kurangi dengan kuadrat sisi yang diketahui.',
-   vis:()=>`<svg class="d-svg" viewBox="0 0 220 150">
-     <polygon points="30,110 180,110 30,30" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
-     <path d="M30 98H42V110" fill="none" stroke="#7c3aed" stroke-width="2"/>
-     <g font-weight="900" font-size="16" fill="#1d2340"><text x="22" y="76" text-anchor="end">8 cm</text><text id="d3-q" x="105" y="134" text-anchor="middle" fill="#ff5470" font-size="20">?</text><text x="135" y="62">17 cm</text></g></svg>`,
-   win:()=>{
-     dEl('d-fb').innerHTML=`Benar! Misalkan sisi yang ditanya ${dI('a')} dan sisi 8 cm ${dI('b')}.<div id="d-steps"></div><button class="btn-action" id="d-more" style="margin-top:.4rem">Lanjut ➜</button>`;
-     const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dP(17,2)} = ${dS('a')} + ${dP(8,2)}`,`289 = ${dS('a')} + 64`,`${dS('a')} = 289 − 64`,`${dS('a')} = 225`,`${dI('a')} = √225`];
-     dSteps(L,`${dI('a')} = 15 cm`,false,()=>{dEl('d3-q').textContent='15 cm';dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Panjang sisi diperoleh dengan menarik akar kuadrat dari kedua ruas.`);dNextBtn()});
-   }},
- { t:'Pythagoras dalam Kehidupan Nyata',
-   q:'Rani berjalan lurus menyeberangi lapangan dari satu sudut ke sudut yang berseberangan. Jika panjang lapangan 15 m dan lebarnya 8 m, berapakah jarak yang ditempuh Rani?',
-   o:['13 m','17 m','23 m','25 m'], a:1,
-   hint:'Petunjuk: jalur Rani adalah diagonal, yaitu sisi miring, bukan panjang atau lebar lapangan.',
-   vis:()=>`<svg class="d-svg" viewBox="0 0 240 150">
-     <rect x="30" y="25" width="180" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
-     <path d="M30 113H38V121M202 121V113H210M210 33H202V25M38 25V33H30" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-     <line id="d4-l" x1="30" y1="121" x2="210" y2="25" stroke="#ff5470" stroke-width="3" stroke-dasharray="6 5" opacity="0"/>
-     <text id="d4-r" x="30" y="121" font-size="22" text-anchor="middle">🧍‍♀️</text><text x="210" y="24" font-size="22" text-anchor="middle">🚩</text>
-     <g font-weight="900" font-size="13" fill="#1d2340" text-anchor="middle"><text x="120" y="141">15 m</text><text x="14" y="76">8 m</text><text x="68" y="40" fill="#7c3aed" font-size="10">Rani</text></g></svg>`,
-   win:()=>{
-     dEl('d4-l').setAttribute('opacity','1');
-     dEl('d4-r').animate([{transform:'translate(0,0)'},{transform:'translate(180px,-96px)'}],{duration:3600,fill:'forwards',easing:'ease-in-out'});
-     dEl('d-fb').innerHTML=`<div id="d-steps"></div>`;
-     const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dS('c')} = ${dP(15,2)} + ${dP(8,2)}`,`${dS('c')} = 225 + 64`,`${dS('c')} = 289`,`${dI('c')} = √289`];
-     dSteps(L,`${dI('c')} = 17 m`,true,()=>{dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Tepat sekali! Ternyata Pythagoras juga bisa membantu kita menyelesaikan masalah dalam kehidupan sehari-hari.`);dNextBtn(true)});
-   }}
+const DCH=[
+ {t:'Mencari Luas yang Hilang',
+  q:'Jika luas kedua persegi pada sisi siku-siku adalah 25 dan 144 satuan persegi, berapakah luas persegi pada sisi miring?',
+  o:['119 satuan persegi','149 satuan persegi','169 satuan persegi','289 satuan persegi'],a:2,
+  hint:'Petunjuk: jumlahkan dulu kedua luas yang sudah diketahui, yaitu 25 dan 144.',
+  vis:()=>`<svg class="d-svg" viewBox="0 0 260 300">
+    <polygon points="70,125 178,170 223,62 115,17" fill="#fbcfe8" stroke="#db2777" stroke-width="2"/>
+    <rect x="25" y="125" width="45" height="45" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
+    <rect x="70" y="170" width="108" height="108" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+    <polygon points="70,170 178,170 70,125" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M70 158H82V170" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <g font-weight="800" text-anchor="middle"><text x="47" y="151" font-size="13">25</text><text x="124" y="229" font-size="22">144</text>
+    <text id="d1-t" x="146" y="100" font-size="26">🔒</text>
+    <text x="12" y="152" font-size="11" fill="#7c3aed">5</text><text x="124" y="293" font-size="12" fill="#7c3aed">12</text><text x="118" y="152" font-size="11" fill="#7c3aed">13</text></g>
+    <rect id="d1-g1" x="25" y="125" width="45" height="45" fill="#fef08a" opacity="0"/><rect id="d1-g2" x="70" y="170" width="108" height="108" fill="#bbf7d0" opacity="0"/></svg>
+    <p style="font-size:.8rem;text-align:center;font-weight:600;color:#64748b">Panjang sisi: 5, 12, 13 satuan</p>`,
+  win:()=>{
+    playSound('pop');dEl('d1-t').textContent='🔓';
+    const mv=(id,dx,dy,d)=>dEl(id).animate([{opacity:.9,transform:'translate(0,0) scale(1)'},{opacity:.9,transform:`translate(${dx}px,${dy}px) scale(.45)`,offset:.8},{opacity:0,transform:`translate(${dx}px,${dy}px) scale(.45)`}],{duration:1500,delay:d,fill:'forwards'});
+    dEl('d1-g1').style.transformOrigin='47px 147px';dEl('d1-g2').style.transformOrigin='124px 224px';
+    mv('d1-g1',99,-54,0);mv('d1-g2',22,-130,300);
+    setTimeout(()=>{const t=dEl('d1-t');t.textContent='169';t.setAttribute('font-size','22');playSound('click')},1700);
+    dEl('d-fb').innerHTML=`<span class="d-box">25 + 144 = 169</span><br>Benar! Jumlah luas kedua persegi pada sisi siku-siku sama dengan luas persegi pada sisi miring.`;
+    dNextBtn();
+  }},
+ {t:'Lengkapi Rumus Rahasia',type:'safe',
+  q:'Rumus Pythagoras belum lengkap. Bisakah kamu menemukan bagian yang hilang? Seret atau ketuk kartu jawabanmu.',
+  cards:[['c',dI('c')],['c²',dS('c')],['a + b',`${dI('a')} + ${dI('b')}`],['(a + b)²',`(${dI('a')} + ${dI('b')})<sup>2</sup>`]],a:'c²',
+  hint:'Petunjuk: bagian yang hilang adalah kuadrat dari sisi miring.',
+  vis:()=>`<div class="d-safe" id="d2-safe"><div class="d-lock" id="d2-lock">🔒</div>
+    <div class="d-form"><span>${dS('a')}</span><span>+ ${dS('b')} =</span><span class="d-slot" id="d2-slot">?</span></div></div>`,
+  win:()=>{
+    dEl('d2-safe').classList.add('open');dEl('d2-lock').textContent='🔓';dEl('d2-slot').innerHTML=dS('c');dEl('d2-slot').style.border='3px solid var(--accent-green)';
+    dEl('d-fb').innerHTML=`<span class="d-box">${dS('a')} + ${dS('b')} = ${dS('c')}</span><br>Benar! ${dI('a')} dan ${dI('b')} adalah sisi siku-siku, sedangkan ${dI('c')} adalah sisi miring (hipotenusa).`;
+    dNextBtn();
+  }},
+ {t:'Hitung Panjang Sisi',
+  q:'Berapakah panjang sisi siku-siku yang belum diketahui?',
+  o:['9 cm','12 cm','15 cm','25 cm'],a:2,
+  hint:'Petunjuk: 17 cm adalah sisi miring. Kuadratkan dulu, lalu kurangi dengan kuadrat sisi yang diketahui.',
+  vis:()=>`<svg class="d-svg" viewBox="0 0 220 150">
+    <polygon points="30,110 180,110 30,30" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M30 98H42V110" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <g font-weight="900" font-size="16" fill="#1d2340"><text x="22" y="76" text-anchor="end">8 cm</text><text id="d3-q" x="105" y="134" text-anchor="middle" fill="#ff5470" font-size="20">?</text><text x="135" y="62">17 cm</text></g></svg>`,
+  win:()=>{
+    dEl('d-fb').innerHTML=`Benar! Misalkan sisi yang ditanya ${dI('a')} dan sisi 8 cm ${dI('b')}.<div id="d-steps"></div><button class="btn-action" id="d-more" style="margin-top:.4rem">Lanjut ➜</button>`;
+    const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dP(17,2)} = ${dS('a')} + ${dP(8,2)}`,`289 = ${dS('a')} + 64`,`${dS('a')} = 289 − 64`,`${dS('a')} = 225`,`${dI('a')} = √225`];
+    dSteps(L,`${dI('a')} = 15 cm`,false,()=>{dEl('d3-q').textContent='15 cm';dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Panjang sisi diperoleh dengan menarik akar kuadrat dari kedua ruas.`);dNextBtn()});
+  }},
+ {t:'Pythagoras dalam Kehidupan Nyata',
+  q:'Rani berjalan lurus menyeberangi lapangan dari satu sudut ke sudut yang berseberangan. Jika panjang lapangan 15 m dan lebarnya 8 m, berapakah jarak yang ditempuh Rani?',
+  o:['13 m','17 m','23 m','25 m'],a:1,
+  hint:'Petunjuk: jalur Rani adalah diagonal, yaitu sisi miring, bukan panjang atau lebar lapangan.',
+  vis:()=>`<svg class="d-svg" viewBox="0 0 240 150">
+    <rect x="30" y="25" width="180" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+    <path d="M30 113H38V121M202 121V113H210M210 33H202V25M38 25V33H30" fill="none" stroke="#16a34a" stroke-width="1.5"/>
+    <line id="d4-l" x1="30" y1="121" x2="210" y2="25" stroke="#ff5470" stroke-width="3" stroke-dasharray="6 5" opacity="0"/>
+    <text id="d4-r" x="30" y="121" font-size="22" text-anchor="middle">🧍‍♀️</text><text x="210" y="24" font-size="22" text-anchor="middle">🚩</text>
+    <g font-weight="900" font-size="13" fill="#1d2340" text-anchor="middle"><text x="120" y="141">15 m</text><text x="14" y="76">8 m</text><text x="68" y="40" fill="#7c3aed" font-size="10">Rani</text></g></svg>`,
+  win:()=>{
+    dEl('d4-l').setAttribute('opacity','1');
+    dEl('d4-r').animate([{transform:'translate(0,0)'},{transform:'translate(180px,-96px)'}],{duration:3600,fill:'forwards',easing:'ease-in-out'});
+    dEl('d-fb').innerHTML=`<div id="d-steps"></div>`;
+    const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dS('c')} = ${dP(15,2)} + ${dP(8,2)}`,`${dS('c')} = 225 + 64`,`${dS('c')} = 289`,`${dI('c')} = √289`];
+    dSteps(L,`${dI('c')} = 17 m`,true,()=>{dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Tepat sekali! Ternyata Pythagoras juga bisa membantu kita menyelesaikan masalah dalam kehidupan sehari-hari.`);dNextBtn(true)});
+  }}
 ];
-
-/* langkah perhitungan: manual (tombol Lanjut) atau otomatis */
-function dSteps(lines, finalHtml, auto, done){
-  const box=dEl('d-steps'); let n=0;
-  const more=dEl('d-more');
+function dSteps(lines,finalHtml,auto,done){
+  const box=dEl('d-steps');let n=0;const more=dEl('d-more');let tm;
   const next=()=>{
     if(n<lines.length){box.insertAdjacentHTML('beforeend',`<span class="d-line">${lines[n++]}</span>`);playSound('click')}
     else{box.insertAdjacentHTML('beforeend',`<span class="d-box">${finalHtml}</span>`);playSound('pop');n++;if(more)more.remove();clearInterval(tm);done()}
   };
-  let tm;
-  if(auto){tm=setInterval(next,700);next()} else{next();more.onclick=next}
+  if(auto){tm=setInterval(next,700);next()}else{next();more.onclick=next}
 }
-function dFb(){}
 function dNextBtn(last){
   const b=document.createElement('button');b.className='btn-action';b.style.marginTop='.6rem';
   b.textContent=last?'🏆 Lihat Hasil Misi':'Tantangan Berikutnya ➜';
   b.onclick=()=>{playSound('click');Ds.i++;dRender()};
   dEl('d-fb').appendChild(document.createElement('br'));dEl('d-fb').appendChild(b);
 }
-
-function dWrong(el,hint){
-  Ds.tries++;playSound('tetot');el.classList.add('no');if(el.tagName==='BUTTON')el.disabled=true;
-  dSay('🤔 '+hint);dAnim('wobble');
-}
+function dWrong(el,hint){Ds.tries++;playSound('tetot');el.classList.add('no');if(el.tagName==='BUTTON')el.disabled=true;dSay('🤔 '+hint);dAnim('wobble')}
 function dRight(el){
   Ds.locked=true;playSound('yey');
   if(Ds.tries===0)Ds.score+=25;
@@ -1568,25 +1090,51 @@ function dRight(el){
   dSay('🎉 Yey! Hebat, detektif! Lencana baru untukmu!');dAnim('jump');
   DCH[Ds.i].win();
 }
+DCH[2].type='isian';DCH[2].a='15';DCH[2].unit='cm';
+DCH[2].q='Berapakah panjang sisi siku-siku yang belum diketahui? Ketik jawabanmu (dalam cm).';
+DCH[3].type='essay';DCH[3].a=17;
+DCH[3].q='Rani berjalan lurus menyeberangi lapangan dari satu sudut ke sudut yang berseberangan. Panjang lapangan 15 m dan lebarnya 8 m. Tuliskan langkah penyelesaianmu, lalu tentukan jarak yang ditempuh Rani!';
+DCH[3].rubric='Cek jawabanmu: apakah kamu sudah menuliskan (1) rumus <i>c</i>² = <i>a</i>² + <i>b</i>², (2) memasukkan angka 15 dan 8, serta (3) hasil akhir dengan satuan meter?';
 
 function dRender(){
   if(Ds.i>=4)return dResult();
   Ds.tries=0;Ds.locked=false;
-  const c=DCH[Ds.i];
+  const c=DCH[Ds.i],ty=c.type||'pg';
   dEl('d-step').textContent=`Tantangan ${Ds.i+1} dari 4`;
-  const body=c.type==='safe'
-    ? `<div class="d-cards" id="d2-cards">${c.cards.map(k=>`<div class="d-card2" data-v="${k[0]}">${k[1]}</div>`).join('')}</div>`
-    : `<div class="d-opts">${c.o.map((t,i)=>`<button class="d-opt" data-i="${i}">${t}</button>`).join('')}</div>`;
-  dEl('d-stage').innerHTML=`<div class="d-card"><div>${c.vis()}</div><div><h3>🕵️ Tantangan ${Ds.i+1}: ${c.t}</h3><p class="d-q">${c.q}</p>${body}<div id="d-fb"></div></div></div>`;
-  if(Ds.i>0)dSay('Ayo lanjutkan misinya! Pilih jawaban yang menurutmu tepat.');
-  if(c.type==='safe')dBindSafe(c);
-  else document.querySelectorAll('.d-opt').forEach(b=>b.onclick=()=>{
+  const tag={pg:'Pilihan Ganda',safe:'Seret & Lengkapi',isian:'Isian Singkat',essay:'Uraian'}[ty];
+  let body;
+  if(ty==='safe')body=`<div class="d-cards" id="d2-cards">${c.cards.map(k=>`<div class="d-card2" data-v="${k[0]}">${k[1]}</div>`).join('')}</div>`;
+  else if(ty==='isian')body=`<div class="d-fill"><input id="d-in" class="qz-in" type="text" inputmode="decimal" autocomplete="off" placeholder="Ketik jawabanmu..."><b>${c.unit||''}</b><button class="btn-action" id="d-ok">Periksa</button></div>`;
+  else if(ty==='essay')body=`<textarea id="d-ta" class="qz-in" rows="4" placeholder="Tuliskan langkah penyelesaianmu di sini..."></textarea><button class="btn-action" id="d-ok" style="margin-top:.4rem">Periksa Jawabanku</button>`;
+  else body=`<div class="d-opts">${c.o.map((t,i)=>`<button class="d-opt" data-i="${i}">${t}</button>`).join('')}</div>`;
+  dEl('d-stage').innerHTML=`<div class="d-card"><div>${c.vis()}</div><div><h3>🕵️ Tantangan ${Ds.i+1}: ${c.t}</h3><span class="qz-tag">${tag}</span><p class="d-q">${c.q}</p>${body}<div id="d-fb"></div></div></div>`;
+  if(Ds.i>0)dSay('Ayo lanjutkan misinya! Kerjakan sesuai jenis soalnya.');
+  if(ty==='safe')dBindSafe(c);
+  else if(ty==='isian'){
+    const inp=dEl('d-in'),ok=dEl('d-ok');
+    const goChk=()=>{
+      if(Ds.locked)return;
+      const v=normAns(inp.value);
+      if(!v){inp.focus();return}
+      playSound('click');
+      if(v===normAns(c.a))dRight(ok);
+      else{dWrong(inp,c.hint);setTimeout(()=>inp.classList.remove('no'),600)}
+    };
+    ok.onclick=goChk;inp.onkeydown=e=>{if(e.key==='Enter')goChk()};
+  }else if(ty==='essay'){
+    const ta=dEl('d-ta'),ok=dEl('d-ok');
+    ok.onclick=()=>{
+      if(ta.value.trim().length<5){dSay('✍️ Tulis dulu langkah penyelesaianmu ya!');dAnim('wobble');playSound('tetot');return}
+      playSound('click');ta.disabled=true;ok.remove();
+      dEl('d-fb').innerHTML=`<div class="qz-rub">${c.rubric}</div><div class="qz-selfrow" style="margin-top:.5rem"><button class="btn-action" id="d-s1">✅ Sudah sesuai</button><button class="btn-action" id="d-s0" style="background:#64748b">🤔 Masih ada yang kurang</button></div>`;
+      dEl('d-s1').onclick=e=>dRight(e.target);
+      dEl('d-s0').onclick=e=>{Ds.tries++;dRight(e.target)};
+    };
+  }else document.querySelectorAll('.d-opt').forEach(b=>b.onclick=()=>{
     if(Ds.locked)return;playSound('click');
     +b.dataset.i===c.a?dRight(b):dWrong(b,c.hint);
   });
 }
-
-/* Tantangan 2: kartu bisa diseret ke kotak atau diketuk */
 function dBindSafe(c){
   document.querySelectorAll('.d-card2').forEach(el=>{
     el.onpointerdown=e=>{
@@ -1603,16 +1151,12 @@ function dBindSafe(c){
     };
   });
 }
-
-/* Halaman hasil */
 function dResult(){
   dEl('d-step').textContent='Misi selesai!';
   const s=Ds.score;
-  const msg=s===100?'Luar biasa! Kamu berhasil menuntaskan seluruh Misi Detektif Pythagoras!'
-    :s>=50?'Bagus! Kamu sudah memahami sebagian besar materi. Ayo perkuat lagi bagian yang masih sulit!'
-    :'Jangan menyerah! Setiap kesalahan adalah kesempatan untuk belajar. Yuk, coba lagi!';
+  const msg=s===100?'Luar biasa! Kamu berhasil menuntaskan seluruh Misi Detektif Pythagoras!':s>=50?'Bagus! Kamu sudah memahami sebagian besar materi. Ayo perkuat lagi bagian yang masih sulit!':'Jangan menyerah! Setiap kesalahan adalah kesempatan untuk belajar. Yuk, coba lagi!';
   dEl('d-stage').innerHTML=`<div class="d-card" style="grid-template-columns:1fr;text-align:center">
-    <div style="font-size:2rem">${Ds.badges.join(' ')}</div><div class="d-score" id="d-sc">0</div><div style="font-weight:700">dari 100 poin</div>
+    <div style="font-size:2rem">${Ds.badges.join(' ')}</div><div class="d-score" id="d-sc">0</div><div style="font-weight:600">dari 100 poin</div>
     <p class="d-q">${msg}</p>
     <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap">
       <button class="btn-action" onclick="dReset()">🔁 Ulangi Misi</button>
@@ -1627,208 +1171,172 @@ function dReset(){
   dRender();
 }
 
-/* SLIDE 5 Helpers */
-function proveTriple() {
+/* Slide 5, 7, 9 */
+function proveTriple(){playSound('pop');document.getElementById('triple-visual').textContent="3² + 4² = 9 + 16 = 25 = 5² (Terbukti Siku-Siku!)"}
+function scaleTriple(f){playSound('pop');document.getElementById('triple-visual').textContent=`Kelipatan ×${f}: (${3*f}, ${4*f}, ${5*f}) juga Tripel Pythagoras!`}
+function flipTripleCard(el,text){playSound('click');showModal('Tripel Pythagoras',`Kelompok bilangan ${text} membentuk segitiga siku-siku secara pas!`,'📐')}
+function solveMissingTriple(){playSound('correct');document.getElementById('triple-missing-res').textContent="8² + 15² = 64 + 225 = 289 ➔ √289 = 17!"}
+function testTriangleType(a,b,c){
+  playSound('pop');const l=c*c,r=a*a+b*b;
+  const type=l===r?'Segitiga Siku-siku (c² = a² + b²)':l<r?'Segitiga Lancip (c² < a² + b²)':'Segitiga Tumpul (c² > a² + b²)';
+  document.getElementById('s7-res').textContent=`Sisi (${a}, ${b}, ${c}) ➔ ${type}`;
+}
+function calcApp(t){
   playSound('pop');
-  document.getElementById('triple-visual').textContent = "3² + 4² = 9 + 16 = 25 = 5² (Terbukti Siku-Siku!)";
+  const R={1:"√(5² - 3²) = √(25 - 9) = √16 = 4 m!",2:"√(8² + 6²) = √(64 + 36) = √100 = 10 m!",3:"√(12² + 5²) = √(144 + 25) = √169 = 13 m (Hemat 4 m!)",4:"√(40² + 30²) = √(1600 + 900) = √2500 = 50 m!"};
+  document.getElementById('app-res-'+t).textContent=R[t];
 }
 
-function scaleTriple(factor) {
-  playSound('pop');
-  const a = 3 * factor, b = 4 * factor, c = 5 * factor;
-  document.getElementById('triple-visual').textContent = `Kelipatan ×${factor}: (${a}, ${b}, ${c}) juga Tripel Pythagoras!`;
-}
-
-function flipTripleCard(el, text) {
-  playSound('click');
-  showModal('Tripel Pythagoras', `Kelompok bilangan ${text} membentuk segitiga siku-siku secara pas!`, '📐');
-}
-
-function solveMissingTriple() {
-  playSound('correct');
-  document.getElementById('triple-missing-res').textContent = "8² + 15² = 64 + 225 = 289 ➔ √289 = 17!";
-}
-
-/* SLIDE 7 Helpers */
-function testTriangleType(a, b, c) {
-  playSound('pop');
-  const lhs = c * c;
-  const rhs = a * a + b * b;
-  let type = '';
-  if (lhs === rhs) type = 'Segitiga Siku-siku (c² = a² + b²)';
-  else if (lhs < rhs) type = 'Segitiga Lancip (c² < a² + b²)';
-  else type = 'Segitiga Tumpul (c² > a² + b²)';
-
-  document.getElementById('s7-res').textContent = `Sisi (${a}, ${b}, ${c}) ➔ ${type}`;
-}
-
-/* SLIDE 9 Helpers */
-function calcApp(type) {
-  playSound('pop');
-  if (type === 1) document.getElementById('app-res-1').textContent = "√(5² - 3²) = √(25 - 9) = √16 = 4 m!";
-  if (type === 2) document.getElementById('app-res-2').textContent = "√(8² + 6²) = √(64 + 36) = √100 = 10 m!";
-  if (type === 3) document.getElementById('app-res-3').textContent = "√(12² + 5²) = √(144 + 25) = √169 = 13 m (Hemat 4 m!)";
-  if (type === 4) document.getElementById('app-res-4').textContent = "√(40² + 30²) = √(1600 + 900) = √2500 = 50 m!";
-}
-
-/* Generic Multiple Choice Quiz Generator for Slides 6, 8, 10 */
-function buildQuiz(id, qs) {
-  const box = document.getElementById(id);
-  if (!box) return;
-  let i = 0, score = 0, locked = false;
-  const render = () => {
-    if (i >= qs.length) {
-      const good = score >= qs.length / 2;
-      box.innerHTML = `<div class="qz-card" style="text-align:center">
-        <div class="qz-score">${score}/${qs.length}</div>
-        <p class="qz-q">${score === qs.length ? 'Luar biasa! 🎉' : good ? 'Bagus! Ayo perkuat lagi.' : 'Jangan menyerah, coba lagi! 💪'}</p>
-        <button class="btn-action" id="${id}-again">🔁 Ulangi Kuis</button></div>`;
-      playSound(good ? 'yey' : 'jeng');
-      document.getElementById(id + '-again').onclick = () => { playSound('click'); i = 0; score = 0; render(); };
-      return;
+/* ---------- Kuis ---------- */
+function normAns(s){s=String(s).toLowerCase().replace(/[\s()]/g,'').replace(/^(\d+),(\d+)$/,'$1.$2');return s.replace(/(cm|m|satuan|persegi)+$/,'')}
+const QT={pg:'Pilihan Ganda',isian:'Isian Singkat',uraian:'Uraian'};
+function buildQuiz(id,qs){
+  const box=document.getElementById(id);if(!box)return;
+  let i=0,score=0,locked=false;
+  const finish=()=>{
+    const good=score>=qs.length/2;
+    box.innerHTML=`<div class="qz-card" style="text-align:center"><div class="qz-score">${score}/${qs.length}</div><p class="qz-q">${score===qs.length?'Luar biasa! 🎉':good?'Bagus! Ayo perkuat lagi.':'Jangan menyerah, coba lagi! 💪'}</p><button class="btn-action" id="${id}-again">🔁 Ulangi Kuis</button></div>`;
+    playSound(good?'yey':'jeng');
+    document.getElementById(id+'-again').onclick=()=>{playSound('click');i=0;score=0;render()};
+  };
+  const render=()=>{
+    if(i>=qs.length)return finish();
+    const q=qs[i],t=q.t||'pg';locked=false;
+    let body;
+    if(t==='pg')body=`<div class="qz-opts">${q.o.map((x,k)=>`<button class="qz-opt" data-k="${k}">${x}</button>`).join('')}</div>`;
+    else if(t==='isian')body=`<div class="d-fill"><input class="qz-in" type="text" autocomplete="off" placeholder="Ketik jawabanmu..."><b>${q.unit||''}</b><button class="btn-action qz-ck">Periksa</button></div>`;
+    else body=`<textarea class="qz-in" rows="5" placeholder="Tuliskan langkah penyelesaianmu di sini..."></textarea><button class="btn-action qz-ck" style="margin-top:.5rem">Periksa Jawabanku</button>`;
+    box.innerHTML=`<div class="qz-card"><div class="qz-top"><span>Soal ${i+1} dari ${qs.length}</span><span>⭐ ${score}</span></div><div class="qz-bar"><i style="width:${(i/qs.length)*100}%"></i></div>${t!=='pg'?`<span class="qz-tag">${QT[t]}</span>`:''}<p class="qz-q">${q.q}</p>${body}<div class="qz-fb"></div></div>`;
+    const fb=box.querySelector('.qz-fb');
+    const nextBtn=()=>{
+      fb.insertAdjacentHTML('beforeend',`<button class="btn-action qz-nx" style="margin-top:.5rem">${i+1<qs.length?'Soal Berikutnya ➜':'🏆 Lihat Hasil'}</button>`);
+      fb.querySelector('.qz-nx').onclick=()=>{playSound('click');i++;render()};
+    };
+    if(t==='pg'){
+      box.querySelectorAll('.qz-opt').forEach(b=>b.onclick=()=>{
+        if(locked)return;locked=true;
+        const ok=+b.dataset.k===q.a;
+        box.querySelectorAll('.qz-opt').forEach(x=>x.disabled=true);
+        b.classList.add(ok?'ok':'no');
+        if(!ok)box.querySelector(`[data-k="${q.a}"]`).classList.add('ok');
+        if(ok)score++;
+        playSound(ok?'correct':'wrong');
+        fb.innerHTML=`<p>${ok?'🎉 Yey! Benar!':'😅 Belum tepat. Jawaban benar: <b>'+q.o[q.a]+'</b>'}</p>`;
+        nextBtn();
+      });
+    }else if(t==='isian'){
+      const inp=box.querySelector('.qz-in'),ck=box.querySelector('.qz-ck');
+      const goChk=()=>{
+        if(locked)return;
+        const v=normAns(inp.value);
+        if(!v){inp.focus();return}
+        locked=true;inp.disabled=true;ck.remove();
+        const ansArr=Array.isArray(q.ans)?q.ans:[q.ans];
+        const ok=ansArr.map(normAns).includes(v);
+        if(ok)score++;
+        playSound(ok?'correct':'wrong');
+        if(!ok)inp.classList.add('no');
+        fb.innerHTML=`<p>${ok?'🎉 Yey! Benar!':'😅 Belum tepat. Jawaban benar: <b>'+ansArr[0]+' '+(q.unit||'')+'</b>'}</p>${q.m?`<div class="qz-model">${q.m}</div>`:''}`;
+        nextBtn();
+      };
+      ck.onclick=goChk;inp.onkeydown=e=>{if(e.key==='Enter')goChk()};
+    }else{
+      const ta=box.querySelector('.qz-in'),ck=box.querySelector('.qz-ck');
+      ck.onclick=()=>{
+        if(locked)return;
+        if(ta.value.trim().length<5){playSound('wrong');ta.classList.add('no');setTimeout(()=>ta.classList.remove('no'),500);return}
+        locked=true;ta.disabled=true;ck.remove();playSound('click');
+        fb.innerHTML=`<p><b>Pembahasan:</b></p><div class="qz-model">${q.m||''}</div><p style="margin:.5rem 0">Bandingkan dengan jawabanmu, lalu nilai dirimu dengan jujur:</p><div class="qz-selfrow"><button class="btn-action" data-s="1">✅ Jawabanku sudah sesuai</button><button class="btn-action" data-s="0" style="background:#64748b">🤔 Masih ada yang keliru</button></div>`;
+        fb.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{
+          const ok=b.dataset.s==='1';if(ok)score++;
+          playSound(ok?'correct':'jeng');
+          fb.innerHTML=`<p>${ok?'🎉 Mantap! Satu poin untukmu!':'💪 Tidak apa-apa, pelajari pembahasannya ya!'}</p>`;
+          nextBtn();
+        });
+      };
     }
-    const q = qs[i]; locked = false;
-    box.innerHTML = `<div class="qz-card">
-      <div class="qz-top"><span>Soal ${i + 1} dari ${qs.length}</span><span>⭐ ${score}</span></div>
-      <div class="qz-bar"><i style="width:${(i / qs.length) * 100}%"></i></div>
-      <p class="qz-q">${q.q}</p>
-      <div class="qz-opts">${q.o.map((t, k) => `<button class="qz-opt" data-k="${k}">${t}</button>`).join('')}</div>
-      <div class="qz-fb"></div></div>`;
-    box.querySelectorAll('.qz-opt').forEach(b => b.onclick = () => {
-      if (locked) return; locked = true;
-      const k = +b.dataset.k, ok = k === q.a;
-      box.querySelectorAll('.qz-opt').forEach(x => x.disabled = true);
-      b.classList.add(ok ? 'ok' : 'no');
-      if (!ok) box.querySelector(`[data-k="${q.a}"]`).classList.add('ok');
-      if (ok) score++;
-      playSound(ok ? 'correct' : 'wrong');
-      const fb = box.querySelector('.qz-fb');
-      fb.innerHTML = `<p>${ok ? '🎉 Yey! Benar!' : '😅 Belum tepat. Jawaban benar: <b>' + q.o[q.a] + '</b>'}</p>
-        <button class="btn-action">${i + 1 < qs.length ? 'Soal Berikutnya ➜' : '🏆 Lihat Hasil'}</button>`;
-      fb.querySelector('button').onclick = () => { playSound('click'); i++; render(); };
-    });
   };
   render();
 }
 
-/* ===== REFLEKSI: emote interaktif ===== */
-const RF = {
-  wow:{face:'🤩',anim:'a-pop',snd:'yey',t:'Luar biasa, kamu hebat!',
-    m:'Wah, kamu sangat menikmati belajar Pythagoras! Pertahankan semangat supernya ya!',
-    award:'🏆 Piala Bintang Super',fx:['🌟','🎉','✨','🏆','🎊']},
-  happy:{face:'😄',anim:'a-bounce',snd:'yey',t:'Yeay, senangnya!',
-    m:'Senyummu menular! Belajar jadi seru kalau dilakukan dengan hati riang.',
-    award:'🥇 Medali Emas Semangat',fx:['🎈','⭐','🎊','😆','💛']},
-  ok:{face:'🙂',anim:'a-sway',snd:'jeng',t:'Lumayan, terus melangkah!',
-    m:'Tidak apa-apa kalau biasa saja. Sedikit demi sedikit, kamu pasti makin paham.',
-    award:'🥈 Lencana Langkah Mantap',fx:['👍','🌼','🍀','😌']},
-  confused:{face:'😵‍💫',anim:'a-wobble',snd:'jeng',t:'Bingung itu wajar kok!',
-    m:'Bingung tandanya otakmu sedang bekerja. Coba ulangi slide yang sulit atau tanya gurumu ya!',
-    award:'🔍 Lencana Detektif Penasaran',fx:['❓','💡','🔎','🧩']},
-  sad:{face:'🥺',anim:'a-droop',snd:'jeng',t:'Jangan sedih, ya!',
-    m:'Kamu sudah berusaha, dan itu hebat! Ini pelukan hangat untukmu, ayo kita coba lagi bersama.',
-    award:'🤗 Pelukan Hangat + Lencana Pantang Menyerah',fx:['💪','🌈','💖','🤗','🌻']}
+/* ---------- Refleksi ---------- */
+const RF={
+  wow:{face:'🤩',anim:'a-pop',snd:'yey',t:'Luar biasa, kamu hebat!',m:'Wah, kamu sangat menikmati belajar Pythagoras! Pertahankan semangat supernya ya!',award:'🏆 Piala Bintang Super',fx:['🌟','🎉','✨','🏆','🎊']},
+  happy:{face:'😄',anim:'a-bounce',snd:'yey',t:'Yeay, senangnya!',m:'Senyummu menular! Belajar jadi seru kalau dilakukan dengan hati riang.',award:'🥇 Medali Emas Semangat',fx:['🎈','⭐','🎊','😆','💛']},
+  ok:{face:'🙂',anim:'a-sway',snd:'jeng',t:'Lumayan, terus melangkah!',m:'Tidak apa-apa kalau biasa saja. Sedikit demi sedikit, kamu pasti makin paham.',award:'🥈 Lencana Langkah Mantap',fx:['👍','🌼','🍀','😌']},
+  confused:{face:'😵‍💫',anim:'a-wobble',snd:'jeng',t:'Bingung itu wajar kok!',m:'Bingung tandanya otakmu sedang bekerja. Coba ulangi slide yang sulit atau tanya gurumu ya!',award:'🔍 Lencana Detektif Penasaran',fx:['❓','💡','🔎','🧩']},
+  sad:{face:'🥺',anim:'a-droop',snd:'jeng',t:'Jangan sedih, ya!',m:'Kamu sudah berusaha, dan itu hebat! Ini pelukan hangat untukmu, ayo kita coba lagi bersama.',award:'🤗 Pelukan Hangat + Lencana Pantang Menyerah',fx:['💪','🌈','💖','🤗','🌻']}
 };
-
-function rfPick(k) {
-  const d = RF[k]; if (!d) return;
+function rfPick(k){
+  const d=RF[k];if(!d)return;
   playSound(d.snd);
-  document.querySelectorAll('.rf-btn').forEach(b => b.classList.toggle('sel', b.dataset.k === k));
-  const face = document.getElementById('rf-face');
-  face.textContent = d.face;
-  face.className = 'rf-face';
-  void face.offsetWidth;
-  face.classList.add(d.anim);
-  document.getElementById('rf-title').textContent = d.t;
-  document.getElementById('rf-msg').textContent = d.m;
-  const aw = document.getElementById('rf-award');
-  aw.hidden = true; void aw.offsetWidth;
-  aw.textContent = d.award; aw.hidden = false;
-  rfConfetti(d.fx);
-}
-
-function rfConfetti(list) {
-  const host = document.getElementById('view-refleksi');
-  for (let i = 0; i < 24; i++) {
-    const s = document.createElement('span');
-    s.className = 'confetti-particle';
-    s.textContent = list[i % list.length];
-    s.style.left = (Math.random() * 96) + '%';
-    s.style.animationDuration = (2 + Math.random() * 2) + 's';
-    s.style.animationDelay = (Math.random() * 0.6) + 's';
-    host.appendChild(s);
-    setTimeout(() => s.remove(), 4500);
+  document.querySelectorAll('.rf-btn').forEach(b=>b.classList.toggle('sel',b.dataset.k===k));
+  const face=document.getElementById('rf-face');
+  face.textContent=d.face;face.className='rf-face';void face.offsetWidth;face.classList.add(d.anim);
+  document.getElementById('rf-title').textContent=d.t;
+  document.getElementById('rf-msg').textContent=d.m;
+  const aw=document.getElementById('rf-award');aw.hidden=true;void aw.offsetWidth;aw.textContent=d.award;aw.hidden=false;
+  const host=document.getElementById('rf-slide');
+  for(let i=0;i<24;i++){
+    const s=document.createElement('span');s.className='confetti-particle';s.textContent=d.fx[i%d.fx.length];
+    s.style.left=(Math.random()*96)+'%';s.style.animationDuration=(2+Math.random()*2)+'s';s.style.animationDelay=(Math.random()*.6)+'s';
+    host.appendChild(s);setTimeout(()=>s.remove(),4500);
   }
 }
 
-// Populate Quizzes on load
-window.addEventListener('DOMContentLoaded', () => {
-  // Samakan gaya judul slide 2-10 dengan judul Slide 1
-  document.querySelectorAll('#s2 .slide-title, #s3 .slide-title, #s4 .slide-title, #s5 .slide-title, #s6 .slide-title, #s7 .slide-title, #s8 .slide-title, #s9 .slide-title, #s10 .slide-title')
-    .forEach(h => {
-      const words = h.textContent.trim().split(/\s+/);
-      h.className = 's1-title';
-      h.innerHTML = words
-        .map((w, i) => `<span class="w" style="animation-delay:${(i * 0.15).toFixed(2)}s">${w}</span>`)
-        .join(' ');
-    });
-
-  // Tombol "Sebelumnya" di setiap slide materi
-  for (let i = 1; i <= 10; i++) {
-    const footer = document.querySelector('#s' + i + ' .slide-footer');
-    if (!footer) continue;
-    const prev = document.createElement('button');
-    prev.className = 'btn-prev';
-    prev.textContent = '⬅ Sebelumnya';
-    prev.onclick = i === 1 ? () => switchNav('tujuan') : () => gotoSlide(i - 1);
-    footer.insertBefore(prev, footer.firstChild);
+/* ---------- Inisialisasi ---------- */
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.stage .slide-title').forEach(h=>{
+    const words=h.textContent.trim().split(/\s+/);
+    h.className='s1-title';
+    h.innerHTML=words.map((w,i)=>`<span class="w" style="animation-delay:${(i*.15).toFixed(2)}s">${w}</span>`).join(' ');
+  });
+  for(let i=1;i<=10;i++){
+    const footer=document.querySelector('#s'+i+' .slide-footer');if(!footer)continue;
+    const prev=document.createElement('button');prev.className='btn-prev';prev.textContent='⬅ Sebelumnya';
+    prev.onclick=i===1?()=>switchNav('tujuan'):()=>gotoSlide(i-1);
+    footer.insertBefore(prev,footer.firstChild);
   }
+  initS2DragDrop();s2Layout(false);dRender();
 
-  initS2DragDrop();
-  s2Layout(false);
-  dRender();
-
-  // Slide 6 Quiz Data
-  buildQuiz('quiz-s6-container', [
-    { q: 'Manakah yang merupakan tripel Pythagoras?', o: ['(2, 3, 4)', '(5, 12, 13)', '(4, 5, 6)', '(6, 7, 8)'], a: 1 },
-    { q: 'Lengkapi tripel Pythagoras berikut: (6, 8, ...)', o: ['9', '10', '12', '14'], a: 1 },
-    { q: 'Lengkapi tripel Pythagoras berikut: (..., 15, 17)', o: ['8', '9', '10', '12'], a: 0 },
-    { q: 'Apakah (9, 12, 15) merupakan tripel Pythagoras?', o: ['Ya, kelipatan 3 dari (3,4,5)', 'Bukan', 'Hanya segitiga biasa', 'Ragu-ragu'], a: 0 },
-    { q: 'Jika (5, 12, 13) dikalikan 3, tripel barunya adalah...', o: ['(10, 24, 26)', '(15, 36, 39)', '(15, 24, 39)', '(8, 15, 17)'], a: 1 }
+  buildQuiz('quiz-s6-container',[
+    {t:'pg',q:'Manakah yang merupakan tripel Pythagoras?',o:['(2, 3, 4)','(5, 12, 13)','(4, 5, 6)','(6, 7, 8)'],a:1},
+    {t:'isian',q:'Lengkapi tripel Pythagoras berikut: (6, 8, ...)',ans:'10',m:'6² + 8² = 36 + 64 = 100, sehingga c = √100 = 10.'},
+    {t:'isian',q:'Lengkapi tripel Pythagoras berikut: (..., 15, 17)',ans:'8',m:'a² = 17² − 15² = 289 − 225 = 64, sehingga a = √64 = 8.'},
+    {t:'pg',q:'Jika (5, 12, 13) dikalikan 3, tripel barunya adalah...',o:['(10, 24, 26)','(15, 36, 39)','(15, 24, 39)','(8, 15, 17)'],a:1},
+    {t:'uraian',q:'Buktikan bahwa (9, 12, 15) adalah tripel Pythagoras! Tuliskan langkah-langkahnya.',m:'Sisi terpanjang = 15.<br>9² + 12² = 81 + 144 = 225<br>15² = 225<br>Karena 9² + 12² = 15², maka (9, 12, 15) adalah tripel Pythagoras (kelipatan 3 dari (3, 4, 5)).'}
+  ]);
+  buildQuiz('quiz-s8-container',[
+    {t:'pg',q:'Segitiga dengan sisi 9, 40, dan 41 adalah segitiga...',o:['Siku-siku','Lancip','Tumpul','Sama sisi'],a:0},
+    {t:'isian',q:'Segitiga dengan sisi 7, 9, dan 12 adalah segitiga apa? (siku-siku / lancip / tumpul)',ans:'tumpul',m:'7² + 9² = 49 + 81 = 130, sedangkan 12² = 144. Karena 144 > 130 (c² > a² + b²), segitiganya <b>tumpul</b>.'},
+    {t:'pg',q:'Manakah yang membentuk segitiga siku-siku?',o:['(4, 6, 8)','(8, 15, 17)','(6, 9, 11)','(5, 8, 9)'],a:1},
+    {t:'isian',q:'Sebuah segitiga siku-siku memiliki dua sisi terpendek 12 cm dan 16 cm. Berapa panjang sisi terpanjangnya?',ans:'20',unit:'cm',m:'c² = 12² + 16² = 144 + 256 = 400, sehingga c = √400 = 20 cm.'},
+    {t:'uraian',q:'Sebuah segitiga memiliki sisi 10 cm, 6 cm, dan 7 cm. Tentukan jenis segitiga tersebut beserta langkah penyelesaiannya!',m:'Sisi terpanjang = 10 cm.<br>c² = 10² = 100<br>a² + b² = 6² + 7² = 36 + 49 = 85<br>Karena 100 > 85 (c² > a² + b²), segitiganya <b>tumpul</b>.'}
+  ]);
+  buildQuiz('quiz-s10-container',[
+    {t:'pg',q:'Tangga 10 m bersandar di dinding dengan jarak kaki tangga 6 m. Tinggi dinding yang dicapai = ...',o:['7 m','8 m','9 m','10 m'],a:1},
+    {t:'isian',q:'Tiang setinggi 12 m disangga kabel sepanjang 13 m. Berapa jarak kaki kabel ke tiang?',ans:'5',unit:'m',m:'a² = 13² − 12² = 169 − 144 = 25, sehingga a = 5 m.'},
+    {t:'pg',q:'Lapangan berukuran 24 m × 7 m. Panjang garis diagonalnya adalah...',o:['25 m','26 m','31 m','35 m'],a:0},
+    {t:'isian',q:'Rani berjalan 9 m ke Barat lalu 12 m ke Selatan. Berapa jarak lurus Rani dari titik awal?',ans:'15',unit:'m',m:'c² = 9² + 12² = 81 + 144 = 225, sehingga c = √225 = 15 m.'},
+    {t:'uraian',q:'Layar TV berukuran 120 cm × 90 cm. Hitunglah panjang diagonal layarnya dan tuliskan langkah-langkahnya!',m:'d² = 120² + 90² = 14400 + 8100 = 22500, sehingga d = √22500 = 150 cm.'}
   ]);
 
-  // Slide 8 Quiz Data
-  buildQuiz('quiz-s8-container', [
-    { q: 'Segitiga dengan sisi 9, 40, dan 41 adalah segitiga...', o: ['Siku-siku', 'Lancip', 'Tumpul', 'Sama Sisi'], a: 0 },
-    { q: 'Segitiga dengan sisi 7, 9, dan 12 adalah segitiga...', o: ['Siku-siku', 'Lancip', 'Tumpul', 'Sembarang'], a: 2 },
-    { q: 'Manakah yang membentuk segitiga siku-siku?', o: ['(4, 6, 8)', '(8, 15, 17)', '(6, 9, 11)', '(5, 8, 9)'], a: 1 },
-    { q: 'Taman segitiga dengan sisi 15 m, 20 m, dan 25 m memiliki sudut siku-siku?', o: ['Ya', 'Tidak', 'Hanya sudut lancip', 'Tidak bisa ditentukan'], a: 0 },
-    { q: 'Jika sisi terpanjang 10 cm dan dua sisi lainnya 6 cm & 7 cm, jenisnya adalah...', o: ['Siku-siku', 'Lancip', 'Tumpul', 'Garis lurus'], a: 2 }
-  ]);
-
-  // Slide 10 Quiz Data
-  buildQuiz('quiz-s10-container', [
-    { q: 'Tangga 10 m bersandar di dinding dengan jarak kaki 6 m. Tinggi dinding = ...', o: ['7 m', '8 m', '9 m', '10 m'], a: 1 },
-    { q: 'Tiang 12 m disangga kabel 13 m. Jarak kaki kabel ke tiang = ...', o: ['4 m', '5 m', '6 m', '7 m'], a: 1 },
-    { q: 'Lapangan 24 m × 7 m, panjang garis diagonalnya adalah...', o: ['25 m', '26 m', '31 m', '35 m'], a: 0 },
-    { q: 'Rani berjalan 9 m ke Barat lalu 12 m ke Selatan. Jarak lurus Rani dari titik awal = ...', o: ['13 m', '15 m', '18 m', '21 m'], a: 1 },
-    { q: 'Layar TV berukuran 120 cm × 90 cm. Panjang diagonal layarnya adalah...', o: ['130 cm', '140 cm', '150 cm', '210 cm'], a: 2 }
-  ]);
-});
-
-/* Terima perintah pindah menu dari gim (iframe) */
-window.addEventListener('message', e => {
-  const d = e.data;
-  if (d && d.type === 'goto' && d.view === 'refleksi') switchNav('refleksi');
-});
-
-/* Beranda: klik tombol & kartu menu */
-document.getElementById('view-beranda').addEventListener('click', e => {
-  const b = e.target.closest('[data-go]');
-  if (!b) return;
-  const go = b.dataset.go;
-  if (go === 'video') openYoutubeVideo();
-  else switchNav(go);
+  /* kartu gelap slide 4-10 */
+  const labels={4:'Misi Detektif aktif',5:'Menjelajah Tripel',6:'Sedang evaluasi',7:'Menjelajah Kebalikan',8:'Sedang evaluasi',9:'Penerapan nyata',10:'Sedang evaluasi'};
+  const clock=()=>{const d=new Date(),h=d.getHours();return `${((h+11)%12)+1}:${String(d.getMinutes()).padStart(2,'0')}${h>=12?'PM':'AM'}`};
+  for(let n=4;n<=10;n++){
+    const s=document.getElementById('s'+n);if(!s||s.classList.contains('pc'))continue;
+    s.classList.add('pc');
+    const title=s.querySelector('.s1-title');
+    const st=document.createElement('div');st.className='pc-status';
+    st.innerHTML=`<span class="pc-l"><i class="pc-dot"></i>${labels[n]}</span><span class="pc-r">⏱ <b class="pc-clk">${clock()}</b></span>`;
+    const head=document.createElement('div');head.className='pc-head';
+    head.innerHTML=`<div class="pc-av">📐</div><div class="pc-txt"><p>Matematika Kelas 8 · Slide ${n} dari 10</p></div>`;
+    s.insertBefore(st,s.firstChild);s.insertBefore(head,st.nextSibling);
+    if(title)head.querySelector('.pc-txt').insertBefore(title,head.querySelector('p'));
+  }
+  setInterval(()=>document.querySelectorAll('.pc-clk').forEach(e=>e.textContent=clock()),30000);
+  sizeStage();
 });
 </script>
 </body>
