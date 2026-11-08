@@ -161,6 +161,7 @@ footer p{opacity:.85;font-weight:600}
 .modal-overlay.active{opacity:1;pointer-events:auto}
 .modal-card{background:#fff;color:#1d2340;border-radius:1.5rem;padding:1.5rem 2rem;max-width:90%;width:500px;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.25);transform:scale(.8);transition:transform .3s cubic-bezier(.34,1.56,.64,1);display:flex;flex-direction:column;align-items:center;gap:1rem}
 .modal-overlay.active .modal-card{transform:scale(1)}
+.modal-card .btn-action{background:#ffd54a !important;color:#000 !important;border:2px solid #000 !important;box-shadow:none !important;text-shadow:none !important}
 
 /* judul */
 .s1-title{font-size:clamp(1.2rem,3vw,2rem);font-weight:700;text-align:center;line-height:1.2;margin-bottom:.6rem;flex-shrink:0}
@@ -274,6 +275,32 @@ textarea.qz-in{resize:vertical;min-height:5rem}
 .qz-model{background:#f0fdf4;border:2px solid var(--accent-green);border-radius:.8rem;padding:.6rem .8rem;line-height:1.5;text-align:left;width:100%}
 .qz-rub{background:#fff7d6;border:2px solid var(--accent-orange);border-radius:.8rem;padding:.5rem .8rem;line-height:1.5;text-align:left;width:100%;font-size:.9rem}
 .qz-selfrow{display:flex;gap:.5rem;flex-wrap:wrap}
+/* soal menjodohkan & benar/salah */
+.tf-list{display:flex;flex-direction:column;gap:.7rem}
+.tf-row{background:#f8faff;border:2px solid #d5dbff;border-radius:.9rem;padding:.6rem .8rem}
+.tf-s{font-weight:600;line-height:1.45;margin-bottom:.5rem}
+.tf-btns{display:flex;gap:.5rem}
+.tf-b{flex:1;min-height:2.6rem;border:2px solid #d5dbff;background:#fff;color:var(--ink);font-weight:700;font-size:1rem;border-radius:.8rem}
+.tf-b:active{transform:scale(.96)}
+.tf-b.ok{background:var(--accent-green);border-color:var(--accent-green);color:#fff}
+.tf-b.no{background:var(--accent-red);border-color:var(--accent-red);color:#fff}
+.tf-m{margin-top:.5rem;font-weight:500;font-size:.92rem;line-height:1.5;text-align:left}
+.mt-wrap{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start}
+.mt-rows{display:flex;flex-direction:column;gap:.6rem}
+.mt-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.mt-n,.mt-slot,.mt-chip{min-width:3rem;height:2.8rem;padding:0 .6rem;display:inline-flex;align-items:center;justify-content:center;border-radius:.7rem;font-weight:700;font-size:1.1rem}
+.mt-n{background:#f1f4ff;border:2px solid #d5dbff;color:var(--ink)}
+.mt-slot{background:#fff;border:2px dashed var(--primary-light);cursor:pointer}
+.mt-slot.over{background:#ede9ff}
+.mt-slot.fill{border-style:solid;background:#ede9ff;color:var(--primary)}
+.mt-slot.ok{background:var(--accent-green);border:2px solid var(--accent-green);color:#fff}
+.mt-slot.no{background:var(--accent-red);border:2px solid var(--accent-red);color:#fff}
+.mt-bank{display:flex;flex-direction:column;gap:.6rem;padding-left:.8rem;border-left:3px dotted #d5dbff}
+.mt-chip{background:linear-gradient(90deg,var(--secondary),var(--primary-light));color:#fff;border:2px solid transparent;cursor:grab}
+.mt-chip.sel{outline:3px solid var(--accent-orange);transform:scale(1.08)}
+.mt-chip.used{opacity:.3;pointer-events:none}
+.mt-hint{font-size:.85rem;color:#4b5563;margin:.2rem 0 .6rem}
+
 .math-var{font-style:italic;font-family:'Times New Roman',serif}
 
 /* refleksi */
@@ -345,12 +372,34 @@ textarea.qz-in{resize:vertical;min-height:5rem}
 .pc .s1-title{text-align:left;margin-bottom:0 !important}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto}}
+
+/* jawaban salah: kontras tinggi agar tulisan tidak menyatu dengan latar */
+.d-opt.no,.d-card2.no,.qz-opt.no,.tf-b.no,.mt-slot.no{background:#dc2626 !important;border:2px solid #7f1d1d !important;color:#fff !important;text-shadow:0 1px 2px rgba(0,0,0,.45);font-weight:800}
+.d-card2.no *{color:#fff !important}
+.d-opt.ok,.qz-opt.ok,.tf-b.ok,.mt-slot.ok{background:#15803d !important;border:2px solid #14532d !important;color:#fff !important;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.d-opt:disabled,.qz-opt:disabled,.tf-b:disabled{opacity:1}
+.mt-slot.no{font-size:1rem}
+.tf-b.pick{background:#ede9ff;border-color:var(--primary);color:var(--primary)}
+/* zoom keseluruhan */
+:root{--z:1}
+.view{zoom:var(--z)}
+.modal-card{zoom:var(--z)}
+.stage{height:calc((100dvh - var(--navh,4rem))/var(--z) - 1.6rem)}
+.zm{display:flex;align-items:center;gap:.25rem}
+.zm .tg{min-width:2.1rem;padding:.25rem .6rem;font-size:1rem;line-height:1.2}
+.zm .tg:disabled{opacity:.4;cursor:default}
+.zm .zv{min-width:3.4rem;text-align:center;font-weight:700;font-size:.85rem}
+@media print{.view,.modal-card{zoom:1}}
+.mt-h{font-weight:700;font-size:.8rem;color:var(--primary);flex-basis:100%}
+.mt-chip{white-space:nowrap}
+@media (max-width:560px){.mt-wrap{grid-template-columns:1fr}.mt-bank{padding-left:0;border-left:0;flex-direction:row;flex-wrap:wrap}}
 </style>
 </head>
 <body>
 
 <nav id="topnav">
   <button class="logo" data-go="beranda" aria-label="Beranda"><span class="bub">a²</span>Pythagoras Club</button>
+  <div class="zm" role="group" aria-label="Perbesar atau perkecil tampilan"><button class="tg" id="zout" aria-label="Perkecil tampilan">−</button><button class="tg zv" id="zval" title="Klik untuk kembali ke 100%">100%</button><button class="tg" id="zin" aria-label="Perbesar tampilan">＋</button></div>
   <button class="tg" id="btn-sound">🔊 Suara</button>
 </nav>
 
@@ -836,6 +885,19 @@ function playSound(type){
 }
 $('#btn-sound').onclick=function(){soundMuted=!soundMuted;this.textContent=soundMuted?'🔇 Mute':'🔊 Suara'};
 
+/* ---------- Zoom keseluruhan (nav tetap, isi halaman ikut diperbesar/diperkecil) ---------- */
+function setZoom(z){
+  z=Math.round(Math.min(1.6,Math.max(.6,z))*100)/100;
+  currentZoom=z;document.documentElement.style.setProperty('--z',z);
+  $('#zval').textContent=Math.round(z*100)+'%';
+  $('#zout').disabled=z<=.6;$('#zin').disabled=z>=1.6;
+  sizeStage();
+  try{localStorage.setItem('pyth-zoom',String(z))}catch(e){}
+}
+$('#zin').onclick=()=>{playSound('click');setZoom(currentZoom+.1)};
+$('#zout').onclick=()=>{playSound('click');setZoom(currentZoom-.1)};
+$('#zval').onclick=()=>{playSound('click');setZoom(1)};
+
 /* ---------- Navigasi antar halaman ---------- */
 function sizeStage(){document.documentElement.style.setProperty('--navh',$('#topnav').offsetHeight+'px')}
 addEventListener('resize',sizeStage);
@@ -1039,40 +1101,38 @@ const DCH=[
   q:'Berapakah panjang sisi siku-siku yang belum diketahui?',
   o:['9 cm','12 cm','15 cm','25 cm'],a:2,
   hint:'Petunjuk: 17 cm adalah sisi miring. Kuadratkan dulu, lalu kurangi dengan kuadrat sisi yang diketahui.',
-  vis:()=>`<svg class="d-svg" viewBox="0 0 220 150">
-    <polygon points="30,110 180,110 30,30" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M30 98H42V110" fill="none" stroke="#7c3aed" stroke-width="2"/>
-    <g font-weight="900" font-size="16" fill="#1d2340"><text x="22" y="76" text-anchor="end">8 cm</text><text id="d3-q" x="105" y="134" text-anchor="middle" fill="#ff5470" font-size="20">?</text><text x="135" y="62">17 cm</text></g></svg>`,
+  vis:()=>`<svg class="d-svg" viewBox="0 0 250 170" style="overflow:visible;max-width:300px;margin:0 auto;display:block">
+    <polygon points="75,125 205,125 75,53" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M75 113H87V125" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <g font-weight="900" font-size="15" fill="#1d2340"><text x="66" y="93" text-anchor="end">8 cm</text><text id="d3-q" x="140" y="150" text-anchor="middle" fill="#ff5470" font-size="20">?</text><text x="132" y="72" text-anchor="middle">17 cm</text></g></svg>`,
   win:()=>{
-    dEl('d-fb').innerHTML=`Benar! Misalkan sisi yang ditanya ${dI('a')} dan sisi 8 cm ${dI('b')}.<div id="d-steps"></div><button class="btn-action" id="d-more" style="margin-top:.4rem">Lanjut ➜</button>`;
+    dEl('d-fb').innerHTML=`Benar! Misalkan sisi yang ditanya ${dI('a')} dan sisi 8 cm ${dI('b')}.<div id="d-steps"></div>`;
     const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dP(17,2)} = ${dS('a')} + ${dP(8,2)}`,`289 = ${dS('a')} + 64`,`${dS('a')} = 289 − 64`,`${dS('a')} = 225`,`${dI('a')} = √225`];
     dSteps(L,`${dI('a')} = 15 cm`,false,()=>{dEl('d3-q').textContent='15 cm';dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Panjang sisi diperoleh dengan menarik akar kuadrat dari kedua ruas.`);dNextBtn()});
   }},
- {t:'Pythagoras dalam Kehidupan Nyata',
-  q:'Rani berjalan lurus menyeberangi lapangan dari satu sudut ke sudut yang berseberangan. Jika panjang lapangan 15 m dan lebarnya 8 m, berapakah jarak yang ditempuh Rani?',
-  o:['13 m','17 m','23 m','25 m'],a:1,
-  hint:'Petunjuk: jalur Rani adalah diagonal, yaitu sisi miring, bukan panjang atau lebar lapangan.',
-  vis:()=>`<svg class="d-svg" viewBox="0 0 240 150">
-    <rect x="30" y="25" width="180" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
-    <path d="M30 113H38V121M202 121V113H210M210 33H202V25M38 25V33H30" fill="none" stroke="#16a34a" stroke-width="1.5"/>
-    <line id="d4-l" x1="30" y1="121" x2="210" y2="25" stroke="#ff5470" stroke-width="3" stroke-dasharray="6 5" opacity="0"/>
-    <text id="d4-r" x="30" y="121" font-size="22" text-anchor="middle">🧍‍♀️</text><text x="210" y="24" font-size="22" text-anchor="middle">🚩</text>
-    <g font-weight="900" font-size="13" fill="#1d2340" text-anchor="middle"><text x="120" y="141">15 m</text><text x="14" y="76">8 m</text><text x="68" y="40" fill="#7c3aed" font-size="10">Rani</text></g></svg>`,
+ {t:'Pythagoras dalam Kehidupan Nyata',type:'match',
+  q:'Jodohkan setiap pernyataan berikut dengan jawaban yang tepat: Benar atau Salah!',
+  rows:['Tangga 5 m disandarkan pada dinding. Jika kaki tangga berjarak 3 m dari dinding, ujung atas tangga mencapai ketinggian 4 m.',
+        'Layar televisi berukuran lebar 40 cm dan tinggi 30 cm. Panjang diagonal layar tersebut adalah 70 cm.',
+        'Pondasi persegi panjang bersisi 6 m dan 8 m. Agar sudutnya siku-siku, diagonalnya harus 10 m.'],
+  bank:['Salah','Benar','Benar'],ans:['Benar','Salah','Benar'],stack:true,
+  hint:'Petunjuk: hitung dengan rumus Pythagoras. Ingat, diagonal tidak sama dengan jumlah dua sisi.',
+  vis:()=>`<svg class="d-svg" viewBox="0 0 260 170" style="max-width:300px;margin:0 auto;display:block">
+    <polygon points="50,135 200,135 50,35" fill="#ddd6fe" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M50 123H62V135" fill="none" stroke="#7c3aed" stroke-width="2"/>
+    <g font-size="26" text-anchor="middle"><text x="24" y="95">🪜</text><text x="125" y="162">🏗️</text><text x="140" y="75">📺</text></g></svg>
+    <p style="font-size:.8rem;text-align:center;font-weight:600;color:#64748b">Pythagoras dipakai di mana-mana: tangga, layar, bangunan</p>`,
   win:()=>{
-    dEl('d4-l').setAttribute('opacity','1');
-    dEl('d4-r').animate([{transform:'translate(0,0)'},{transform:'translate(180px,-96px)'}],{duration:3600,fill:'forwards',easing:'ease-in-out'});
+    playSound('pop');
     dEl('d-fb').innerHTML=`<div id="d-steps"></div>`;
-    const L=[`${dS('c')} = ${dS('a')} + ${dS('b')}`,`${dS('c')} = ${dP(15,2)} + ${dP(8,2)}`,`${dS('c')} = 225 + 64`,`${dS('c')} = 289`,`${dI('c')} = √289`];
-    dSteps(L,`${dI('c')} = 17 m`,true,()=>{dEl('d-fb').insertAdjacentHTML('beforeend',`<br>Tepat sekali! Ternyata Pythagoras juga bisa membantu kita menyelesaikan masalah dalam kehidupan sehari-hari.`);dNextBtn(true)});
+    const L=[`<b>1. Benar.</b> Tinggi = √(5² − 3²) = √16 = 4 m.`,`<b>2. Salah.</b> Diagonal = √(40² + 30²) = √2.500 = 50 cm, bukan 70 cm (70 hanya hasil 40 + 30).`,`<b>3. Benar.</b> Diagonal = √(6² + 8²) = √100 = 10 m, sehingga sudutnya siku-siku (metode 3-4-5 dikali 2).`];
+    dSteps(L,`Pythagoras membantu menyelesaikan masalah sehari-hari!`,true,()=>{dNextBtn(true)});
   }}
 ];
 function dSteps(lines,finalHtml,auto,done){
-  const box=dEl('d-steps');let n=0;const more=dEl('d-more');let tm;
-  const next=()=>{
-    if(n<lines.length){box.insertAdjacentHTML('beforeend',`<span class="d-line">${lines[n++]}</span>`);playSound('click')}
-    else{box.insertAdjacentHTML('beforeend',`<span class="d-box">${finalHtml}</span>`);playSound('pop');n++;if(more)more.remove();clearInterval(tm);done()}
-  };
-  if(auto){tm=setInterval(next,700);next()}else{next();more.onclick=next}
+  const box=dEl('d-steps'),more=dEl('d-more');if(more)more.remove();
+  box.innerHTML=lines.map(l=>`<span class="d-line">${l}</span>`).join('')+`<span class="d-box">${finalHtml}</span>`;
+  playSound('pop');done();
 }
 function dNextBtn(last){
   const b=document.createElement('button');b.className='btn-action';b.style.marginTop='.6rem';
@@ -1092,18 +1152,16 @@ function dRight(el){
 }
 DCH[2].type='isian';DCH[2].a='15';DCH[2].unit='cm';
 DCH[2].q='Berapakah panjang sisi siku-siku yang belum diketahui? Ketik jawabanmu (dalam cm).';
-DCH[3].type='essay';DCH[3].a=17;
-DCH[3].q='Rani berjalan lurus menyeberangi lapangan dari satu sudut ke sudut yang berseberangan. Panjang lapangan 15 m dan lebarnya 8 m. Tuliskan langkah penyelesaianmu, lalu tentukan jarak yang ditempuh Rani!';
-DCH[3].rubric='Cek jawabanmu: apakah kamu sudah menuliskan (1) rumus <i>c</i>² = <i>a</i>² + <i>b</i>², (2) memasukkan angka 15 dan 8, serta (3) hasil akhir dengan satuan meter?';
 
 function dRender(){
   if(Ds.i>=4)return dResult();
   Ds.tries=0;Ds.locked=false;
   const c=DCH[Ds.i],ty=c.type||'pg';
   dEl('d-step').textContent=`Tantangan ${Ds.i+1} dari 4`;
-  const tag={pg:'Pilihan Ganda',safe:'Seret & Lengkapi',isian:'Isian Singkat',essay:'Uraian'}[ty];
+  const tag={pg:'Pilihan Ganda',safe:'Seret & Lengkapi',isian:'Isian Singkat',essay:'Uraian',match:'Menjodohkan'}[ty];
   let body;
   if(ty==='safe')body=`<div class="d-cards" id="d2-cards">${c.cards.map(k=>`<div class="d-card2" data-v="${k[0]}">${k[1]}</div>`).join('')}</div>`;
+  else if(ty==='match')body=`<p class="mt-hint">Ketuk pilihan di kanan lalu ketuk kotak kosong (atau seret). Ketuk kotak yang terisi untuk membatalkan.</p><div class="mt-wrap"><div class="mt-rows">${c.rows.map((r,k)=>`<div class="mt-row"><span class="mt-n" style="${c.stack?'flex:1 1 100%;height:auto;min-height:2.8rem;padding:.4rem .7rem;font-size:.95rem;font-weight:600;text-align:left;justify-content:flex-start;line-height:1.4':'min-width:7rem'}">${r}</span><b>➜</b><span class="mt-slot" data-r="${k}" style="min-width:5.5rem"></span></div>`).join('')}</div><div class="mt-bank">${c.bank.map((v,i)=>`<span class="mt-chip" draggable="true" data-v="${i}">${v}</span>`).join('')}</div></div><button class="btn-action" id="d-ok" style="margin-top:.6rem">Periksa</button>`;
   else if(ty==='isian')body=`<div class="d-fill"><input id="d-in" class="qz-in" type="text" inputmode="decimal" autocomplete="off" placeholder="Ketik jawabanmu..."><b>${c.unit||''}</b><button class="btn-action" id="d-ok">Periksa</button></div>`;
   else if(ty==='essay')body=`<textarea id="d-ta" class="qz-in" rows="4" placeholder="Tuliskan langkah penyelesaianmu di sini..."></textarea><button class="btn-action" id="d-ok" style="margin-top:.4rem">Periksa Jawabanku</button>`;
   else body=`<div class="d-opts">${c.o.map((t,i)=>`<button class="d-opt" data-i="${i}">${t}</button>`).join('')}</div>`;
@@ -1121,7 +1179,8 @@ function dRender(){
       else{dWrong(inp,c.hint);setTimeout(()=>inp.classList.remove('no'),600)}
     };
     ok.onclick=goChk;inp.onkeydown=e=>{if(e.key==='Enter')goChk()};
-  }else if(ty==='essay'){
+  }else if(ty==='match')dBindMatch(c);
+  else if(ty==='essay'){
     const ta=dEl('d-ta'),ok=dEl('d-ok');
     ok.onclick=()=>{
       if(ta.value.trim().length<5){dSay('✍️ Tulis dulu langkah penyelesaianmu ya!');dAnim('wobble');playSound('tetot');return}
@@ -1134,6 +1193,34 @@ function dRender(){
     if(Ds.locked)return;playSound('click');
     +b.dataset.i===c.a?dRight(b):dWrong(b,c.hint);
   });
+}
+function dBindMatch(c){
+  const slots=[...document.querySelectorAll('#d-stage .mt-slot')],chips=[...document.querySelectorAll('#d-stage .mt-chip')],ok=dEl('d-ok');
+  const place={};let sel=null;
+  const chipOf=v=>chips.find(x=>x.dataset.v===String(v));
+  const clearSlot=k=>{if(place[k]===undefined)return;chipOf(place[k]).classList.remove('used');delete place[k];slots[k].textContent='';slots[k].classList.remove('fill','no')};
+  const put=(k,v)=>{
+    Object.keys(place).forEach(r=>{if(String(place[r])===String(v))clearSlot(r)});
+    clearSlot(k);place[k]=v;slots[k].textContent=c.bank[+v];slots[k].classList.add('fill');
+    const ch=chipOf(v);ch.classList.add('used');ch.classList.remove('sel');sel=null;playSound('pop');
+  };
+  chips.forEach(ch=>{
+    ch.onclick=()=>{if(Ds.locked)return;playSound('click');chips.forEach(x=>x.classList.remove('sel'));if(sel===ch.dataset.v){sel=null;return}sel=ch.dataset.v;ch.classList.add('sel')};
+    ch.ondragstart=e=>e.dataTransfer.setData('text/plain',ch.dataset.v);
+  });
+  slots.forEach((sl,k)=>{
+    sl.onclick=()=>{if(Ds.locked)return;if(sel!==null)put(k,sel);else if(place[k]!==undefined){playSound('click');clearSlot(k)}};
+    sl.ondragover=e=>{e.preventDefault();sl.classList.add('over')};
+    sl.ondragleave=()=>sl.classList.remove('over');
+    sl.ondrop=e=>{e.preventDefault();sl.classList.remove('over');if(Ds.locked)return;const v=e.dataTransfer.getData('text/plain');if(v)put(k,v)};
+  });
+  ok.onclick=()=>{
+    if(Ds.locked)return;
+    if(Object.keys(place).length<slots.length){playSound('tetot');dSay('✍️ Isi semua kotak dulu ya!');dAnim('wobble');return}
+    const bad=slots.map((_,k)=>k).filter(k=>String(c.bank[+place[k]])!==String(c.ans[k]));
+    if(!bad.length){slots.forEach(sl=>{sl.classList.remove('fill');sl.classList.add('ok')});chips.forEach(x=>x.classList.remove('sel'));dRight(ok);return}
+    Ds.tries++;playSound('tetot');dSay('🤔 Masih ada pasangan yang salah. Coba periksa lagi ya! '+c.hint);dAnim('wobble');
+  };
 }
 function dBindSafe(c){
   document.querySelectorAll('.d-card2').forEach(el=>{
@@ -1188,14 +1275,29 @@ function calcApp(t){
 }
 
 /* ---------- Kuis ---------- */
+/* penilai jawaban uraian tripel (9, 12, 15): format bebas, hitungan harus benar */
+function chkAns(t){
+  const n=t.toLowerCase().replace(/\s+/g,'').replace(/\*\*/g,'^').replace(/\^2/g,'²').replace(/pangkat2/g,'²').replace(/kuadrat/g,'²').replace(/ditambah/g,'+').replace(/samadengan/g,'=');
+  if(/≠|tidak|bukan/.test(n))return false;
+  const m=n.match(/(?:9²\+12²|12²\+9²)=(\d+)(²|\+(\d+))?/);
+  if(m){
+    if(m[2]==='²')return m[1]==='15';
+    if(m[3])return (m[1]==='81'&&m[3]==='144')||(m[1]==='144'&&m[3]==='81');
+    return m[1]==='225';
+  }
+  const k=n.match(/(?:81\+144|144\+81)(?:=(\d+))?/);
+  if(k)return !k[1]||k[1]==='225';
+  return /15²=(9²\+12²|12²\+9²)/.test(n)||/15²=225/.test(n)||(/kelipatan/.test(n)&&/3.?4.?5/.test(n));
+}
 function normAns(s){s=String(s).toLowerCase().replace(/[\s()]/g,'').replace(/^(\d+),(\d+)$/,'$1.$2');return s.replace(/(cm|m|satuan|persegi)+$/,'')}
-const QT={pg:'Pilihan Ganda',isian:'Isian Singkat',uraian:'Uraian'};
+const QT={pg:'Pilihan Ganda',isian:'Isian Singkat',uraian:'Uraian',match:'Menjodohkan',tf:'Benar atau Salah'};
 function buildQuiz(id,qs){
   const box=document.getElementById(id);if(!box)return;
   let i=0,score=0,locked=false;
+  const total=qs.length,fmt=n=>String(Math.round(n*100)/100).replace('.',',');
   const finish=()=>{
-    const good=score>=qs.length/2;
-    box.innerHTML=`<div class="qz-card" style="text-align:center"><div class="qz-score">${score}/${qs.length}</div><p class="qz-q">${score===qs.length?'Luar biasa! 🎉':good?'Bagus! Ayo perkuat lagi.':'Jangan menyerah, coba lagi! 💪'}</p><button class="btn-action" id="${id}-again">🔁 Ulangi Kuis</button></div>`;
+    const good=score>=total/2;
+    box.innerHTML=`<div class="qz-card" style="text-align:center"><div class="qz-score">${fmt(score)}/${total}</div><p class="qz-q">${Math.abs(score-total)<1e-9?'Luar biasa! 🎉':good?'Bagus! Ayo perkuat lagi.':'Jangan menyerah, coba lagi! 💪'}</p><button class="btn-action" id="${id}-again">🔁 Ulangi Kuis</button></div>`;
     playSound(good?'yey':'jeng');
     document.getElementById(id+'-again').onclick=()=>{playSound('click');i=0;score=0;render()};
   };
@@ -1205,8 +1307,10 @@ function buildQuiz(id,qs){
     let body;
     if(t==='pg')body=`<div class="qz-opts">${q.o.map((x,k)=>`<button class="qz-opt" data-k="${k}">${x}</button>`).join('')}</div>`;
     else if(t==='isian')body=`<div class="d-fill"><input class="qz-in" type="text" autocomplete="off" placeholder="Ketik jawabanmu..."><b>${q.unit||''}</b><button class="btn-action qz-ck">Periksa</button></div>`;
+    else if(t==='tf')body=`<div class="tf-list">${q.items.map(it=>`<div class="tf-row"><p class="tf-s">${it.s}</p><div class="tf-btns"><button class="tf-b" data-v="1">Benar</button><button class="tf-b" data-v="0">Salah</button></div><p class="tf-m" hidden></p></div>`).join('')}</div><button class="btn-action qz-ck" style="margin-top:.8rem">Periksa</button>`;
+    else if(t==='match')body=`<p class="mt-hint">Ketuk pilihan di kanan, lalu ketuk kotak kosong (atau seret ke kotak kosong). Ketuk kotak yang terisi untuk membatalkan.</p><div class="mt-wrap"><div class="mt-rows">${q.hA?`<div class="mt-h">${q.hA}</div>`:''}${q.rows.map((r,k)=>`<div class="mt-row">${r.map(x=>x===null?`<span class="mt-slot" data-r="${k}"></span>`:`<span class="mt-n">${x}</span>`).join('')}</div>`).join('')}</div><div class="mt-bank">${q.hB?`<div class="mt-h">${q.hB}</div>`:''}${q.bank.map(v=>`<span class="mt-chip" draggable="true" data-v="${v}">${q.lbl?q.lbl[v]:v}</span>`).join('')}</div></div><button class="btn-action qz-ck" style="margin-top:.8rem">Periksa</button>`;
     else body=`<textarea class="qz-in" rows="5" placeholder="Tuliskan langkah penyelesaianmu di sini..."></textarea><button class="btn-action qz-ck" style="margin-top:.5rem">Periksa Jawabanku</button>`;
-    box.innerHTML=`<div class="qz-card"><div class="qz-top"><span>Soal ${i+1} dari ${qs.length}</span><span>⭐ ${score}</span></div><div class="qz-bar"><i style="width:${(i/qs.length)*100}%"></i></div>${t!=='pg'?`<span class="qz-tag">${QT[t]}</span>`:''}<p class="qz-q">${q.q}</p>${body}<div class="qz-fb"></div></div>`;
+    box.innerHTML=`<div class="qz-card"><div class="qz-top"><span>Soal ${i+1} dari ${qs.length}</span><span>⭐ ${fmt(score)}</span></div><div class="qz-bar"><i style="width:${(i/qs.length)*100}%"></i></div>${t!=='pg'?`<span class="qz-tag">${QT[t]}</span>`:''}<p class="qz-q">${q.q}</p>${body}<div class="qz-fb"></div></div>`;
     const fb=box.querySelector('.qz-fb');
     const nextBtn=()=>{
       fb.insertAdjacentHTML('beforeend',`<button class="btn-action qz-nx" style="margin-top:.5rem">${i+1<qs.length?'Soal Berikutnya ➜':'🏆 Lihat Hasil'}</button>`);
@@ -1240,15 +1344,86 @@ function buildQuiz(id,qs){
         nextBtn();
       };
       ck.onclick=goChk;inp.onkeydown=e=>{if(e.key==='Enter')goChk()};
+    }else if(t==='tf'){
+      const rows=[...box.querySelectorAll('.tf-row')],pick=[],ck=box.querySelector('.qz-ck');let first=null;
+      rows.forEach((row,k)=>row.querySelectorAll('.tf-b').forEach(b=>b.onclick=()=>{
+        if(locked)return;playSound('click');
+        row.querySelectorAll('.tf-b').forEach(x=>x.classList.remove('pick'));
+        b.classList.add('pick');pick[k]=b.dataset.v==='1';fb.innerHTML='';
+      }));
+      ck.onclick=()=>{
+        if(locked)return;
+        if(rows.some((_,k)=>pick[k]===undefined)){playSound('wrong');fb.innerHTML='<p>✍️ Pilih Benar atau Salah untuk semua pernyataan dulu ya!</p>';return}
+        const nOk=q.items.filter((it,k)=>pick[k]===it.a).length;
+        if(first===null)first=nOk;
+        if(nOk<q.items.length){
+          playSound('wrong');
+          fb.innerHTML='<p>😅 Masih ada pernyataan yang salah. Coba periksa lagi ya!</p><button class="btn-action qz-sk" style="background:#64748b">Lewati soal ini ➜</button>';
+          fb.querySelector('.qz-sk').onclick=()=>{playSound('click');score+=(first===q.items.length?1:0);i++;render()};
+          return;
+        }
+        locked=true;ck.remove();score+=(first===q.items.length?1:0);playSound('correct');
+        rows.forEach((row,k)=>{
+          row.querySelectorAll('.tf-b').forEach(x=>x.disabled=true);
+          const p=row.querySelector('.pick');if(p){p.classList.remove('pick');p.classList.add('ok')}
+          const m=row.querySelector('.tf-m');m.innerHTML='<b>Pembahasan:</b> '+(q.items[k].m||'');m.hidden=false;
+        });
+        fb.innerHTML='<p>🎉 Benar semua! '+(first===q.items.length?'Kamu mendapat 1 poin dari soal ini.':'Kamu sudah memperbaikinya, tetapi poin soal ini hanya diberikan jika benar semua pada percobaan pertama.')+'</p>';nextBtn();
+      };
+    }else if(t==='match'){
+      const slots=[...box.querySelectorAll('.mt-slot')],chips=[...box.querySelectorAll('.mt-chip')],ck=box.querySelector('.qz-ck');
+      const place={};let sel=null,first=null;
+      const chipOf=v=>chips.find(c=>c.dataset.v===String(v));
+      const clearSlot=k=>{const v=place[k];if(v===undefined)return;chipOf(v).classList.remove('used');delete place[k];slots[k].textContent='';slots[k].classList.remove('fill')};
+      const put=(k,v)=>{
+        Object.keys(place).forEach(r=>{if(String(place[r])===String(v))clearSlot(r)});
+        clearSlot(k);place[k]=v;slots[k].textContent=v;slots[k].classList.add('fill');
+        const c=chipOf(v);c.classList.add('used');c.classList.remove('sel');sel=null;playSound('pop');
+      };
+      chips.forEach(c=>{
+        c.onclick=()=>{if(locked)return;playSound('click');chips.forEach(x=>x.classList.remove('sel'));if(sel===c.dataset.v){sel=null;return}sel=c.dataset.v;c.classList.add('sel')};
+        c.ondragstart=e=>{e.dataTransfer.setData('text/plain',c.dataset.v)};
+      });
+      slots.forEach((sl,k)=>{
+        sl.onclick=()=>{if(locked)return;if(sel!==null)put(k,sel);else if(place[k]!==undefined){playSound('click');clearSlot(k)}};
+        sl.ondragover=e=>{e.preventDefault();sl.classList.add('over')};
+        sl.ondragleave=()=>sl.classList.remove('over');
+        sl.ondrop=e=>{e.preventDefault();sl.classList.remove('over');if(locked)return;const v=e.dataTransfer.getData('text/plain');if(v)put(k,v)};
+      });
+      ck.onclick=()=>{
+        if(locked)return;
+        if(Object.keys(place).length<slots.length){playSound('wrong');ck.textContent='Isi semua kotak dulu ya!';setTimeout(()=>ck.textContent='Periksa',1200);return}
+        const nOk=slots.filter((_,k)=>String(place[k])===String(q.ans[k])).length;
+        if(first===null)first=nOk;
+        if(nOk<slots.length){
+          playSound('wrong');
+          fb.innerHTML='<p>😅 Masih ada pasangan yang salah. Coba periksa lagi ya!</p><button class="btn-action qz-sk" style="background:#64748b">Lewati soal ini ➜</button>';
+          fb.querySelector('.qz-sk').onclick=()=>{playSound('click');score+=(first===slots.length?1:0);i++;render()};
+          return;
+        }
+        locked=true;ck.remove();chips.forEach(c=>c.classList.remove('sel'));
+        slots.forEach(sl=>{sl.classList.remove('fill');sl.classList.add('ok')});
+        score+=(first===slots.length?1:0);playSound('correct');
+        fb.innerHTML='<p>🎉 Benar semua! '+(first===slots.length?'Kamu mendapat 1 poin dari soal ini.':'Kamu sudah memperbaikinya, tetapi poin soal ini hanya diberikan jika benar semua pada percobaan pertama.')+'</p>'+(q.m?'<div class="qz-model">'+q.m+'</div>':'');
+        nextBtn();
+      };
     }else{
       const ta=box.querySelector('.qz-in'),ck=box.querySelector('.qz-ck');
       ck.onclick=()=>{
         if(locked)return;
         if(ta.value.trim().length<5){playSound('wrong');ta.classList.add('no');setTimeout(()=>ta.classList.remove('no'),500);return}
+        if(q.chk){
+          locked=true;ta.disabled=true;ck.remove();
+          const ok=chkAns(ta.value);
+          if(ok)score++;
+          playSound(ok?'correct':'wrong');if(!ok)ta.classList.add('no');
+          fb.innerHTML=`<p>${ok?'🎉 Yey! Benar!':'😅 Belum tepat. Hitunganmu belum menunjukkan bahwa <b>9² + 12² = 15²</b>. Periksa lagi langkahmu.'}</p><p><b>Pembahasan:</b></p><div class="qz-model">${q.m||''}</div>`;
+          nextBtn();return;
+        }
         locked=true;ta.disabled=true;ck.remove();playSound('click');
-        fb.innerHTML=`<p><b>Pembahasan:</b></p><div class="qz-model">${q.m||''}</div><p style="margin:.5rem 0">Bandingkan dengan jawabanmu, lalu nilai dirimu dengan jujur:</p><div class="qz-selfrow"><button class="btn-action" data-s="1">✅ Jawabanku sudah sesuai</button><button class="btn-action" data-s="0" style="background:#64748b">🤔 Masih ada yang keliru</button></div>`;
-        fb.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{
-          const ok=b.dataset.s==='1';if(ok)score++;
+        fb.innerHTML=`<p><b>Pembahasan:</b></p><div class="qz-model">${q.m||''}</div><p style="margin:.5rem 0">Bandingkan dengan jawabanmu, lalu nilai dirimu dengan jujur:</p><div class="qz-selfrow"><button class="btn-action" data-self="1">✅ Jawabanku sudah sesuai</button><button class="btn-action" data-self="0" style="background:#64748b">🤔 Masih ada yang keliru</button></div>`;
+        fb.querySelectorAll('[data-self]').forEach(b=>b.onclick=()=>{
+          const ok=b.dataset.self==='1';if(ok)score++;
           playSound(ok?'correct':'jeng');
           fb.innerHTML=`<p>${ok?'🎉 Mantap! Satu poin untukmu!':'💪 Tidak apa-apa, pelajari pembahasannya ya!'}</p>`;
           nextBtn();
@@ -1297,27 +1472,50 @@ document.addEventListener('DOMContentLoaded',()=>{
     prev.onclick=i===1?()=>switchNav('tujuan'):()=>gotoSlide(i-1);
     footer.insertBefore(prev,footer.firstChild);
   }
+  try{const sz=parseFloat(localStorage.getItem('pyth-zoom'));if(sz)currentZoom=sz}catch(e){}
+  setZoom(currentZoom);
   initS2DragDrop();s2Layout(false);dRender();
 
   buildQuiz('quiz-s6-container',[
     {t:'pg',q:'Manakah yang merupakan tripel Pythagoras?',o:['(2, 3, 4)','(5, 12, 13)','(4, 5, 6)','(6, 7, 8)'],a:1},
     {t:'isian',q:'Lengkapi tripel Pythagoras berikut: (6, 8, ...)',ans:'10',m:'6² + 8² = 36 + 64 = 100, sehingga c = √100 = 10.'},
-    {t:'isian',q:'Lengkapi tripel Pythagoras berikut: (..., 15, 17)',ans:'8',m:'a² = 17² − 15² = 289 − 225 = 64, sehingga a = √64 = 8.'},
-    {t:'pg',q:'Jika (5, 12, 13) dikalikan 3, tripel barunya adalah...',o:['(10, 24, 26)','(15, 36, 39)','(15, 24, 39)','(8, 15, 17)'],a:1},
-    {t:'uraian',q:'Buktikan bahwa (9, 12, 15) adalah tripel Pythagoras! Tuliskan langkah-langkahnya.',m:'Sisi terpanjang = 15.<br>9² + 12² = 81 + 144 = 225<br>15² = 225<br>Karena 9² + 12² = 15², maka (9, 12, 15) adalah tripel Pythagoras (kelipatan 3 dari (3, 4, 5)).'}
+    {t:'match',q:'Ayo jodohkan dengan pasangan tripel Pythagoras yang tepat!',
+      rows:[[3,4,null],[5,null,13],[null,15,17],[7,null,25]],bank:[8,24,5,12],ans:[5,12,8,24],
+      m:'(3, 4, <b>5</b>): 9 + 16 = 25<br>(5, <b>12</b>, 13): 25 + 144 = 169<br>(<b>8</b>, 15, 17): 64 + 225 = 289<br>(7, <b>24</b>, 25): 49 + 576 = 625'},
+    {t:'tf',q:'Tunjukkan pernyataan mana yang benar dan pernyataan mana yang salah.',items:[
+      {s:'Bilangan 3, 4, dan 5 membentuk tripel Pythagoras.',a:true,m:'3² + 4² = 9 + 16 = 25 = 5².'},
+      {s:'Bilangan 5, 12, dan 14 membentuk tripel Pythagoras.',a:false,m:'5² + 12² = 25 + 144 = 169, sedangkan 14² = 196. Tripel yang benar adalah (5, 12, 13).'},
+      {s:'Jika (3, 4, 5) adalah tripel Pythagoras, maka (6, 8, 10) juga tripel Pythagoras.',a:true,m:'6² + 8² = 36 + 64 = 100 = 10². Jika semua sisi dikalikan bilangan asli yang sama, hubungan Pythagoras tetap berlaku.'},
+      {s:'Setiap tiga bilangan asli berurutan membentuk tripel Pythagoras.',a:false,m:'Contoh penyangkal: 4, 5, 6 → 16 + 25 = 41, sedangkan 6² = 36. Hanya (3, 4, 5) yang memenuhi.'}
+    ]},
+    {t:'uraian',chk:true,q:'Buktikan bahwa (9, 12, 15) adalah tripel Pythagoras! Tuliskan langkah-langkahnya.',m:'Sisi terpanjang = 15.<br>9² + 12² = 81 + 144 = 225<br>15² = 225<br>Karena 9² + 12² = 15², maka (9, 12, 15) adalah tripel Pythagoras (kelipatan 3 dari (3, 4, 5)).'}
   ]);
   buildQuiz('quiz-s8-container',[
     {t:'pg',q:'Segitiga dengan sisi 9, 40, dan 41 adalah segitiga...',o:['Siku-siku','Lancip','Tumpul','Sama sisi'],a:0},
-    {t:'isian',q:'Segitiga dengan sisi 7, 9, dan 12 adalah segitiga apa? (siku-siku / lancip / tumpul)',ans:'tumpul',m:'7² + 9² = 49 + 81 = 130, sedangkan 12² = 144. Karena 144 > 130 (c² > a² + b²), segitiganya <b>tumpul</b>.'},
+    {t:'match',q:'Jodohkan setiap ukuran sisi segitiga di Kolom A dengan jenis segitiga yang tepat di Kolom B. Satu pilihan di Kolom B tidak dipakai.',
+      hA:'Kolom A (panjang sisi)',hB:'Kolom B (jenis segitiga)',
+      rows:[['5 cm','12 cm','13 cm',null],['6 cm','7 cm','8 cm',null],['4 cm','6 cm','9 cm',null]],
+      bank:['a','b','c','d'],lbl:{a:'a. Segitiga lancip',b:'b. Segitiga siku-siku',c:'c. Segitiga tumpul',d:'d. Bukan segitiga'},ans:['b','a','c'],
+      m:'1. 5, 12, 13: 5² + 12² = 25 + 144 = 169 = 13², jadi <b>siku-siku (b)</b>.<br>2. 6, 7, 8: 6² + 7² = 36 + 49 = 85, sedangkan 8² = 64. Karena 64 &lt; 85, jadi <b>lancip (a)</b>.<br>3. 4, 6, 9: 4² + 6² = 16 + 36 = 52, sedangkan 9² = 81. Karena 81 &gt; 52, jadi <b>tumpul (c)</b>.<br>Pilihan d tidak dipakai karena ketiga ukuran sisi tersebut dapat membentuk segitiga.'},
     {t:'pg',q:'Manakah yang membentuk segitiga siku-siku?',o:['(4, 6, 8)','(8, 15, 17)','(6, 9, 11)','(5, 8, 9)'],a:1},
     {t:'isian',q:'Sebuah segitiga siku-siku memiliki dua sisi terpendek 12 cm dan 16 cm. Berapa panjang sisi terpanjangnya?',ans:'20',unit:'cm',m:'c² = 12² + 16² = 144 + 256 = 400, sehingga c = √400 = 20 cm.'},
-    {t:'uraian',q:'Sebuah segitiga memiliki sisi 10 cm, 6 cm, dan 7 cm. Tentukan jenis segitiga tersebut beserta langkah penyelesaiannya!',m:'Sisi terpanjang = 10 cm.<br>c² = 10² = 100<br>a² + b² = 6² + 7² = 36 + 49 = 85<br>Karena 100 > 85 (c² > a² + b²), segitiganya <b>tumpul</b>.'}
+    {t:'tf',q:'Tentukan apakah setiap pernyataan berikut Benar (B) atau Salah (S).',items:[
+      {s:'Segitiga dengan panjang sisi 9 cm, 12 cm, dan 15 cm merupakan segitiga siku-siku.',a:true,m:'Sisi terpanjang = 15. 9² + 12² = 81 + 144 = 225 = 15². Karena c² = a² + b², segitiganya siku-siku.'},
+      {s:'Segitiga dengan panjang sisi 7 cm, 8 cm, dan 10 cm merupakan segitiga siku-siku.',a:false,m:'Sisi terpanjang = 10. 7² + 8² = 49 + 64 = 113, sedangkan 10² = 100. Karena 100 &lt; 113 (c² &lt; a² + b²), segitiganya lancip, bukan siku-siku.'},
+      {s:'Jika <i class="math-var">c</i> adalah sisi terpanjang dan <i class="math-var">c</i>² &lt; <i class="math-var">a</i>² + <i class="math-var">b</i>², maka segitiga tersebut adalah segitiga lancip.',a:true,m:'Segitiga lancip terjadi jika kuadrat sisi terpanjang lebih kecil daripada jumlah kuadrat dua sisi lainnya (c² &lt; a² + b²).'},
+      {s:'Jika <i class="math-var">c</i> adalah sisi terpanjang dan <i class="math-var">c</i>² &gt; <i class="math-var">a</i>² + <i class="math-var">b</i>², maka segitiga tersebut adalah segitiga lancip.',a:false,m:'Jika kuadrat sisi terpanjang lebih besar daripada jumlah kuadrat dua sisi lainnya (c² &gt; a² + b²), segitiganya <b>tumpul</b>, bukan lancip.'}
+    ]}
   ]);
   buildQuiz('quiz-s10-container',[
     {t:'pg',q:'Tangga 10 m bersandar di dinding dengan jarak kaki tangga 6 m. Tinggi dinding yang dicapai = ...',o:['7 m','8 m','9 m','10 m'],a:1},
     {t:'isian',q:'Tiang setinggi 12 m disangga kabel sepanjang 13 m. Berapa jarak kaki kabel ke tiang?',ans:'5',unit:'m',m:'a² = 13² − 12² = 169 − 144 = 25, sehingga a = 5 m.'},
     {t:'pg',q:'Lapangan berukuran 24 m × 7 m. Panjang garis diagonalnya adalah...',o:['25 m','26 m','31 m','35 m'],a:0},
-    {t:'isian',q:'Rani berjalan 9 m ke Barat lalu 12 m ke Selatan. Berapa jarak lurus Rani dari titik awal?',ans:'15',unit:'m',m:'c² = 9² + 12² = 81 + 144 = 225, sehingga c = √225 = 15 m.'},
+    {t:'tf',q:'Pythagoras dalam kehidupan sehari-hari: tentukan pernyataan berikut benar atau salah.',items:[
+      {s:'Tangga sepanjang 5 meter disandarkan pada dinding. Jika kaki tangga berjarak 3 meter dari dinding, maka ujung atas tangga mencapai ketinggian 4 meter.',a:true,m:'Tinggi = √(5² − 3²) = √16 = 4 m.'},
+      {s:'Sebuah layar televisi berukuran lebar 40 cm dan tinggi 30 cm. Panjang diagonal layar tersebut adalah 70 cm.',a:false,m:'Diagonal = √(40² + 30²) = √2.500 = 50 cm, bukan 70 cm. Diagonal tidak sama dengan jumlah dua sisi.'},
+      {s:'Tukang bangunan ingin memastikan sudut pondasi persegi panjang siku-siku. Jika sisi-sisinya 6 m dan 8 m, maka diagonalnya harus 10 m.',a:true,m:'Diagonal = √(36 + 64) = √100 = 10 m. Jika diagonal terukur 10 m, sudutnya siku-siku (metode 3-4-5 dikali 2).'},
+      {s:'Rani berjalan 8 meter ke Timur lalu 6 meter ke Utara. Jarak lurus Rani dari titik awal adalah 14 meter.',a:false,m:'Jarak = √(8² + 6²) = √100 = 10 m, bukan 14 m. Jarak lurus (sisi miring) tidak sama dengan jumlah dua sisi lainnya.'}
+    ]},
     {t:'uraian',q:'Layar TV berukuran 120 cm × 90 cm. Hitunglah panjang diagonal layarnya dan tuliskan langkah-langkahnya!',m:'d² = 120² + 90² = 14400 + 8100 = 22500, sehingga d = √22500 = 150 cm.'}
   ]);
 
