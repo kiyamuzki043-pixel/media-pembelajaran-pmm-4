@@ -400,6 +400,7 @@ textarea.qz-in{resize:vertical;min-height:5rem}
 <nav id="topnav">
   <button class="logo" data-go="beranda" aria-label="Beranda"><span class="bub">a²</span>Pythagoras Club</button>
   <div class="zm" role="group" aria-label="Perbesar atau perkecil tampilan"><button class="tg" id="zout" aria-label="Perkecil tampilan">−</button><button class="tg zv" id="zval" title="Klik untuk kembali ke 100%">100%</button><button class="tg" id="zin" aria-label="Perbesar tampilan">＋</button></div>
+  <button class="tg" id="btn-fs" title="Tampilkan layar penuh">⛶ Layar Penuh</button>
   <button class="tg" id="btn-sound">🔊 Suara</button>
 </nav>
 
@@ -897,6 +898,21 @@ function setZoom(z){
 $('#zin').onclick=()=>{playSound('click');setZoom(currentZoom+.1)};
 $('#zout').onclick=()=>{playSound('click');setZoom(currentZoom-.1)};
 $('#zval').onclick=()=>{playSound('click');setZoom(1)};
+
+/* ---------- Layar penuh ---------- */
+const fsRoot=document.documentElement;
+const fsOn=()=>document.fullscreenElement||document.webkitFullscreenElement;
+function toggleFS(){
+  playSound('click');
+  try{
+    if(fsOn()){const x=document.exitFullscreen||document.webkitExitFullscreen;const r=x.call(document);if(r&&r.catch)r.catch(()=>{})}
+    else{const x=fsRoot.requestFullscreen||fsRoot.webkitRequestFullscreen;const r=x.call(fsRoot);if(r&&r.catch)r.catch(()=>{})}
+  }catch(e){}
+}
+function fsSync(){$('#btn-fs').textContent=fsOn()?'✕ Keluar Layar Penuh':'⛶ Layar Penuh';setTimeout(sizeStage,100)}
+if(!(fsRoot.requestFullscreen||fsRoot.webkitRequestFullscreen))$('#btn-fs').hidden=true;
+$('#btn-fs').onclick=toggleFS;
+document.addEventListener('fullscreenchange',fsSync);document.addEventListener('webkitfullscreenchange',fsSync);
 
 /* ---------- Navigasi antar halaman ---------- */
 function sizeStage(){document.documentElement.style.setProperty('--navh',$('#topnav').offsetHeight+'px')}
